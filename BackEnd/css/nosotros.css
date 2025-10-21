@@ -11,7 +11,6 @@
 }
 
 html { scroll-behavior: smooth; }
-
 /* navegación */
 #index-page nav,
 #about-us nav,
@@ -52,6 +51,410 @@ html { scroll-behavior: smooth; }
         margin: 0 15px;
         }
 }
+.welcomeSection
+{
+    background-image: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.4),rgba(0,0,0,0.4),rgba(0,0,0,0.4),rgba(0,0,0,1)), url(../img/ui/example.jpg);
+    background-color: rgb(30,30,30);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 90dvh;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.welcomeTitle
+{
+    text-align: center;
+    margin: 2.5rem 3rem 2.1rem 3rem;
+}
+.welcomeText
+{
+    text-align: left;
+    margin: 0 10% 0 10%;
+}
+/* Primera seccion de bienvenida*/
+/* Segunda seccion de servicios*/
+.servicesSection
+{
+    background-color: rgb(0, 0, 0);
+    min-height: 50dvh;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.servicesTitle
+{
+    text-align: center;
+    margin: 2.5rem 3rem 2.5rem 3rem;
+}
+.serviceswrapper
+{
+    margin: 0;
+    padding: 0;
+}
+.servicesCards
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60dvh;
+    max-height: auto;
+    margin: 0;
+    box-sizing: content-box;
+}
+.servicesImg
+{
+    height: auto;
+    width: 25%;
+    margin: 2.5rem auto;
+}
+.cardsInfo
+{
+    text-align: left;
+    margin: 0 10% 0 10%;
+}
+.dronStyle
+{
+    background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4)), url(../img/ui/indexDronSecBack.jpg);
+    background-color: rgb(0, 0, 0);
+    background-size: cover; 
+    background-position: 50% 5%;
+    background-repeat: no-repeat;
+}
+.cameraStyle
+{
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(../img/ui/indexCameraSecBack.jpg);
+    background-color: rgb(0, 0, 0);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.podcastStyle
+{
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,1)), url(../img/ui/indexPodSecBack.jpg);
+    background-color: rgb(0, 0, 0);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* Segunda seccion de servicios*/
+/* Tercera seccion de media*/
+.mediaSection
+{
+    background-color: rgb(0, 0, 0);
+    min-height: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 5rem;
+}
+.mediaTitle
+{
+    text-align: center;
+    margin: 0 3rem 5rem 3rem;
+}
+.card-wrapper
+{
+    margin: 0 2.2rem 1rem 2.2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+.card-list .card-item .card-text
+{
+    user-select: none;
+    display: block;
+    background-color: rgb(0, 0, 0);
+    border-radius: 12px;
+}
+.card-list .card-text .card-image
+{
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.card-image
+{    
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+}
+.card-text
+{
+    width: 100%;
+}
+.card-wrapper .swiper-pagination-bullet
+{
+    height: 13px;
+    width: 13px;
+    opacity: 0.5;
+    background: rgb(255,255,255);
+}
+.card-wrapper .swiper-pagination-bullet-active
+{
+    opacity: 1;
+}
+.card-wrapper .swiper-slide-button
+{
+    color: rgb(255,255,255);
+    top: 35%
+}
+/* Tercera seccion de media*/
+/* Cuarta seccion de contacto*/
+.contactSection
+{
+    background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), rgba(0,0,0,1)), url(../img/ui/contactImg.jpg);
+    background-color: rgb(30,30,30);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90dvh;
+    margin: 0;
+}
+.contactTitle
+{
+    text-align: center;
+    margin: 0 2rem 10dvh 2rem;
+}
+.contactText
+{
+    text-align: left;
+    padding: 0 2rem 0 2rem;
+    margin-bottom: 1rem;
+}
+@media (min-width:768px)
+{
+    .welcomeSection
+    {  
+        min-height: 95dvh;
+        box-sizing: content-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .welcomeTitle
+    {
+        text-align: center;
+        margin: 3rem auto;
+        width: fit-content;
+        padding: 1rem 2rem;
+    }
+    .welcomeText
+    {
+        margin: 3rem 25%;
+        text-align: center;
+        
+    }
+    .servicesSection
+    {
+        background-color: rgb(0, 0, 0);
+        min-height: 100dvh;
+        box-sizing: content-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .servicesTitle
+    {
+        text-align: center;
+        margin: 3rem auto;
+        width: fit-content;
+        padding: 1rem 2rem;
+    }
+    .servicesWrapper
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 2rem;
+    }
+    .servicesCards
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 50dvh;
+        max-height: 50dvh;
+        overflow: hidden;
+        margin: 1rem 2rem 1rem 2rem;
+        padding: 0 0 2rem 0;
+        box-sizing: border-box;
+        border-left: 1px solid rgba(255, 59, 180, 0.8);
+        border-right: 1px solid rgba(255, 59, 180, 0.8);
+        border-radius: 5px;
+    }
+    .servicesCards:hover
+    {
+        border-left: 1px solid rgb(255, 255, 255);
+        border-right: 1px solid rgb(255, 255, 255);
+        transition: 0.5s;
+        transform: scale(1.05) translateY(-10px);
+    }
+    .servicesImg
+    {
+        height: auto;
+        width: 18%;
+        margin: 2rem auto;
+    }
+    .cardsInfo
+    {
+        text-align: left;
+        margin: 0 10% 0 10%;
+        max-height: 60dvh;
+        max-width: 30dvw; 
+        overflow-y: auto; 
+    }
+    .cardsInfo::-webkit-scrollbar 
+    {
+        width: 0.3rem;
+    }
+    .cardsInfo::-webkit-scrollbar-thumb 
+    {
+    background-color: rgba(255, 59, 180, 0.8);
+    border-radius: 5px;
+    min-height: 3rem;
+    height: 3rem;
+    }
+    .cardsInfo::-webkit-scrollbar-track
+    {
+        background: white;
+        border-radius: 5px;
+    }
+    .dronStyle
+    {
+        background-image: linear-gradient(rgba(0,0,0,1),rgba(0, 0, 0, 0.1),rgba(0, 0, 0,1)), url(../img/ui/indexDronSecBack.jpg);
+        background-color: rgb(0, 0, 0);
+        background-size: cover; 
+        background-position: 50% 5%;
+        background-repeat: no-repeat;
+    }
+    .cameraStyle
+    {
+        background-image: linear-gradient(rgba(0,0,0,1),rgba(0, 0, 0, 0.1),rgba(0, 0, 0,1)), url(../img/ui/indexCameraSecBack.jpg);
+        background-color: rgb(0, 0, 0);
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .podcastStyle
+    {
+        background-image: linear-gradient(rgba(0,0,0,1),rgba(0, 0, 0, 0.1),rgba(0, 0, 0,1)), url(../img/ui/indexPodSecBack.jpg);
+        background-color: rgb(0, 0, 0);
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .mediaSection
+    {
+        background-color: rgb(0, 0, 0);
+        min-height: auto;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    .mediaTitle
+    {
+        text-align: center;
+        margin: 2rem auto;
+        width: fit-content;
+        padding: 1rem 2rem;
+    }
+    .card-wrapper
+    {
+        margin: 1rem 10%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-list
+    {
+        padding: 0;
+    }
+    .card-text
+    {
+        user-select: none;
+        display: block;
+        background-color: rgb(0, 0, 0);
+        border-radius: 12px;
+        width: 100%;
+        text-align: center;  /*mueve esto si quiero mover la descripcion debajo de la imagen*/
+    }
+    .card-image
+    {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .card-wrapper .swiper-pagination-bullet
+    {
+        height: 0.7rem;
+        width: 0.7rem;
+        opacity: 0.5;
+        background: rgb(255,255,255);
+    }
+    .card-wrapper .swiper-pagination-bullet-active
+    {
+        opacity: 1;
+    }
+    .card-wrapper .swiper-slide-button
+    {
+        color: rgb(255,255,255);
+        top: 45%;
+    }
+    .swiper-button-prev
+    {
+        margin-left: 5%;
+    }
+    .swiper-button-next
+    {
+        margin-right: 5%;
+    }
+    .contactSection
+    {
+        background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), rgba(0,0,0,1)), url(../img/ui/contactImg.jpg);
+        background-color: rgb(30,30,30);
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 90dvh;
+        margin: 0;
+    }
+    .contactTitle
+    {
+        text-align: center;
+        margin: 5rem auto;
+        width: fit-content;
+        padding: 1rem 2rem;
+    }
+    .contactText
+    {
+        text-align: left;
+        padding: 0 2rem 0 2rem;
+        margin: 2rem auto 3rem auto;
+    }
+}
 /* Scope para esta página */
 body[data-theme="represa"] {
     font-family: "Poppins", Arial, sans-serif;
@@ -75,7 +478,6 @@ body[data-theme="represa"] .presentationSection {
     gap: 1.25rem;
     align-items: center;
 }
-
 /* superposición tipo olas (subtle) */
 body[data-theme="represa"] .presentationSection::after {
     content: "";
@@ -88,20 +490,17 @@ body[data-theme="represa"] .presentationSection::after {
     transform: rotate(-2deg);
     pointer-events: none;
 }
-
 /* Títulos claros y marcadores tipo señal */
 body[data-theme="represa"] .presentationTitle {
     color: var(--text-light);
     text-shadow: 0 4px 18px rgba(0,0,0,0.6);
     margin-bottom: .6rem;
 }
-
 body[data-theme="represa"] .presentationText {
     color: #dfe8f2;
     max-width: 72ch;
     line-height: 1.75;
 }
-
 /* Panel de datos rápidos de la presa (capacidad, altura, fecha) */
 body[data-theme="represa"] .dam-stats {
     display: flex;
@@ -109,7 +508,6 @@ body[data-theme="represa"] .dam-stats {
     flex-wrap: wrap;
     margin-top: 1.25rem;
 }
-
 body[data-theme="represa"] .dam-stat {
     background: linear-gradient(180deg, rgba(255,255,255,0.03), var(--glass));
     border: 1px solid rgba(255,255,255,0.04);
@@ -119,21 +517,18 @@ body[data-theme="represa"] .dam-stat {
     box-shadow: 0 6px 18px rgba(3,10,30,0.45);
     text-align: center;
 }
-
 body[data-theme="represa"] .dam-stat .value {
     display: block;
     font-weight: 700;
     color: var(--water-mid);
     font-size: 1.35rem;
 }
-
 body[data-theme="represa"] .dam-stat .label {
     display: block;
     font-size: .85rem;
     color: #cbd6e6;
     margin-top: .35rem;
 }
-
 /* Timeline / operación */
 body[data-theme="represa"] .dam-timeline {
     margin: 2rem 0;
@@ -142,7 +537,6 @@ body[data-theme="represa"] .dam-timeline {
     border-radius: var(--radius-lg);
     border: 1px solid rgba(255,255,255,0.03);
 }
-
 /* Equipo: tarjetas más sobrias y con borde tipo hormigón */
 body[data-theme="represa"] .card-item {
     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -158,12 +552,10 @@ body[data-theme="represa"] .card-item {
     width: 100%;
     margin: 0 auto;
 }
-
 body[data-theme="represa"] .card-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 14px 36px rgba(4,12,30,0.6);
 }
-
 body[data-theme="represa"] .card-image {
     width: 100%;
     height: 220px;        /* altura fija estándar */
@@ -172,22 +564,18 @@ body[data-theme="represa"] .card-image {
     display: block;
     border-bottom: 1px solid rgba(255,255,255,0.03);
 }
-
 /* Espaciado para textos dentro de la tarjeta */
 body[data-theme="represa"] .card-text {
     padding: 0.75rem 1rem;
 }
-
 /* Valores / Misión / Visión: tarjetas con color de señal */
 body[data-theme="represa"] .valuesSection .valuesTextWrapper {
     gap: 1.25rem;
 }
-
 body[data-theme="represa"] .valuesSection h2 {
     color: var(--accent);
     text-shadow: 0 3px 12px rgba(0,0,0,0.6);
 }
-
 /* Botones de acción (e.g. informes, visitar presa) */
 body[data-theme="represa"] .viewMoreBtn {
     background: linear-gradient(90deg, var(--water-mid), var(--water-dark));
@@ -197,7 +585,6 @@ body[data-theme="represa"] .viewMoreBtn {
     box-shadow: 0 8px 30px rgba(11,61,145,0.28);
     border: 1px solid rgba(255,255,255,0.04);
 }
-
 /* Accesibilidad / indicadores */
 body[data-theme="represa"] .badge-warning {
     background: linear-gradient(180deg, #ffb37a, #ff8c00);
@@ -207,12 +594,10 @@ body[data-theme="represa"] .badge-warning {
     font-weight: 700;
     font-size: .85rem;
 }
-
 /* Center slides and constrain card width inside swiper */
 .container.swiper .swiper-wrapper {
     justify-content: center; /* centra la fila de slides */
 }
-
 .container.swiper .swiper-slide {
     display: flex;
     justify-content: center;
@@ -220,7 +605,6 @@ body[data-theme="represa"] .badge-warning {
     padding: 12px;
     box-sizing: border-box;
 }
-
 /* Responsive */
 @media (min-width: 768px) {
     body[data-theme="represa"] .presentationSection {
