@@ -3,44 +3,56 @@
     --water-mid:  #1e6fb3;
     --concrete-1:#bfc6cc;
     --concrete-2:#8f9498;
-    --accent:     #ff8c00; /* señalización / seguridad */
+    --accent:     #ff8c00;
     --text-light: #f5f7fa;
     --glass:      rgba(255,255,255,0.06);
     --shadow:     0 8px 24px rgba(2,6,23,0.35);
     --radius-lg:  12px;
 }
-header[data-theme="represa"],
-footer[data-theme="represa"] {
-    background-color: #071126;
-    border-top: 1px solid rgba(255,255,255,0.03);
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-}
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
 
-nav a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 10px 15px;
-    transition: color 0.3s ease;
-}
+html { scroll-behavior: smooth; }
 
-nav a:hover {
-    color: #1e6fb3;
+/* navegación */
+#index-page nav,
+#about-us nav,
+#contanct-page nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 7%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        
+        a {
+        color: #F5F0E6;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 10px 15px;
+        transition: color 0.3s ease;
+        }
+        a:hover {
+        color: #FFD700;
+        }
+        .navbar a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        }
+        .navbar ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        }
+        .navbar li {
+        margin: 0 15px;
+        }
 }
-
-/* Scope para esta página: body[data-theme="represa"] */
+/* Scope para esta página */
 body[data-theme="represa"] {
     font-family: "Poppins", Arial, sans-serif;
     color: var(--text-light);
@@ -48,12 +60,11 @@ body[data-theme="represa"] {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-/* Hero / presentación con imagen de presa y olas sutiles */
+/* Sección de presentación con imagen de fondo de represa el Hero es la imagen de ejemplo (buscar) */
 body[data-theme="represa"] .presentationSection {
     position: relative;
     background: linear-gradient(180deg, rgba(3,16,33,0.6), rgba(3,16,33,0.4)),
-                url("../img/ui/dam-hero.jpg") center/cover no-repeat;
+                url("../hero.jpg") center/cover no-repeat;
     padding: 3.5rem 1.5rem;
     border-radius: 0;
     box-shadow: var(--shadow);
