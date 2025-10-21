@@ -1,0 +1,203 @@
+:root {
+    --water-dark: #0b3d91;
+    --water-mid:  #1e6fb3;
+    --concrete-1:#bfc6cc;
+    --concrete-2:#8f9498;
+    --accent:     #ff8c00; /* señalización / seguridad */
+    --text-light: #f5f7fa;
+    --glass:      rgba(255,255,255,0.06);
+    --shadow:     0 8px 24px rgba(2,6,23,0.35);
+    --radius-lg:  12px;
+}
+
+/* Scope para esta página: body[data-theme="represa"] */
+body[data-theme="represa"] {
+    font-family: "Poppins", Arial, sans-serif;
+    color: var(--text-light);
+    background: linear-gradient(180deg, #081028 0%, rgba(2,6,23,0.6) 40%), #071126;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero / presentación con imagen de presa y olas sutiles */
+body[data-theme="represa"] .presentationSection {
+    position: relative;
+    background: linear-gradient(180deg, rgba(3,16,33,0.6), rgba(3,16,33,0.4)),
+                url("../img/ui/dam-hero.jpg") center/cover no-repeat;
+    padding: 3.5rem 1.5rem;
+    border-radius: 0;
+    box-shadow: var(--shadow);
+    margin: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+/* superposición tipo olas (subtle) */
+body[data-theme="represa"] .presentationSection::after {
+    content: "";
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    bottom: -6%;
+    height: 18%;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.03), transparent 45%);
+    transform: rotate(-2deg);
+    pointer-events: none;
+}
+
+/* Títulos claros y marcadores tipo señal */
+body[data-theme="represa"] .presentationTitle {
+    color: var(--text-light);
+    text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+    margin-bottom: .6rem;
+}
+
+body[data-theme="represa"] .presentationText {
+    color: #dfe8f2;
+    max-width: 72ch;
+    line-height: 1.75;
+}
+
+/* Panel de datos rápidos de la presa (capacidad, altura, fecha) */
+body[data-theme="represa"] .dam-stats {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
+}
+
+body[data-theme="represa"] .dam-stat {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), var(--glass));
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: .8rem 1rem;
+    min-width: 150px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(3,10,30,0.45);
+    text-align: center;
+}
+
+body[data-theme="represa"] .dam-stat .value {
+    display: block;
+    font-weight: 700;
+    color: var(--water-mid);
+    font-size: 1.35rem;
+}
+
+body[data-theme="represa"] .dam-stat .label {
+    display: block;
+    font-size: .85rem;
+    color: #cbd6e6;
+    margin-top: .35rem;
+}
+
+/* Timeline / operación */
+body[data-theme="represa"] .dam-timeline {
+    margin: 2rem 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Equipo: tarjetas más sobrias y con borde tipo hormigón */
+body[data-theme="represa"] .card-item {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(4,12,30,0.5);
+    transition: transform .28s ease, box-shadow .28s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 420px;     /* ancho estándar de la tarjeta */
+    width: 100%;
+    margin: 0 auto;
+}
+
+body[data-theme="represa"] .card-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 36px rgba(4,12,30,0.6);
+}
+
+body[data-theme="represa"] .card-image {
+    width: 100%;
+    height: 220px;        /* altura fija estándar */
+    max-height: 220px;
+    object-fit: cover;    /* recorta y mantiene proporción */
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Espaciado para textos dentro de la tarjeta */
+body[data-theme="represa"] .card-text {
+    padding: 0.75rem 1rem;
+}
+
+/* Valores / Misión / Visión: tarjetas con color de señal */
+body[data-theme="represa"] .valuesSection .valuesTextWrapper {
+    gap: 1.25rem;
+}
+
+body[data-theme="represa"] .valuesSection h2 {
+    color: var(--accent);
+    text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+}
+
+/* Botones de acción (e.g. informes, visitar presa) */
+body[data-theme="represa"] .viewMoreBtn {
+    background: linear-gradient(90deg, var(--water-mid), var(--water-dark));
+    color: #fff;
+    border-radius: 999px;
+    padding: .75rem 1.25rem;
+    box-shadow: 0 8px 30px rgba(11,61,145,0.28);
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Accesibilidad / indicadores */
+body[data-theme="represa"] .badge-warning {
+    background: linear-gradient(180deg, #ffb37a, #ff8c00);
+    color: #081022;
+    padding: .28rem .6rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: .85rem;
+}
+
+/* Center slides and constrain card width inside swiper */
+.container.swiper .swiper-wrapper {
+    justify-content: center; /* centra la fila de slides */
+}
+
+.container.swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    body[data-theme="represa"] .presentationSection {
+        padding: 5rem 6rem;
+    }
+    body[data-theme="represa"] .dam-stats {
+        gap: 1.5rem;
+    }
+}
+@media (max-width: 480px) {
+    body[data-theme="represa"] .presentationText { font-size: .95rem; }
+    body[data-theme="represa"] .dam-stat { min-width: 120px; }
+    body[data-theme="represa"] .presentationSection { grid-template-columns: 1fr; padding: 2rem 1rem; }
+    body[data-theme="represa"] .card-item {
+        max-width: 100%;
+    }
+    body[data-theme="represa"] .card-image {
+        height: 160px;
+        max-height: 160px;
+    }
+}

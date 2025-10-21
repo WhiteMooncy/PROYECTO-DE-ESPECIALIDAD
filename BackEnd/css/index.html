@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio</title>
+        <link rel="stylesheet" href="StyleEdit.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    </head>
+    <body id="index-page">
+        <header>
+            <nav class="index-page">
+                <div class="logo">
+                    <a class="customFont whiteText" href="../FrontEnd/index.php"><h1>"Nombre Empresa"</h1></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a class="customFont whiteText" href="../FrontEnd/views/nosotros.html">Nosotros</a></li>
+                    <li><a class="customFont whiteText" href="../FrontEnd/views/contacto.php">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="welcomeSection" data-aos="fade-up">
+                <h2 class="welcomeTitle customFont title1 whiteText pinkUnderLine">
+                    Nos encargamos de tu evento
+                </h2>
+                <p class="welcomeText customFont text1 whiteText">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad amet quod, tempora consequatur quia tempore, 
+                </p>
+                <a class="viewMoreBtn customFont btnText pinkPerBack whiteText" href="../FrontEnd/views/nosotros.php">
+                    Conócenos
+                </a>
+            </section>
+            <section class="servicesSection" data-aos="fade-up">
+                <h2 class="servicesTitle customFont title1 whiteText pinkUnderLine">
+                    Algunos de nuestros servicios
+                </h2>
+                <div class="servicesWrapper">
+                    <div class="servicesCards dronStyle">
+                        <img class="servicesImg" src="../BackEnd/img/ui/serDron.png" alt="Imagen de un dron">
+                        <p class="cardsInfo customFont text1 whiteText">
+                        Hola uno
+                        </p>
+                    </div>
+                    <div class="servicesCards cameraStyle">
+                        <img class="servicesImg" src="../BackEnd/img/ui/serCamera.png" alt="Imagen de una cámara">
+                        <p class="cardsInfo customFont text1 whiteText">
+                            Hola dos
+                        </p>
+                    </div>
+                    <div class="servicesCards podcastStyle">
+                        <img class="servicesImg" src="../BackEnd/img/ui/serMicro.png" alt="Imagen de un micrófono">
+                        <p class="cardsInfo customFont text1 whiteText">
+                            Hola tres
+                        </p>
+                    </div>
+                </div>
+                <a class="viewMoreBtn customFont btnText pinkPerBack whiteText" href="../FrontEnd/views/servicios.php">
+                    Saber más
+                </a>
+            </section>
+            <section class="mediaSection" data-aos="fade-up">
+                <h2 class="mediaTitle customFont title1 whiteText pinkUnderLine">
+                    Nuestros proyectos
+                </h2>
+                <div class="container swiper">
+                    <div class="card-wrapper">
+                        <ul class="card-list swiper-wrapper">
+                            <li class="card-item swiper-slide">
+                                <img src="../BackEnd/img/ui/indexDronSecBack.jpg" alt="Imagen de proyecto de dron" class="card-image">
+                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
+                            </li>
+                            <li class="card-item swiper-slide">
+                                <img src="../BackEnd/img/ui/indexCameraSecBack.jpg" alt="Imagen de proyecto de cámara" class="card-image">
+                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
+                            </li>
+                            <li class="card-item swiper-slide">
+                                <img src="../BackEnd/img/ui/indexPodSecBack.jpg" alt="Imagen de proyecto de podcast" class="card-image">
+                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
+                            </li>
+                            <li class="card-item swiper-slide">
+                                <img src="../BackEnd/img/ui/example.jpg" alt="Imagen de proyecto de ejemplo" class="card-image">
+                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
+                            </li>
+                            <li class="card-item swiper-slide">
+                                <img src="../BackEnd/img/ui/indexDronSecBack.jpg" alt="Imagen de proyecto de dron repetida" class="card-image">
+                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
+                            </li>
+                        </ul>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-slide-button swiper-button-prev"></div>
+                        <div class="swiper-slide-button swiper-button-next"></div>
+                    </div>
+                </div>
+            </section>
+            <section class="contactSection" data-aos="fade-up">
+                <h2 class="contactTitle customFont title1 whiteText pinkUnderLine">
+                    ¿Cómo contactarnos?
+                </h2>
+                <div class="contactText text2 customFont whiteText">
+                    <p>
+                        Puedes ponerte en contacto con nosotros a través de nuestras redes sociales o llamándonos directamente.
+                    </p>
+                    <p>
+                        Revisa la información en nuestra sección de contacto.
+                    </p>
+                </div>
+                <a class="viewMoreBtn customFont btnText pinkPerBack whiteText" href="../FrontEnd/views/contacto.php">
+                    Ir a Contacto
+                </a>
+            </section>
+        </main>
+        <footer>
+            <div class="siteFooter customFont whiteText">
+                <p class="siteFooterText"> &copy; Copyright 2025<br>Todos los derechos reservados</p>
+            </div>
+        </footer> 
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="js/swiperInitIndex.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 250,
+                easing: "ease-in-out",
+                once: false,
+            });
+        </script>
+    </body>
+</html>

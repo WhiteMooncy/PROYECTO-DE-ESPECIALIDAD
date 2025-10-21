@@ -1,0 +1,296 @@
+.presentationSection {
+    background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), rgba(0,0,0,0.4), rgba(0,0,0,0.4), rgba(0,0,0,1)), 
+                      url(../img/ui/example.jpg);
+    background-color: rgb(30,30,30);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 80dvh;
+    max-width: 100dvw;
+    box-sizing: border-box;
+    padding: 3rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.presentationTextBox {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.presentationTitle {
+    margin: 0;
+    text-align: center;
+}
+
+.presentationText {
+    text-align: center;
+}
+
+.presentationImg {
+    display: none; 
+}
+
+
+/*seccion de integrantes*/
+
+
+.teamSection
+{
+    min-height: 50dvh;
+    max-width: 100dvw;
+    box-sizing: content-box;
+    padding: 5rem 0;
+
+}
+.teamTitle
+{
+    text-align: center;
+    margin: 5rem 3rem 5rem 3rem;
+}
+.card-wrapper
+{
+    margin: 1rem 2.2rem 1rem 2.2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-list
+{
+    padding: 0;
+}
+.card-text
+{
+    user-select: none;
+    display: block;
+    background-color: rgb(0, 0, 0);
+    border-radius: 12px;
+    width: 100%;
+    text-align: start;  /*mueve esto si quiero mover la descripcion debajo de la imagen*/
+}
+.card-image
+{
+    display: block;
+    margin: 0 auto;
+    height: 50dvh;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.card-wrapper .swiper-pagination-bullet
+{
+    height: 13px;
+    width: 13px;
+    opacity: 0.5;
+    background: rgb(255,255,255);
+}
+.card-wrapper .swiper-pagination-bullet-active
+{
+    opacity: 1;
+}
+.card-wrapper .swiper-slide-button
+{
+    color: rgb(255,255,255);
+    top: 35%
+}
+
+
+/*seccion de integrantes*/
+
+
+
+
+/* Sección de valores */
+
+.valuesSection {
+    min-height: 70dvh;
+    max-width: 100dvw;
+    box-sizing: content-box;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.valuesTextWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5dvh 3dvw;
+    background: linear-gradient(rgba(0,0,0,0.2),rgba(0, 0, 117, 0.8),rgba(0, 0, 117,1),rgba(0, 0, 117, 0.8),rgba(0,0,0,0.2));
+}
+
+.missionTextBox, .valuesTextBox {
+    width: 100%;
+    max-width: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 2rem;
+}
+
+.missionTextBox p, .valuesTextBox p {
+    text-align: left;
+}
+
+
+/*seccion de valores*/
+
+
+
+@media (min-width:768px)
+{
+    .presentationSection
+    {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem 0;
+        gap: 5rem;
+    }
+
+    .presentationTextBox 
+    {
+        width: 40%;
+        text-align: left;
+    }
+
+    .presentationTitle 
+    {
+        text-align: left;
+    }
+
+    .presentationText 
+    {
+        text-align: left;
+    }
+
+    .presentationImg 
+    {
+        display: block;
+        width: 40%;
+        align-self: center;
+    }
+
+    .presentationImg img 
+    {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        aspect-ratio: 16 / 9;
+    }
+
+
+/*seccion de integrantes*/
+
+.teamSection
+{
+    min-height: 50dvh;
+    max-width: 100dvw;
+    box-sizing: content-box;
+    padding: 0;
+
+}
+.teamTitle
+{
+    text-align: center;
+    margin: 2rem auto;
+    width: fit-content;
+    padding: 1rem 2rem;
+}
+.card-wrapper
+{
+    margin: 1rem 10%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-list
+{
+    padding: 0;
+}
+.card-text
+{
+    user-select: none;
+    display: block;
+    background-color: rgb(0, 0, 0);
+    border-radius: 12px;
+    width: 100%;
+    text-align: center;  /*mueve esto si quiero mover la descripcion debajo de la imagen*/
+}
+.card-image
+{
+    display: block;
+    margin: 0 auto;
+    height: 50dvh;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.card-wrapper .swiper-pagination-bullet
+{
+    height: 0.7rem;
+    width: 0.7rem;
+    opacity: 0.5;
+    background: rgb(255,255,255);
+}
+.card-wrapper .swiper-pagination-bullet-active
+{
+    opacity: 1;
+}
+.card-wrapper .swiper-slide-button
+{
+    color: rgb(255,255,255);
+    top: 45%;
+}
+.swiper-button-prev
+{
+    margin-left: 10%;
+}
+.swiper-button-next
+{
+    margin-right: 10%;
+}
+
+
+/*seccion de integrantes*/
+
+
+/*seccion de valores*/
+
+
+.valuesTextWrapper 
+{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 3rem;
+    min-height: 500px;
+}
+
+.missionTextBox, .valuesTextBox 
+{
+    width: 48%; 
+    max-width: 600px;
+}
+
+
+/*seccion de valores*/
+}

@@ -1,0 +1,12 @@
+.siteFooter
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgb(0,0,0,1),rgb(0,0,0,0.3),rgb(255, 59, 180));
+}
+.siteFooterText
+{
+    text-align: center;
+    font-size: 1rem;
+}
