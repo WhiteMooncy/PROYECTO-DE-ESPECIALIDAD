@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inicio</title>
-        <link rel="stylesheet" href="../BackEnd/css/nosotros.css">
+        <link rel="stylesheet" href="../../BackEnd/css/nosotros.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     </head>
     <body ID="index-page" data-theme="represa" >
-        <?php include "php/header.php";?>
+        <?php include "../php/header.php";?>
         <main>
             <section class="welcomeSection" data-aos="fade-up">
                 <h2 class="welcomeTitle customFont title1 whiteText pinkUnderLine">
