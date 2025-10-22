@@ -25,7 +25,6 @@ html { scroll-behavior: smooth; }
         justify-content: space-around;
         box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
         z-index: 1000;
-        
         a {
         color: #F5F0E6;
         text-decoration: none;

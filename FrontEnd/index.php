@@ -9,17 +9,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     </head>
     <body ID="index-page" data-theme="represa" >
-        <header>
-            <nav class="main-nav">
-                <div class="logo">
-                    <a class="customFont whiteText" href="../FrontEnd/index.php"><h1>"Nombre Empresa"</h1></a>
-                </div>
-                <ul class="nav-links">
-                    <li><a class="customFont whiteText" href="../FrontEnd/views/nosotros.html">Nosotros</a></li>
-                    <li><a class="customFont whiteText" href="../FrontEnd/views/contacto.php">Contacto</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php include "php/header.php";?>
         <main>
             <section class="welcomeSection" data-aos="fade-up">
                 <h2 class="welcomeTitle customFont title1 whiteText pinkUnderLine">
@@ -111,11 +101,7 @@
                 </a>
             </section>
         </main>
-        <footer>
-            <div class="siteFooter customFont whiteText">
-                <p class="siteFooterText"> &copy; Copyright 2025<br>Todos los derechos reservados</p>
-            </div>
-        </footer> 
+        <?php include "php/footer.php";?>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="js/swiperInitIndex.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
