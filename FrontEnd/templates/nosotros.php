@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="teamSection" data-aos="fade-up">
-    <p class="teamTitle customFont title1 whiteText pinkUnderLine">Nuestro equipo</p>
+    <h2 class="title1 presentationTitle">Nuestro equipo</h2>
     <div class="container swiper">
         <div class="card-wrapper">
             <ul class="card-list swiper-wrapper">
