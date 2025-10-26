@@ -18,13 +18,11 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v4
 
-      # ESTE ES EL ÚNICO PASO QUE NECESITAS
       - name: Notificación de estado a Discord
         # El if: always() asegura que se notifique el estado, incluso si falla el job
         if: always()
         uses: sarisia/actions-status-discord@v1
         with:
-          # Secreto de GitHub con la URL COMPLETA del webhook
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
 
           status: ${{ job.status }}
@@ -44,7 +42,6 @@ jobs:
           # El color cambia según el estado (verde para 'success', rojo para 'failure')
           color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
 
-          # URL PÚBLICA DE LA IMAGEN (ya la verificamos)
-          image: "https://raw.githubusercontent.com/PROYECTO-DE-ESPECIALIDAD/main/assets/sources/img/veggeta.png"
+          image: "https://raw.githubusercontent.com/WhiteMooncy/PROYECTO-DE-ESPECIALIDAD/main/assets/sources/img/vegetta.png"
 
           content: "El flujo de trabajo CI/CD ha finalizado con el estado: **${{ job.status }}**."
