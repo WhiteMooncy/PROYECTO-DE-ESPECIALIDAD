@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="../assets/css/nosotros.css?v=2" />
+    <title>Formulario</title>
+</head>
+<body data-theme="form">
+    <main class="card" role="main" aria-labelledby="title">
+        <h1 id="title">Encuesta rápida</h1>
+        <p class="lead">Responde cada pregunta y sigue a la siguiente. Puedes personalizar las preguntas en el array de JavaScript.</p>
+        <section id="quiz">
+            <div id="questionWrap">
+                <!-- Aquí se renderiza la pregunta -->
+            </div>
+            <div class="controls" id="actions">
+                <button id="prevBtn" class="secondary" type="button">← Anterior</button>
+                <button id="nextBtn" type="button">Siguiente →</button>
+            </div>
+            <div class="progress" aria-hidden="true">
+                <i id="progressBar"></i>
+            </div>
+            <div id="result" class="hidden" aria-live="polite"></div>
+        </section>
+    </main>
+    <script src="../assets/js/quest.js?v=2" defer></script>
+</body>
+</html>
