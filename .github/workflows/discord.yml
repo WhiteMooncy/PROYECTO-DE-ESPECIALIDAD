@@ -1,0 +1,47 @@
+name: CI/CD y Notificación a Discord
+
+# Define cuándo se ejecutará esta acción
+on:
+  push:
+    branches:
+      # Escucha solo pushes a la rama principal (ajusta si usas 'master')
+      - main 
+  pull_request:
+    branches:
+      # Escucha PRs dirigidos a la rama principal (ajusta si usas 'master')
+      - main 
+  workflow_dispatch: # Permite ejecutar manualmente desde GitHub
+
+# Define el trabajo principal
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+      
+      # [OPCIONAL] Aquí irían tus pasos de build/deploy (si tienes alguno, como compilar Node.js o SASS)
+      
+      # ----------------------------------------------------------------
+      # PASO CLAVE: Notificación de Discord
+      - name: Notificación de estado a Discord
+        # El 'if: always()' asegura que se notifique el estado, incluso si falla el paso anterior
+        if: always() 
+        uses: sarisia/actions-status-discord@v1
+        with:
+          # ATENCIÓN: Asegúrate de que este SECRETO contiene la URL completa del webhook de Discord.
+          webhook: ${{ secrets.DISCORD_WEBHOOK }} 
+          
+          # Variables automáticas de GitHub Actions:
+          status: ${{ job.status }}
+          title: "Despliegue de PROYECTO-DE-ESPECIALIDAD"
+          description: "Revisión de la rama ${{ github.ref_name }} | Evento: ${{ github.event_name }}"
+          url: "https://github.com/${{ github.repository }}"
+          username: "GitHub Actions BOT"
+
+          # Opciones de personalización:
+          color: 0x00ff00 # Color Verde (Éxito)
+          
+          # Si quieres mencionar a un usuario específico (descomenta y crea el secreto MENTION_ID):
+          # content: ${{ secrets.MENTION_ID && format('Hey <@{}>, el flujo de trabajo ha finalizado.', secrets.MENTION_ID) }}
