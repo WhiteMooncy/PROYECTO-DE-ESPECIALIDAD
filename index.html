@@ -1,116 +1,214 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Inicio</title>
-        <link rel="stylesheet" href="/assets/css/nosotros.css?v=2">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    </head>
-    <body ID="index-page" data-theme="represa" >
-        <?php include "../php/header.php";?>
-        <main>
-            <section class="welcomeSection" data-aos="fade-up">
-                <h2 class="welcomeTitle customFont title1 whiteText pinkUnderLine">
-                    Nos encargamos de tu evento
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Servicios Audiovisuales</title>
+    <link rel="stylesheet" href="assets/css/nosotros.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body data-theme="represa">
+    <!-- Header -->
+    <header>
+        <h1 class="customFont title1 whiteText">AudioVisual Pro</h1>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html" class="customFont text1 whiteText">Inicio</a></li>
+                <li><a href="views/nosotros.html" class="customFont text1 whiteText">Nosotros</a></li>
+                <li><a href="views/servicios.html" class="customFont text1 whiteText">Servicios</a></li>
+                <li><a href="views/contacto.html" class="customFont text1 whiteText">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección Hero con fondo de imagen -->
+        <section class="heroSection" data-aos="fade-up">
+            <div class="heroContent">
+                <h2 class="heroTitle customFont title1 whiteText">
+                    Capturamos tus momentos más especiales
                 </h2>
-                <p class="welcomeText customFont text1 whiteText">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad amet quod, tempora consequatur quia tempore, 
+                <p class="heroText customFont text1 whiteText">
+                    Somos expertos en servicios audiovisuales profesionales para todo tipo de eventos
                 </p>
-                <a class="viewMoreBtn customFont btnText pinkPerBack whiteText" href="../FrontEnd/views/nosotros.php">
-                    Conócenos
+                <a class="viewMoreBtn customFont btnText" href="#mision-vision-objetivo">
+                    Descubre Más
                 </a>
-            </section>
-            <section class="servicesSection" data-aos="fade-up">
-                <h2 class="servicesTitle customFont title1 whiteText pinkUnderLine">
-                    Algunos de nuestros servicios
-                </h2>
-                <div class="servicesWrapper">
-                    <div class="servicesCards dronStyle">
-                        <img class="servicesImg" src="../BackEnd/sources/img/serDron.png" alt="Imagen de un dron">
-                        <p class="cardsInfo customFont text1 whiteText">
-                        Hola uno
-                        </p>
-                    </div>
-                    <div class="servicesCards cameraStyle">
-                        <img class="servicesImg" src="../BackEnd/sources/img/ui/serCamera.png" alt="Imagen de una cámara">
-                        <p class="cardsInfo customFont text1 whiteText">
-                            Hola dos
-                        </p>
-                    </div>
-                    <div class="servicesCards podcastStyle">
-                        <img class="servicesImg" src="../BackEnd/sources/img/ui/serMicro.png" alt="Imagen de un micrófono">
-                        <p class="cardsInfo customFont text1 whiteText">
-                            Hola tres
-                        </p>
-                    </div>
-                </div>
-                <a class="viewMoreBtn customFont btnText pinkPerBack whiteText" href="../FrontEnd/views/servicios.php">
-                    Saber más
-                </a>
-            </section>
-            <section class="mediaSection" data-aos="fade-up">
-                <h2 class="mediaTitle customFont title1 whiteText pinkUnderLine">
-                    Nuestros proyectos
-                </h2>
-                <div class="container swiper">
-                    <div class="card-wrapper">
-                        <ul class="card-list swiper-wrapper">
-                            <li class="card-item swiper-slide">
-                                <img src="../BackEnd/sources/img/ui/indexDronSecBack.jpg" alt="Imagen de proyecto de dron" class="card-image">
-                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
-                            </li>
-                            <li class="card-item swiper-slide">
-                                <img src="../BackEnd/sources/img/ui/indexCameraSecBack.jpg" alt="Imagen de proyecto de cámara" class="card-image">
-                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
-                            </li>
-                            <li class="card-item swiper-slide">
-                                <img src="../BackEnd/sources/img/ui/indexPodSecBack.jpg" alt="Imagen de proyecto de podcast" class="card-image">
-                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
-                            </li>
-                            <li class="card-item swiper-slide">
-                                <img src="../BackEnd/sources/img/ui/example.jpg" alt="Imagen de proyecto de ejemplo" class="card-image">
-                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
-                            </li>
-                            <li class="card-item swiper-slide">
-                                <img src="../BackEnd/sources/img/ui/indexDronSecBack.jpg" alt="Imagen de proyecto de dron repetida" class="card-image">
-                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
-                            </li>
-                        </ul>
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-slide-button swiper-button-prev"></div>
-                        <div class="swiper-slide-button swiper-button-next"></div>
-                    </div>
-                </div>
-            </section>
-            <section class="contactSection" data-aos="fade-up">
-                <h2 class="contactTitle customFont title1 whiteText pinkUnderLine">
-                    ¿Cómo contactarnos?
-                </h2>
-                <div class="contactText text2 customFont whiteText">
-                    <p>
-                        Puedes ponerte en contacto con nosotros a través de nuestras redes sociales o llamándonos directamente.
-                    </p>
-                    <p>
-                        Revisa la información en nuestra sección de contacto.
+            </div>
+        </section>
+
+        <!-- Sección Misión, Visión y Objetivo -->
+        <section id="mision-vision-objetivo" class="mvoSection" data-aos="fade-up">
+            <h2 class="mvoMainTitle customFont title1 whiteText pinkUnderLine">
+                Nuestros Pilares Fundamentales
+            </h2>
+            <div class="mvoWrapper">
+                <div class="mvoCard" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mvoIcon">🎯</div>
+                    <h3 class="mvoCardTitle customFont whiteText">Misión</h3>
+                    <p class="mvoCardText customFont text2 whiteText">
+                        Brindar servicios audiovisuales de alta calidad que superen las expectativas de nuestros clientes, 
+                        capturando momentos únicos con profesionalismo y creatividad en cada proyecto que realizamos.
                     </p>
                 </div>
-                <a class="viewMoreBtn customFont btnText pinkPerBack whiteText" href="../FrontEnd/views/contacto.php">
-                    Ir a Contacto
-                </a>
-            </section>
-        </main>
-        <?php include "php/footer.php";?>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="js/swiperInitIndex.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-        <script>
-            AOS.init({
-                duration: 250,
-                easing: "ease-in-out",
-                once: false,
-            });
-        </script>
-    </body>
+                <div class="mvoCard" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mvoIcon">👁️</div>
+                    <h3 class="mvoCardTitle customFont whiteText">Visión</h3>
+                    <p class="mvoCardText customFont text2 whiteText">
+                        Ser líderes reconocidos en el sector audiovisual, destacando por nuestra innovación tecnológica, 
+                        excelencia en el servicio y compromiso constante con la satisfacción del cliente.
+                    </p>
+                </div>
+                <div class="mvoCard" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mvoIcon">🚀</div>
+                    <h3 class="mvoCardTitle customFont whiteText">Objetivo</h3>
+                    <p class="mvoCardText customFont text2 whiteText">
+                        Ofrecer soluciones integrales que transformen ideas en experiencias audiovisuales memorables, 
+                        utilizando la mejor tecnología disponible y un equipo creativo altamente capacitado.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Descripción de Servicios -->
+        <section class="servicesDescSection" data-aos="fade-up">
+            <h2 class="servicesDescTitle customFont title1 whiteText pinkUnderLine">
+                Nuestros Servicios Audiovisuales
+            </h2>
+            <p class="servicesDescText customFont text1 whiteText">
+                Somos especialistas en la producción audiovisual integral. Desde grabaciones con drones de última generación 
+                que capturan perspectivas aéreas impresionantes, hasta producción fotográfica y videográfica profesional 
+                para bodas, eventos corporativos y comerciales. También ofrecemos servicios de podcast, streaming en vivo, 
+                edición de video y postproducción. Cada proyecto es tratado con dedicación personalizada, garantizando 
+                resultados que cuentan historias y conectan emocionalmente con tu audiencia.
+            </p>
+        </section>
+
+        <!-- Sección Nuestros Proyectos con Splide -->
+        <section class="projectsSection" data-aos="fade-up">
+            <h2 class="projectsTitle customFont title1 whiteText pinkUnderLine">
+                Nuestros Proyectos Destacados
+            </h2>
+            
+            <div class="splide" id="projectsCarousel">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/indexDronSecBack.jpg');">
+                                <div class="projectOverlay">
+                                    <h3 class="projectTitle customFont whiteText">Grabación con Drones</h3>
+                                    <p class="projectDesc customFont whiteText">Tomas aéreas espectaculares</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/indexCameraSecBack.jpg');">
+                                <div class="projectOverlay">
+                                    <h3 class="projectTitle customFont whiteText">Fotografía Profesional</h3>
+                                    <p class="projectDesc customFont whiteText">Momentos capturados con arte</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/indexPodSecBack.jpg');">
+                                <div class="projectOverlay">
+                                    <h3 class="projectTitle customFont whiteText">Producción de Podcast</h3>
+                                    <p class="projectDesc customFont whiteText">Audio de alta calidad</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/example.jpg');">
+                                <div class="projectOverlay">
+                                    <h3 class="projectTitle customFont whiteText">Eventos Corporativos</h3>
+                                    <p class="projectDesc customFont whiteText">Cobertura completa y profesional</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/contactImg.jpg');">
+                                <div class="projectOverlay">
+                                    <h3 class="projectTitle customFont whiteText">Streaming en Vivo</h3>
+                                    <p class="projectDesc customFont whiteText">Transmisiones de alta calidad</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mainFooter">
+        <div class="footerContent">
+            <div class="footerSection">
+                <h3 class="customFont whiteText">AudioVisual Pro</h3>
+                <p class="customFont text2 whiteText">Servicios audiovisuales profesionales desde 2020</p>
+            </div>
+            <div class="footerSection">
+                <h4 class="customFont whiteText">Enlaces</h4>
+                <ul>
+                    <li><a href="index.html" class="customFont text2 whiteText">Inicio</a></li>
+                    <li><a href="views/nosotros.html" class="customFont text2 whiteText">Nosotros</a></li>
+                    <li><a href="views/servicios.html" class="customFont text2 whiteText">Servicios</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footerSection">
+                <h4 class="customFont whiteText">Contacto</h4>
+                <p class="customFont text2 whiteText">Email: info@audiovisualpro.com</p>
+                <p class="customFont text2 whiteText">Tel: +51 999 888 777</p>
+            </div>
+            <div class="footerSection">
+                <h4 class="customFont whiteText">Redes Sociales</h4>
+                <div class="socialLinks">
+                    <a href="#" class="customFont text2 whiteText">Facebook</a>
+                    <a href="#" class="customFont text2 whiteText">Instagram</a>
+                    <a href="#" class="customFont text2 whiteText">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p class="customFont text2 whiteText">&copy; 2025 AudioVisual Pro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Inicializar AOS
+        AOS.init({
+            duration: 800,
+            easing: "ease-in-out",
+            once: true,
+        });
+
+        // Inicializar Splide
+        document.addEventListener('DOMContentLoaded', function () {
+            new Splide('#projectsCarousel', {
+                type: 'loop',
+                perPage: 3,
+                perMove: 1,
+                gap: '2rem',
+                padding: '2rem',
+                breakpoints: {
+                    1024: {
+                        perPage: 2,
+                        gap: '1.5rem',
+                    },
+                    768: {
+                        perPage: 1,
+                        gap: '1rem',
+                        padding: '1rem',
+                    }
+                },
+                autoplay: true,
+                interval: 4000,
+                pauseOnHover: true,
+            }).mount();
+        });
+    </script>
+</body>
 </html>
