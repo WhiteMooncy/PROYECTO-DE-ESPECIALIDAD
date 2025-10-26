@@ -42,31 +42,29 @@ jobs:
       - name: Enviar embed con imagen (adjunta desde workspace)
         if: always()
         run: |
-          # exportar variables de contexto para usarlas dentro del payload
-          export JOB_STATUS="${{ job.status }}"
-          export GITHUB_REPOSITORY="${{ github.repository }}"
-          export GITHUB_REF="${{ github.ref }}"
-          export GITHUB_ACTOR="${{ github.actor }}"
-          export GITHUB_WORKFLOW="${{ github.workflow }}"
+          JOB_STATUS="${{ job.status }}"
+          GITHUB_REPOSITORY="${{ github.repository }}"
+          GITHUB_REF="${{ github.ref }}"
+          GITHUB_ACTOR="${{ github.actor }}"
+          GITHUB_WORKFLOW="${{ github.workflow }}"
 
-          # construir payload JSON (variables se expanden gracias al heredoc sin comillas)
-          payload=$(cat <<EOF
+          cat > payload.json <<EOF
           {
             "username": "GitHub Actions",
             "embeds": [
               {
                 "title": "Estado: ${JOB_STATUS}",
                 "description": "Repositorio: ${GITHUB_REPOSITORY}\nRef: ${GITHUB_REF}\nAutor: ${GITHUB_ACTOR}",
-                "color": ${JOB_STATUS:-"\"65280\""},
-                "image": { "url": "attachment://veggeta.webp" },
+                "color": ${JOB_STATUS == 'success' && 65280 || 16711680},
+                "image": { "url": "attachment://veggeta.png" },
                 "footer": { "text": "Job: deploy • ${GITHUB_WORKFLOW}" }
               }
             ]
           }
           EOF
-          )
 
-          # Enviar via webhook adjuntando el archivo desde el workspace
+          # Enviar payload.json y adjuntar la imagen desde el workspace.
+          # Ajusta la ruta si es necesario.
           curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
-            -F "payload_json=$payload" \
-            -F "file=@assets/sources/img/veggeta.webp;filename=veggeta.webp"
+            -F "payload_json=@payload.json;type=application/json" \
+            -F "file=@assets/sources/img/veggeta.png;type=image/png;filename=veggeta.png"
