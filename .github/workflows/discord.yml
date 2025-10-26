@@ -1,5 +1,6 @@
 name: CI/CD y Notificación a Discord
 
+# Ejecutar en cualquier push, PR y manualmente
 on:
   push:
     branches:
@@ -8,41 +9,42 @@ on:
     branches:
       - main 
   workflow_dispatch:
-    
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
-      
-      # ----------------------------------------------------------------
-      # PASO CLAVE: Notificación de Discord (Un solo paso)
+
+      # ESTE ES EL ÚNICO PASO QUE NECESITAS
       - name: Notificación de estado a Discord
-        if: always() 
+        # El if: always() asegura que se notifique el estado, incluso si falla el job
+        if: always()
         uses: sarisia/actions-status-discord@v1
         with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }} 
+          # Secreto de GitHub con la URL COMPLETA del webhook
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+
           status: ${{ job.status }}
           title: "Estado del Despliegue de PROYECTO-DE-ESPECIALIDAD"
-          
+
           description: |
             ✅ **Flujo Finalizado: ${{ job.status }}**
             
             👤 **Autor:** ${{ github.actor }}
             📝 **Mensaje del commit / PR:**
             > ${{ github.event.head_commit.message || github.event.pull_request.title || 'N/A' }}
-            
+
             🔗 **Ver commit/PR:** ${{ github.event.pull_request.html_url || format('https://github.com/{0}/commit/{1}', github.repository, github.sha) }}
-            
+
           url: "https://github.com/${{ github.repository }}"
           username: "GitHub CI/CD Bot"
+          # El color cambia según el estado (verde para 'success', rojo para 'failure')
           color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
 
-          # AÑADIR IMAGEN USANDO SU URL PÚBLICA DE GITHUB
-          # Esta URL está construida usando la URL Raw de GitHub.
-          # Debes reemplazar [TU-REPOSITORIO-COMPLETO] con el nombre de tu repo (ej. WhiteMooncy/PROYECTO-DE-ESPECIALIDAD)
-          image: "https://raw.githubusercontent.com/PROYECTO-DE-ESPECIALIDAD/blob/main/assets/sources/img/vegetta.pngg"
+          # URL PÚBLICA DE LA IMAGEN (ya la verificamos)
+          image: "https://raw.githubusercontent.com/[TU-REPOSITORIO-COMPLETO]/main/assets/sources/img/veggeta.png"
 
           content: "El flujo de trabajo CI/CD ha finalizado con el estado: **${{ job.status }}**."
