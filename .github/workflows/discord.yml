@@ -1,35 +1,41 @@
 name: CI/CD y Notificación a Discord
 
+# Ejecutar en cualquier rama, PR y manualmente
 on:
-  push:
-    branches:
-      - main 
-  pull_request:
-    branches:
-      - main 
-  workflow_dispatch: # Permite ejecutar manualmente desde GitHub
+  push:           # escucha pushes en cualquier rama
+  pull_request:   # escucha PRs hacia cualquier rama
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
-      
+
       - name: Notificación de estado a Discord
-        # El 'if: always()' asegura que se notifique el estado, incluso si falla el paso anterior
-        if: always() 
+        if: always()
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }} 
-          
-          status: ${{ job.status }}
-          title: "Despliegue de PROYECTO-DE-ESPECIALIDAD"
-          description: "Revisión de la rama ${{ github.ref_name }} | Evento: ${{ github.event_name }}"
-          url: "https://github.com/${{ github.repository }}"
-          username: "GitHub Actions BOT"
 
-          color: 0x00ff00 # Color Verde (Éxito)
-          
-          # content: ${{ secrets.MENTION_ID && format('Hey <@{}>, el flujo de trabajo ha finalizado.', secrets.MENTION_ID) }}
+          status: ${{ job.status }}
+          title: "Estado del Despliegue de PROYECTO-DE-ESPECIALIDAD"
+
+          description: |
+            ✅ **Flujo Finalizado: ${{ job.status }}**
+
+            👤 **Autor:** ${{ github.actor }}
+            📝 **Mensaje del commit / PR:**
+            > ${{ github.event.head_commit.message || github.event.pull_request.title || 'N/A' }}
+
+            🔗 **Ver commit/PR:** ${{ github.event.pull_request.html_url || format('https://github.com/{0}/commit/{1}', github.repository, github.sha) }}
+
+          url: "https://github.com/${{ github.repository }}"
+          username: "GitHub CI/CD Bot"
+
+          # color según resultado (verde/rojo)
+          color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
+
+          content: "El flujo de trabajo CI/CD ha finalizado con el estado: **${{ job.status }}**."
