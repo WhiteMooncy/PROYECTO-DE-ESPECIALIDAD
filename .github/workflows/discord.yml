@@ -34,7 +34,7 @@ jobs:
 
           url: "https://github.com/${{ github.repository }}"
           username: "GitHub CI/CD Bot"
-
+          avcatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           # color según resultado (verde/rojo)
           color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
 
