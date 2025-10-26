@@ -34,8 +34,30 @@ jobs:
 
           url: "https://github.com/${{ github.repository }}"
           username: "GitHub CI/CD Bot"
-          avcatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
           # color según resultado (verde/rojo)
           color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
 
           content: "El flujo de trabajo CI/CD ha finalizado con el estado: **${{ job.status }}**."
+
+      - name: Enviar embed con imagen (Discord webhook)
+        if: always()
+        run: |
+          curl -H "Content-Type: application/json" -d @- "${{ secrets.DISCORD_WEBHOOK }}" <<JSON
+          {
+            "username": "GitHub Actions",
+            "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+            "embeds": [
+              {
+                "title": "Estado: ${{ job.status }}",
+                "description": "Repositorio: ${{ github.repository }}\nRef: ${{ github.ref }}\nAutor: ${{ github.actor }}",
+                "color": 65280,
+                "image": {
+                  "url": "https://raw.githubusercontent.com/<OWNER>/<REPO>/<BRANCH>/path/to/image.png"
+                },
+                "footer": {
+                  "text": "Job: deploy • ${{ github.workflow }}"
+                }
+              }
+            ]
+          }
+          JSON
