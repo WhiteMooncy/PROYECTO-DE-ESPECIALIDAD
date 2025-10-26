@@ -52,7 +52,7 @@ jobs:
                 "description": "Repositorio: ${{ github.repository }}\nRef: ${{ github.ref }}\nAutor: ${{ github.actor }}",
                 "color": 65280,
                 "image": {
-                  "url": "https://raw.githubusercontent.com/<OWNER>/<REPO>/<BRANCH>/path/to/image.png"
+                  "url": "https://raw.githubusercontent.com/miusuario/PROYECTO-DE-ESPECIALIDAD/main/assets/img/veggeta.webp"
                 },
                 "footer": {
                   "text": "Job: deploy • ${{ github.workflow }}"
