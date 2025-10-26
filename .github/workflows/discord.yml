@@ -45,6 +45,6 @@ jobs:
           color: ${{ job.status == 'success' && '0x00ff00' || '0xff0000' }}
 
           # URL PÚBLICA DE LA IMAGEN (ya la verificamos)
-          image: "https://raw.githubusercontent.com/[TU-REPOSITORIO-COMPLETO]/main/assets/sources/img/veggeta.png"
+          image: "https://raw.githubusercontent.com/PROYECTO-DE-ESPECIALIDAD/main/assets/sources/img/veggeta.png"
 
           content: "El flujo de trabajo CI/CD ha finalizado con el estado: **${{ job.status }}**."
