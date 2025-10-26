@@ -139,24 +139,59 @@ footer ul {
 /* ============================
    SECCIÓN: WELCOME / HERO
    ============================ */
+
+
+ /*esto borró el borde azulito, eliminar en caso de*/
+body
+{
+    margin: 0;
+}
+
+
+
 .welcomeSection {
-    background-image: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.4),rgba(0,0,0,0.4),rgba(0,0,0,0.4),rgba(0,0,0,1)), url(../img/ui/example.jpg);
-    background-color: rgb(30,30,30);
+    background-image: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1)), url(/assets/sources/img/represa.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-height: 90dvh;
+    padding: 0 15dvw;
     box-sizing: content-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
-.welcomeTitle { text-align: center; margin: 2.5rem 3rem 2.1rem 3rem; }
-.welcomeText { text-align: left; margin: 0 10% 0 10%; }
+.welcomeTitle { text-align: center; margin: 2dvh 0; }
+.welcomeText { text-align: left; margin: 2dvh 0; }
+
+.desktopTitle{
+    font-size: 3rem;
+}
+.desktopText
+{
+    font-size: 1.2rem;
+}
+
+/*Textos Moviles*/
+@media (max-width: 768px) {
+
+.desktopTitle{
+    font-size: 1.5rem;
+}
+.desktopText
+{
+    font-size: 1rem;
+}
+}
+/*Textos Moviles*/
+
+
+
 
 /* ============================
-   SECCIÓN: SERVICIOS
-   ============================ */
+   SECCIÓN: SERVICIOS   esto está comentado porque no se estaba usando en la pagina, se deja por si acaso
+   ============================
 .servicesSection {
     background-color: rgb(0, 0, 0);
     min-height: 50dvh;
@@ -181,7 +216,7 @@ footer ul {
 .servicesImg { height: auto; width: 25%; margin: 2.5rem auto; }
 .cardsInfo { text-align: left; margin: 0 10% 0 10%; }
 
-/* estilos por tipo de servicio (backgrounds) */
+/* estilos por tipo de servicio (backgrounds) 
 .dronStyle {
     background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4)), url(../img/ui/indexDronSecBack.jpg);
     background-color: rgb(0, 0, 0);
@@ -204,9 +239,14 @@ footer ul {
     background-repeat: no-repeat;
 }
 
+*/
+
+
+
+
 /* ============================
     SECCIÓN: MEDIA / CARDS / SWIPER
-   ============================ */
+   ============================ 
 .mediaSection {
     background-color: rgb(0, 0, 0);
     min-height: auto;
@@ -238,7 +278,7 @@ footer ul {
 }
 .card-text { width: 100%; }
 
-/* swiper bullets / buttons */
+/* swiper bullets / buttons 
 .card-wrapper .swiper-pagination-bullet {
     height: 13px;
     width: 13px;
@@ -250,31 +290,16 @@ footer ul {
     color: rgb(255,255,255);
     top: 35%;
 }
+*/
+
+
+
 
 /* ============================
-    SECCIÓN: CONTACTO / FORM BACKGROUND
-   ============================ */
-.contactSection {
-    background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), rgba(0,0,0,1)), url(../img/ui/contactImg.jpg);
-    background-color: rgb(30,30,30);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 90dvh;
-    margin: 0;
-}
-.contactTitle { text-align: center; margin: 0 2rem 10dvh 2rem; }
-.contactText { text-align: left; padding: 0 2rem 0 2rem; margin-bottom: 1rem; }
-
-/* ============================
-    NUEVAS SECCIONES INDEX
+    NUEVAS SECCIONES INDEX   lo comento pq tampoco se estabá usando, creo
    ============================ */
 
-/* Hero Section */
+/* Hero Section 
 .heroSection {
     min-height: 100vh;
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/ui/example.jpg');
@@ -302,12 +327,18 @@ footer ul {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
     margin-bottom: 2.5rem;
     line-height: 1.6;
-}
+}   */
 
 /* Sección MVO mejorada */
 .mvoSection {
     padding: 5rem 2rem;
-    background: linear-gradient(180deg, rgba(0,0,0,0.8), rgba(0,0,0,0.9));
+    height: 75dvh;
+    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
 .mvoMainTitle {
@@ -326,7 +357,7 @@ footer ul {
 
 .mvoCard {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 59, 180, 0.3);
+    border: 1px solid var(--water-mid);
     border-radius: 15px;
     padding: 2.5rem;
     text-align: center;
@@ -336,8 +367,8 @@ footer ul {
 
 .mvoCard:hover {
     transform: translateY(-10px);
-    border-color: rgba(255, 59, 180, 0.8);
-    box-shadow: 0 10px 30px rgba(255, 59, 180, 0.3);
+    border-color: var(--water-mid);
+    box-shadow: 0 10px 30px var(--water-mid);
 }
 
 .mvoIcon {
@@ -348,7 +379,7 @@ footer ul {
 .mvoCardTitle {
     font-size: clamp(1.5rem, 3vw, 2rem);
     margin-bottom: 1.5rem;
-    color: rgba(255, 59, 180, 0.9);
+    color: var(--accent);
 }
 
 .mvoCardText {
@@ -359,7 +390,7 @@ footer ul {
 /* Sección Descripción de Servicios */
 .servicesDescSection {
     padding: 5rem 2rem;
-    background: rgba(0,0,0,0.85);
+    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
     text-align: center;
 }
 
@@ -500,7 +531,7 @@ footer ul {
 /* ============================
     RESPONSIVE (MD UP)
    ============================ */
-@media (min-width:768px) {
+@media (max-width:768px) {
     .welcomeSection {
         min-height: 95dvh;
         box-sizing: content-box;
@@ -747,6 +778,8 @@ body[data-theme="represa"] .viewMoreBtn {
     padding: .75rem 1.25rem;
     box-shadow: 0 8px 30px rgba(11,61,145,0.28);
     border: 1px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+    margin: 1.2rem;
 }
 body[data-theme="represa"] .badge-warning {
     background: linear-gradient(180deg, #ffb37a, #ff8c00);
