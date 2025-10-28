@@ -32,31 +32,78 @@ body[data-theme="form"] {
     HEADER / FOOTER / NAV
    ============================ */
 /* Header */
-header {
+header 
+{
     display: flex;
-    flex-direction: row;
-    box-sizing: content-box;
-    justify-content: space-between;
-    background-color: rgb(0, 0, 0);
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 1rem 2rem;
-}
-header a { text-decoration: none; }
-header h1 {
+    background-color: rgb(0, 0, 0);
+    padding: 0 0 1rem 0;
     margin: 0;
+}
+.headerLogo{
+    margin: 1rem;
     padding: 0;
     text-align: center;
-    font-size: clamp(1.8rem, 3dvw, 2.6rem);
-}
-header li {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: clamp(1.3rem, 1dvw, 1.3rem);
-    margin: 0;
+    font-size: clamp(2.4rem, 2.5dvw, 3rem);
 
 }
-header ul {
+.headerNav
+{
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+.headerNav ul{
+    margin: 0;
+    padding: 0;
+    text-emphasis: none;
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.headerNavBlock {
+    padding: 0.3rem 0;
+    background-color: transparent;
+    position: relative; 
+    display: inline-block;
+    text-decoration: none;
+    color: transparent;
+}
+
+.headerNavBlock::after {
+    content: '';
+    position: absolute;
+    bottom: 0; 
+    left: 0;    
+    width: 100%; 
+    height: 2px; 
+    background-color: var(--water-mid);  
+    box-shadow: 0 10px 30px var(--water-mid);
+    transform: scaleX(0); 
+    transform-origin: center; 
+    
+    transition: transform 0.2s ease-in; 
+}
+
+.headerNavBlock:hover::after {
+    transform: scaleX(1); 
+}
+.headerNavLinks 
+{ 
+    text-decoration: none; 
+    color: rgb(255, 255, 255);
+    font-size: clamp(1.3rem, 1.5dvw, 2rem);
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+
+.header ul {
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -65,6 +112,35 @@ header ul {
     margin: 0;
     padding: 0;
 }
+@media (min-width: 768px) 
+{
+    header 
+{
+    padding: 0;
+}
+    .headerLogo
+{
+    margin: 0.2rem auto 0.8rem auto;
+    padding: 0;
+    text-align: center;
+    font-size: clamp(1.5rem, 2.5dvw, 2.8rem);
+
+}
+    .headerNavLinks 
+{ 
+    text-decoration: none; 
+    color: rgb(255, 255, 255);
+    font-size: clamp(1.2rem, 1.5dvw, 1.3rem);
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+.headerNav ul 
+{
+    gap: 6rem;
+}
+}
+
 
 /* Footer     //////Esto lo comento porque tampoco se hace uso, el footer que se trabaja está mucho mas abajo a partir de la linea 475
 footer {
@@ -266,37 +342,44 @@ body
 
 /* ============================
     SECCIÓN: MEDIA / CARDS / SWIPER
-   ============================ 
+   ============================ */
 .mediaSection {
-    background-color: rgb(0, 0, 0);
-    min-height: auto;
-    margin-top: 2.5rem;
-    margin-bottom: 5rem;
+        background-image: linear-gradient(rgba(0,0,0,1),rgba(0, 0, 0, 0.1),rgba(0, 0, 0,1));
+        padding: 1rem 0;
 }
-.mediaTitle { text-align: center; margin: 0 3rem 5rem 3rem; }
+.mediaTitle {
+    text-align: center;
+    margin: 1rem auto;
+    font-size: clamp(3rem, 5dvw, 2.8rem);
+}
 
-.card-wrapper {
+/*.card-wrapper {
     margin: 0 2.2rem 1rem 2.2rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: end;
-}
+}*/
 .card-list .card-item .card-text {
     user-select: none;
     display: block;
-    background-color: rgb(0, 0, 0);
+    background-color: transparent;
     border-radius: 12px;
+    text-align: start;
+    font-size: 1rem;
+    width: 100%;
+    height: 1rem;
+    margin: 0;
+    padding: 0.8rem 0 0.5rem 0;
 }
-.card-list .card-text .card-image,
+/*.card-list .card-text .card-image,
 .card-image {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 10px;
-}
-.card-text { width: 100%; }
+}    lo comento pq no se usa, creo*/  
 
 /* swiper bullets / buttons 
 .card-wrapper .swiper-pagination-bullet {
@@ -434,44 +517,45 @@ body
     background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
 }
 
-.projectsTitle {
-    text-align: center;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    margin-bottom: 3rem;
-    padding: 0 2rem;
-}
 
-.projectSlide {
-    height: 400px;
+/* Reemplaza la definición anterior de projectSlide/projectOverlay */
+.splide__slide { padding: 0; box-sizing: border-box; }
+
+.projectSlide{
+    height: 400px;  
+    object-fit: cover;        /* altura fija */
+    width: 80%;
+    position: relative;        /* no absolute */
+    height: 0;
+    padding-top: 40%;          /* controla la relación de aspecto (ajusta al diseño) */
     background-size: cover;
     background-position: center;
-    border-radius: 15px;
-    position: relative;
+    background-repeat: no-repeat;
+    border-radius: 12px;
     overflow: hidden;
-}
+    display: block;
+}  */
 
-.projectOverlay {
+.projectOverlay{
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9));
-    padding: 2rem;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    padding: 1.25rem;
+    transform: translateY(0);   /* visible por defecto */
+    transition: transform 0.25s ease;
 }
 
 .projectSlide:hover .projectOverlay {
-    transform: translateY(0);
+    transform: translateY(0); /* opcional: mantener visible o añadir ligera subida si lo deseas */
 }
 
-.projectTitle {
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    margin-bottom: 0.5rem;
-}
 
-.projectDesc {
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+
+/* Responsive: ajustar altura en móviles */
+@media (max-width: 768px) {
+    .projectSlide { padding-top: 60%; }
 }
 
 /* Estilos del Footer */
@@ -608,6 +692,7 @@ body
         padding: 1rem 2rem;
     }
     .servicesWrapper {
+        padding: 0 25%;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -660,15 +745,25 @@ body
     .cameraStyle { background-position: center; }
     .podcastStyle { background-position: center; }
 
-    .mediaSection { margin-top: 10%; margin-bottom: 10%; }
+    .mediaSection { 
+padding: 1rem 0;
+    }
     .mediaTitle {
         text-align: center;
         margin: 2rem auto;
-        width: fit-content;
-        padding: 1rem 2rem;
+        width: 100%;
+        padding: 0;
+        font-size: 3rem;
     }
     .card-wrapper { margin: 1rem 10%; overflow: hidden; align-items: center; }
-    .card-list { padding: 0; }
+    .card-list {
+        padding: 0; 
+        display: flex;
+        flex-direction: row;
+        height: 70dvh;
+        width: 80dvw;
+        margin: 0 2rem;
+    }
     .card-text {
         user-select: none;
         display: block;
@@ -678,14 +773,14 @@ body
         text-align: center;
         padding: 0.75rem 1rem;
     }
-    .card-image {
+    /*.card-image {
         display: block;
         margin: 0 auto;
         width: 100%;
         aspect-ratio: 16 / 9;
         object-fit: cover;
         border-radius: 10px;
-    }
+    }  tmb lo comento pq no se usa, creo*/
     .card-wrapper .swiper-pagination-bullet { height: 0.7rem; width: 0.7rem; opacity: 0.5; background: rgb(255,255,255); }
     .card-wrapper .swiper-pagination-bullet-active { opacity: 1; }
     .card-wrapper .swiper-slide-button { color: rgb(255,255,255); top: 45%; }
@@ -839,16 +934,24 @@ body[data-theme="represa"] .badge-warning {
     font-size: .85rem;
 }
 
-/* Swiper container centering for represa */
-.container.swiper .swiper-wrapper { justify-content: center; }
-.container.swiper .swiper-slide {
+/*Swiper container centering for represa */
+.container.swiper .swiper-wrapper {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    margin: 0 auto;
+} 
+.container.swiper .swiper-slide
+{
+    display: flex;
+    justify-content: start;
+    align-items: start;
     padding: 12px;
     box-sizing: border-box;
+    margin: 0 2rem;
+    min-height: 20dvh;
+    height: 45dvh;
 }
-
 /* Responsive tweaks for 'represa' */
 @media (min-width: 768px) {
     body[data-theme="represa"] .presentationSection { padding: 5rem 6rem; }

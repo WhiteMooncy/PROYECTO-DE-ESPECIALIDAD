@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Servicios Audiovisuales</title>
+    <title>Hydro-Conecta | Inicio</title>
     <link rel="stylesheet" href="assets/css/nosotros.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body data-theme="represa">
     <!-- Header -->
     <header>
-        <h1 class="customFont title1 whiteText">Hydro-Conecta</h1>
-        <nav class="navbar">
+        <h1 class="headerLogo">Hydro-Conecta</h1>
+        <nav class="headerNav">
             <ul>
-                <li><a href="index.html" class="customFont text1 whiteText">Inicio</a></li>
-                <li><a href="views/nosotros.html" class="customFont text1 whiteText">Nosotros</a></li>
-                <li><a href="views/contacto.html" class="customFont text1 whiteText">Contacto</a></li>
+                <li class="headerNavBlock"><a href="index.html" class="headerNavLinks">Inicio</a></li>
+                <li class="headerNavBlock"><a href="views/nosotros.html" class="headerNavLinks">Nosotros</a></li>
+                <li class="headerNavBlock"><a href="views/contacto.html" class="headerNavLinks">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -33,7 +34,7 @@
                 <a class="viewMoreBtn" href="../FrontEnd/views/nosotros.php">
                     Presiona aquí para continuar
                 </a>
-            </section>
+        </section>
         <!-- Sección Misión, Visión y Objetivo -->
         <section id="mision-vision-objetivo" class="mvoSection" data-aos="fade-up">
             <h2 class="mvoMainTitle">
@@ -61,53 +62,25 @@
         </section>
         <!-- Sección Nuestros Proyectos con Splide -->
         <section class="projectsSection" data-aos="fade-up">
-            <h2 class="projectsTitle customFont title1 whiteText pinkUnderLine">
-                Nuestros Proyectos Destacados
-            </h2>
-            <div class="splide" id="projectsCarousel">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <li class="splide__slide">
-                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/indexDronSecBack.jpg');">
-                                <div class="projectOverlay">
-                                    <h3 class="projectTitle customFont whiteText">Grabación con Drones</h3>
-                                    <p class="projectDesc customFont whiteText">Tomas aéreas espectaculares</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/indexCameraSecBack.jpg');">
-                                <div class="projectOverlay">
-                                    <h3 class="projectTitle customFont whiteText">Fotografía Profesional</h3>
-                                    <p class="projectDesc customFont whiteText">Momentos capturados con arte</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/indexPodSecBack.jpg');">
-                                <div class="projectOverlay">
-                                    <h3 class="projectTitle customFont whiteText">Producción de Podcast</h3>
-                                    <p class="projectDesc customFont whiteText">Audio de alta calidad</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/example.jpg');">
-                                <div class="projectOverlay">
-                                    <h3 class="projectTitle customFont whiteText">Eventos Corporativos</h3>
-                                    <p class="projectDesc customFont whiteText">Cobertura completa y profesional</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="projectSlide" style="background-image: url('BackEnd/sources/img/ui/contactImg.jpg');">
-                                <div class="projectOverlay">
-                                    <h3 class="projectTitle customFont whiteText">Streaming en Vivo</h3>
-                                    <p class="projectDesc customFont whiteText">Transmisiones de alta calidad</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+            <h2 class="mediaTitle customFont title1 whiteText pinkUnderLine">
+                    Nuestros proyectos
+                </h2>
+            <div class="mediaSection" data-aos="fade-up">
+                <div class="container swiper">
+                    <div class="card-wrapper">
+                        <ul class="card-list swiper-wrapper">
+                            <li class="card-item swiper-slide">
+                                <img src="assets/sources/img/indexCameraSecBack.jpg" alt="DronImage" class="card-image">
+                                <h3 class="card-text text1 customFont whiteText">Leyenda de la imagen</h3>
+                                <p>hidroeléctrica</p>
+                            </li>
+                            <li class="card-item swiper-slide">
+                                <img src="assets/sources/img/indexDronSecBack.jpg" alt="DronImage" class="card-image">
+                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
+                                <p>hidroeléctrica</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -116,22 +89,25 @@
     <footer class="mainFooter">
         <div class="footerContent">
             <div class="footerSection">
-                <h3 class="customFont whiteText">AudioVisual Pro</h3>
-                <p style="text-align: start;" class="customFont text2 whiteText">Servicios audiovisuales profesionales desde 2020</p>
+                <h3 class="customFont whiteText">Empresa</h3>
+                <p style="text-align: start;" class="customFont text2 whiteText">Somos la empresa encargada de gestionar y operar la infraestructura hidroeléctrica del valle.</p>
             </div>
             <div class="footerSection">
-                <h4 class="customFont whiteText">Enlaces</h4>
+                <h4 class="customFont whiteText">Informativos</h4>
                 <ul>
-                    <li><a href="index.html" class="customFont text2 whiteText">Inicio</a></li>
-                    <li><a href="views/nosotros.html" class="customFont text2 whiteText">Nosotros</a></li>
-                    <li><a href="views/servicios.html" class="customFont text2 whiteText">Servicios</a></li>
-                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Contacto</a></li>
+                    <li><a href="index.html" class="customFont text2 whiteText">Lugares de pago</a></li>
+                    <li><a href="views/nosotros.html" class="customFont text2 whiteText">Oficinas de atención</a></li>
+                    <li><a href="views/servicios.html" class="customFont text2 whiteText">Necesito ayuda</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Preguntas Frecuentes</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Regulación Vigente</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Políticas de Privacidad</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Regulación Vigente</a></li>
                 </ul>
             </div>
             <div class="footerSection">
                 <h4 class="customFont whiteText">Contacto</h4>
-                <p class="emailNPhoneText">Email: info@audiovisualpro.com</p>
-                <p class="emailNPhoneText">Tel: +51 999 888 777</p>
+                <p class="emailNPhoneText">Email: info@empresa.com</p>
+                <p class="emailNPhoneText">Tel: +51 000 000 000</p>
             </div>
             <div class="footerSection footerSectionLast">
                 <h4 class="customFont whiteText">Redes Sociales</h4>
@@ -145,41 +121,29 @@
             </div>
         </div>
         <div class="footerBottom">
-            <p class="customFont text2 whiteText">&copy; 2025 AudioVisual Pro. Todos los derechos reservados.</p>
+            <p class="customFont text2 whiteText">&copy; 2025 DataSAvers. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script src="/assets/js/swiperInitAboutUs.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Inicializar AOS
-        AOS.init({
-            duration: 800,
-            easing: "ease-in-out",
-            once: true,
-        });
-        // Inicializar Splide
+      // Ejecutar al cargar el DOM
         document.addEventListener('DOMContentLoaded', function () {
-            new Splide('#projectsCarousel', {
-                type: 'loop',
-                perPage: 3,
-                perMove: 1,
-                gap: '2rem',
-                padding: '2rem',
-                breakpoints: {
-                    1024: {
-                        perPage: 2,
-                        gap: '1.5rem',
-                    },
-                    768: {
-                        perPage: 1,
-                        gap: '1rem',
-                        padding: '1rem',
-                    }
-                },
-                autoplay: true,
-                interval: 4000,
-                pauseOnHover: true,
+        // Inicializar AOS
+        AOS.init({ once: true });
+
+        // Inicializar Splide si existe el contenedor .splide
+        const splideEl = document.querySelector('.splide');
+        if (splideEl) {
+            new Splide(splideEl, {
+            type: 'loop',
+            perPage: 1,
+            autoplay: true,
+            pauseOnHover: true,
+            resetProgress: false,
             }).mount();
+        }
         });
     </script>
 </body>

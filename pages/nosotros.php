@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../assets/css/nosotros.css?v=2">
 </head>
 <body ID="index-page" data-theme="represa">
-    <?php include "../php/header.php";?>
+    <?php include "../includes/header.php";?>
     <div class="presentationSection" data-aos="fade-right">
         <div class="presentationTextBox customFont whiteText">
             <div class="upperTextBox">
@@ -49,27 +49,27 @@
         <div class="card-wrapper">
             <ul class="card-list swiper-wrapper">
                 <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/vegetta.webp" alt="Foto - Director de Operaciones" class="card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Foto - Director de Operaciones" class="card-image">
                     <p class="card-text text1 customFont whiteText">María López</p>
                     <p class="card-text text1 customFont whiteText">Directora de Operaciones</p>
                 </li>
                 <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/vegetta.webp" alt="Foto - Jefe de Mantenimiento" class="card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Foto - Jefe de Mantenimiento" class="card-image">
                     <p class="card-text text1 customFont whiteText">Carlos Reyes</p>
                     <p class="card-text text1 customFont whiteText">Jefe de Mantenimiento</p>
                 </li>
                 <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/vegetta.webp" alt="Foto - Ingeniera Ambiental" class="card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Foto - Ingeniera Ambiental" class="card-image">
                     <p class="card-text text1 customFont whiteText">Ana Martínez</p>
                     <p class="card-text text1 customFont whiteText">Ingeniera Ambiental</p>
                 </li>
                 <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/vegetta.webp" alt="Foto - Operador de Planta" class="card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Foto - Operador de Planta" class="card-image">
                     <p class="card-text text1 customFont whiteText">Luis Fernández</p>
                     <p class="card-text text1 customFont whiteText">Operador de Planta</p>
                 </li>
                 <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/vegetta.webp" alt="Foto - Relaciones Comunitarias" class="card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Foto - Relaciones Comunitarias" class="card-image">
                     <p class="card-text text1 customFont whiteText">Sofía Gómez</p>
                     <p class="card-text text1 customFont whiteText">Relaciones Comunitarias</p>
                 </li>
@@ -95,9 +95,47 @@
             </div>
         </div>
     </div>
-<?php include "../php/footer.php";?>
+    <!-- Footer -->
+    <footer class="mainFooter">
+        <div class="footerContent">
+            <div class="footerSection">
+                <h3 class="customFont whiteText">Empresa</h3>
+                <p style="text-align: start;" class="customFont text2 whiteText">Somos la empresa encargada de gestionar y operar la infraestructura hidroeléctrica del valle.</p>
+            </div>
+            <div class="footerSection">
+                <h4 class="customFont whiteText">Informativos</h4>
+                <ul>
+                    <li><a href="index.html" class="customFont text2 whiteText">Lugares de pago</a></li>
+                    <li><a href="views/nosotros.html" class="customFont text2 whiteText">Oficinas de atención</a></li>
+                    <li><a href="views/servicios.html" class="customFont text2 whiteText">Necesito ayuda</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Preguntas Frecuentes</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Regulación Vigente</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Políticas de Privacidad</a></li>
+                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Regulación Vigente</a></li>
+                </ul>
+            </div>
+            <div class="footerSection">
+                <h4 class="customFont whiteText">Contacto</h4>
+                <p class="emailNPhoneText">Email: info@empresa.com</p>
+                <p class="emailNPhoneText">Tel: +51 000 000 000</p>
+            </div>
+            <div class="footerSection footerSectionLast">
+                <h4 class="customFont whiteText">Redes Sociales</h4>
+                <div class="socialLinks">
+                    <ul>
+                    <li><a href="#" class="customFont text2 whiteText">Facebook</a></li>
+                    <li><a href="#" class="customFont text2 whiteText">Instagram</a></li>
+                    <li><a href="#" class="customFont text2 whiteText">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footerBottom">
+            <p class="customFont text2 whiteText">&copy; 2025 DataSAvers. Todos los derechos reservados.</p>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="../../BackEnd/js/swiperInitAboutUs.js"></script>
+    <script src="../../BackEnd/js/swiperInitIndex.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init({
