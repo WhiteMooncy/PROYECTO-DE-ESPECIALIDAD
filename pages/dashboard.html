@@ -3,33 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/assets/css/StyleEdit.css"></script>
-    <title>Cafetería | Dashboard</title>
+    <meta name="description" content="Panel administrativo para visualización de resultados de encuestas">
+    <title>Panel Administrativo - Encuestas</title>
+    
+    <!-- CSS Externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-<body data-theme="represa">
-    /*header de navegacion php*/
-    <div>
-        <header>
-            <h1>Bienvenido al Dashboard</h1>            
-        </header>
-        <aside>
-            <nav>
-                <ul>
-                    <li><a href="">Inicio</a></li>
-                    <li><a href="">comentarios</a></li>
-                    <li><a href="">Mapa</a></li>
-                    <li><a href=""></a></li>
-                    <li><a href="">Cerrar Sesión</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <main>
-            <h2>Contenido Principal</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ipsam commodi, facere excepturi non sed alias quae soluta in nesciunt est. Quis iusto nesciunt corporis fuga suscipit aspernatur sunt nostrum!</p>
-        </main>
-        /*footer php*/
-    </div>
+<body>
+    <!-- Barra lateral -->
+    <nav class="sidebar" role="navigation" aria-label="Navegación principal">
+        <div class="sidebar-header">
+            <h1>Hydro-Conecta</h1>
+            <h3>Panel Admin</h3>
+            <p>Sistema de Encuestas</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active" data-section="results" role="button" tabindex="0">
+                <span class="nav-icon" aria-hidden="true">📊</span>
+                <span>Resultados</span>
+            </li>
+            <li class="nav-item" data-section="map" role="button" tabindex="0">
+                <span class="nav-icon" aria-hidden="true">🗺️</span>
+                <span>Mapa</span>
+            </li>
+            <li class="nav-item" data-section="users" role="button" tabindex="0">
+                <span class="nav-icon" aria-hidden="true">👥</span>
+                <span>Usuarios</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content" role="main">
+        <!-- Sección: Resultados -->
+        <section id="results" class="section active" aria-labelledby="results-title">
+            <div class="section-header">
+                <h2 id="results-title">Resultados de la Encuesta</h2>
+                <p>Análisis general de las respuestas recibidas</p>
+            </div>
+
+            <div class="stats-grid" role="region" aria-label="Estadísticas generales">
+                <div class="stat-card">
+                    <div class="stat-label">Total Respuestas</div>
+                    <div class="stat-value">1,247</div>
+                    <div class="stat-change positive">↑ 12% esta semana</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Tasa de Completación</div>
+                    <div class="stat-value">87%</div>
+                    <div class="stat-change positive">↑ 5% esta semana</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Promedio Tiempo</div>
+                    <div class="stat-value">4.2m</div>
+                    <div class="stat-change negative">↓ 0.3m esta semana</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Satisfacción</div>
+                    <div class="stat-value">92%</div>
+                    <div class="stat-change positive">↑ 3% esta semana</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Distribución de Respuestas por Pregunta</div>
+                <div class="chart">
+                    <div class="bar-chart" id="barChart" role="img" aria-label="Gráfico de barras de respuestas por pregunta"></div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Respuestas por Categoría</div>
+                <div class="chart">
+                    <div class="bar-chart" id="categoryChart" role="img" aria-label="Gráfico de barras de respuestas por categoría"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Mapa -->
+        <section id="map-section" class="section" aria-labelledby="map-title">
+            <div class="section-header">
+                <h2 id="map-title">Mapa Interactivo</h2>
+                <p>Visualización geográfica de los resultados</p>
+            </div>
+            <div id="map" role="region" aria-label="Mapa de ubicaciones de usuarios"></div>
+        </section>
+
+        <!-- Sección: Usuarios -->
+        <section id="users-section" class="section" aria-labelledby="users-title">
+            <div class="section-header">
+                <h2 id="users-title">Usuarios Participantes</h2>
+                <p>Lista de personas que han completado la encuesta</p>
+            </div>
+            <div class="users-table" role="region" aria-label="Tabla de usuarios">
+                <div class="table-header" role="row">
+                    <div role="columnheader">Usuario</div>
+                    <div role="columnheader">Ubicación</div>
+                    <div role="columnheader">Fecha de Respuesta</div>
+                    <div role="columnheader">Estado</div>
+                </div>
+                <div id="usersTableBody" role="rowgroup"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
