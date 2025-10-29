@@ -11,18 +11,21 @@
     --radius-lg:  12px;
 }
 
-/* ============================
+/* ============================s
     GLOBAL / BASE
    ============================ */
 body[data-theme="represa"] {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
 }
 
+
 /* ============================
-    HEADER / FOOTER / NAV
+SECCIÓN MOVIL DEL HEADER
    ============================ */
-header
+/* Header */
+header 
 {
     display: flex;
     flex-direction: column;
@@ -59,7 +62,7 @@ header
 .headerNavBlock {
     padding: 0.3rem 0;
     background-color: transparent;
-    position: relative;
+    position: relative; 
     display: inline-block;
     text-decoration: none;
     color: transparent;
@@ -68,24 +71,24 @@ header
 .headerNavBlock::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--water-mid);
+    bottom: 0; 
+    left: 0;    
+    width: 100%; 
+    height: 2px; 
+    background-color: var(--water-mid);  
     box-shadow: 0 10px 30px var(--water-mid);
-    transform: scaleX(0);
-    transform-origin: center;
-
-    transition: transform 0.2s ease-in;
+    transform: scaleX(0); 
+    transform-origin: center; 
+    
+    transition: transform 0.2s ease-in; 
 }
 
 .headerNavBlock:hover::after {
-    transform: scaleX(1);
+    transform: scaleX(1); 
 }
-.headerNavLinks
-{
-    text-decoration: none;
+.headerNavLinks 
+{ 
+    text-decoration: none; 
     color: rgb(255, 255, 255);
     font-size: clamp(1.3rem, 1.5dvw, 2rem);
     font-weight: 300;
@@ -93,9 +96,22 @@ header
     padding: 0;
 }
 
-@media (min-width: 768px)
+.header ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4rem;
+    margin: 0;
+    padding: 0;
+}
+/* ============================
+    SECCIÓN DESKTOP DEL HEADER
+   ============================ */
+
+@media (min-width: 768px) 
 {
-    header
+    header 
 {
     padding: 0;
 }
@@ -107,29 +123,24 @@ header
     font-size: clamp(1.5rem, 2.5dvw, 2.8rem);
 
 }
-    .headerNavLinks
-{
-    text-decoration: none;
+    .headerNavLinks 
+{ 
+    text-decoration: none; 
     color: rgb(255, 255, 255);
     font-size: clamp(1.2rem, 1.5dvw, 1.3rem);
     font-weight: 300;
     margin: 0;
     padding: 0;
 }
-.headerNav ul
+.headerNav ul 
 {
     gap: 6rem;
 }
 }
 
-
 /* ============================
-   SECCIÓN: WELCOME / HERO
+    SECCIÓN DESKTOP DE LA SECCION DE BIENVENIDA
    ============================ */
-body
-{
-    margin: 0;
-}
 
 .welcomeSection {
     background-image: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1)), url(/assets/sources/img/represa.webp);
@@ -137,7 +148,7 @@ body
     background-position: center;
     background-repeat: no-repeat;
     min-height: 90dvh;
-    padding: 0 15dvw;
+    padding: 0 15rem;
     box-sizing: content-box;
     display: flex;
     flex-direction: column;
@@ -147,77 +158,69 @@ body
 
 #welcomeWrapper
 {
-    margin: 3rem 0;
+    margin: 5rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 10rem;
 }
-.welcomeTitle { text-align: center; margin: 2dvh 5dvw; }
-.welcomeText { text-align: left; margin: 2dvh 5dvw; }
 
-.desktopTitle{
-    font-size: 4rem;
-}
-.desktopText
+.welcomeTitle
 {
-    font-size: 1.5rem;
+    font-size: 4rem;
+    margin: 0;
+}
+.welcomeText
+{
+    font-size: 1.3rem;
+    margin: 0;
+}
+.viewMoreBtn {
+    background: linear-gradient(90deg, var(--water-mid), var(--water-dark));
+    color: #fff;
+    border-radius: 999px;
+    padding: .75rem 1.25rem;
+    box-shadow: 0 8px 30px rgba(11,61,145,0.28);
+    border: 1px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+    margin: 1.2rem;
 }
 
-/*Textos Moviles*/
+/* ============================
+    SECCIÓN MOVIL DE LA SECCION DE BIENVENIDA
+   ============================ */
+
 @media (max-width: 768px) {
 
+.welcomeSection {
+    min-height: 80dvh;
+    padding: 0 10dvw;
+}
 #welcomeWrapper
 {
-    margin: 0;
-    display: flex;
+    margin: 3rem 0;
     flex-direction: column;
+    gap: 5rem;
 }
 
-.desktopTitle{
+.welcomeTitle
+{
     font-size: 3rem;
 }
-.desktopText
+.welcomeText
 {
-    font-size: 1.5rem;
-}
-}
-/*Textos Moviles*/
-
-
-
-/* ============================
-    SECCIÓN: MEDIA / CARDS / SWIPER
-   ============================ */
-.mediaSection {
-        background-image: linear-gradient(rgba(0,0,0,1),rgba(0, 0, 0, 0.1),rgba(0, 0, 0,1));
-        padding: 1rem 0;
-}
-.mediaTitle {
-    text-align: center;
-    margin: 1rem auto;
-    font-size: clamp(3rem, 5dvw, 2.8rem);
+    font-size: 1.27rem;
 }
 
-.card-list .card-item .card-text {
-    user-select: none;
-    display: block;
-    background-color: transparent;
-    border-radius: 12px;
-    text-align: start;
-    font-size: 1rem;
-    width: 100%;
-    height: 1rem;
-    margin: 0;
-    padding: 0.8rem 0 0.5rem 0;
 }
 
 /* ============================
-    NUEVAS SECCIONES INDEX
+    SECCIÓN DESKTOP DE LA SECCION MISION VISION
    ============================ */
 
-/* Sección MVO mejorada */
-.mvoSection {
+.mvoSection 
+{
     padding: 5rem 2rem;
     height: 75dvh;
     background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
@@ -225,7 +228,6 @@ body
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 .mvoMainTitle {
@@ -238,7 +240,7 @@ body
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2.5rem;
-    max-width: 1200px;
+    max-width: 80rem;
     margin: 0 auto;
 }
 
@@ -272,22 +274,144 @@ body
 .mvoCardText {
     font-size: clamp(0.95rem, 1.5vw, 1.1rem);
     line-height: 1.7;
+    text-align: start;
 }
 
-/* Sección Proyectos con Splide */
+/* ============================
+    SECCIÓN MOVIL DE LA SECCION MISION VISION
+   ============================ */
+
+@media (max-width: 768px) 
+{
+.mvoSection 
+{
+    padding: 3rem 2rem;
+    margin: 0;
+    height: auto;
+    gap: 5rem;
+}
+
+.mvoMainTitle {
+    font-size: 2.2rem;
+    margin: 0;
+}
+.mvoWrapper {
+    gap: 2.5rem;
+    max-width: 450px;
+}
+.mvoCard 
+{
+    padding: 1.5rem 1rem;
+    text-align: left;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+.mvoIcon 
+{
+    text-align: center;
+    margin: 0;
+    font-size: 2.5rem;
+}
+.mvoCardTitle {
+    font-size: 1.7rem;
+    margin: 0;
+}
+.mvoCardText {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+}
+/* ============================
+    SECCIÓN DESKTOP DE LA SECCION PROYECTOS
+   ============================ */
 .projectsSection {
-    height: 90dvh;
-    padding: 5rem 0;
+    height: 85dvh;
+    padding: 0;
     background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 5rem;
 }
 
-
-/* Responsive: ajustar altura en móviles */
-@media (max-width: 768px) {
-    .projectSlide { padding-top: 60%; }
+.mediaSection 
+{
+    background-color: transparent;
+    padding: 0;
+}
+.mediaTitle {
+    text-align: center;
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.8rem);
 }
 
-/* Estilos del Footer */
+.card-list .card-item .card-text {
+    user-select: none;
+    display: block;
+    background-color: transparent;
+    border-radius: 12px;
+    text-align: start;
+    font-size: 1rem;
+    width: 100%;
+    height: 1rem;
+    margin: 0;
+    padding: 0.8rem 0 0.5rem 0;
+}
+.splide__slide { padding: 0; box-sizing: border-box; }
+
+.projectSlide{
+    height: 400px;  
+    object-fit: cover;        /* altura fija */
+    width: 80%;
+    position: relative;        /* no absolute */
+    height: 0;
+    padding-top: 40%;          /* controla la relación de aspecto (ajusta al diseño) */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    overflow: hidden;
+    display: block;
+}  */
+
+.projectOverlay{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    padding: 1.25rem;
+    transform: translateY(0);   /* visible por defecto */
+    transition: transform 0.25s ease;
+}
+
+.projectSlide:hover .projectOverlay {
+    transform: translateY(0); /* opcional: mantener visible o añadir ligera subida si lo deseas */
+}
+/* ============================
+    SECCIÓN MOVIL DE LA SECCION PROYECTOS
+   ============================ */
+@media (max-width: 768px) 
+{
+.projectsSection {
+    padding: 2rem 0;
+    gap: 4rem;
+    min-height: 80dvh;
+    height: auto;
+}
+.mediaTitle {
+    font-size: 2.2rem;
+}
+
+}
+/* ============================
+    SECCIÓN DESKTOP DEL FOOTER
+   ============================ */
 .mainFooter {
     background: #000;
     padding: 1rem 2rem;
@@ -315,7 +439,7 @@ body
     border-right: 1px solid rgba(255,255,255,0.1);
     padding-right: 1rem;
 }
-.footerSection h3 {
+.footerCompanyName {
     margin: 0 0 1rem 0;
     font-size: clamp(1.2rem, 2vw, 1.5rem);
 }
@@ -365,52 +489,119 @@ body
 .footerBottom p {
         font-size: 0.8rem;
 }
-
-/* Responsive */
-@media (max-width: 768px) {
-
-    .mvoWrapper {
-        grid-template-columns: 1fr;
-    }
-
-    .footerContent {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .socialLinks {
-        justify-content: center;
-    }
-}
-
 /* ============================
-    RESPONSIVE (MD UP)
+    SECCIÓN MOVIL DEL FOOTER
    ============================ */
-@media (max-width:768px) {
-    .welcomeSection {
-        min-height: 95dvh;
-        box-sizing: content-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .welcomeTitle {
-        text-align: center;
-        margin: 3rem auto;
-        width: fit-content;
-        padding: 1rem 2rem;
-    }
-    .welcomeText { margin: 3rem 25%; text-align: center; }
-
-    .mediaTitle {
-        text-align: center;
-        margin: 2rem auto;
-        width: 100%;
-        padding: 0;
-        font-size: 3rem;
-    }
+@media (max-width: 768px) 
+{
+.mainFooter 
+{
+    padding: 0rem 0.8rem;
+    height: auto;
 }
+
+.footerContent 
+{
+    gap: 1rem;
+    width: 100%;
+    margin: 0;
+}
+.footerSection
+{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    border-left: none;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    padding: 0;
+}
+.footerSectionFirst
+{
+    border: none;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+.footerCompanyName
+{
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+}
+.footerCompanyPhrase
+{
+    display: none;
+}
+.footerSectionLast
+{
+    border-right:none;
+    padding-right: 0;
+    align-items: center;
+    padding: 0 0 1rem 0;
+}
+.footerSection h4
+{
+    margin: 1rem 0;
+    font-size: 1.3rem;
+}
+
+.footerSection ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.footerSection li {
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.footerSection a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+    color: var(--accent)
+
+}
+
+.footerSection a:hover {
+    color: var(--water-mid);
+}
+
+.socialLinks ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.emailNPhoneText
+{
+    margin: 0.2rem;
+    font-size: 1rem;
+}
+
+.footerBottom {
+    text-align: center;
+    padding: 0;
+    border-top: none;
+    margin: 0;
+}
+.footerBottom p {
+        font-size: 0.8rem;
+        margin: 0;
+        padding: 1rem 0;
+}
+}
+
+
+
+
+
+
+
+
+
+
 
 /* ============================
     SCOPE: TEMA 'represa'
@@ -460,7 +651,7 @@ body[data-theme="represa"] .viewMoreBtn {
     margin: 1.2rem;
 }
 
-/*Swiper container centering for represa */
+/*Swiper container centering for represa*/ 
 .container.swiper .swiper-wrapper {
     display: flex;
     justify-content: center;
@@ -479,7 +670,39 @@ body[data-theme="represa"] .viewMoreBtn {
     height: 45dvh;
 }
 /* Responsive tweaks for 'represa' */
-@media (max-width: 480px) {
-    body[data-theme="represa"] .card-item { max-width: 100%; }
-    body[data-theme="represa"] .card-image { height: 160px; max-height: 160px; }
+@media (max-width: 768px) 
+{
+    body[data-theme="represa"] .card-item 
+    {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(4,12,30,0.5);
+    transition: transform .28s ease, box-shadow .28s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    }
+    body[data-theme="represa"] .card-item:hover 
+    {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 36px rgba(4,12,30,0.6);
+    }
+    body[data-theme="represa"] .card-image 
+    {
+    width: auto;
+    height: 20rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    body[data-theme="represa"] .card-text 
+    { 
+    padding: 0.75rem 1rem; 
+    }
 }
+

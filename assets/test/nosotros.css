@@ -18,18 +18,19 @@
 }
 
 /* ============================
-    GLOBAL / BASE
-   ============================ */
+GLOBAL / BASE
+============================ */
 html { scroll-behavior: smooth; }
 
 body[data-theme="represa"],
 body[data-theme="form"] {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
 }
 
 /* ============================
-    HEADER / FOOTER / NAV
+SECCIÓN MOVIL DEL HEADER
    ============================ */
 /* Header */
 header 
@@ -112,6 +113,11 @@ header
     margin: 0;
     padding: 0;
 }
+
+/* ============================
+    SECCIÓN DESKTOP DEL HEADER
+   ============================ */
+
 @media (min-width: 768px) 
 {
     header 
@@ -141,93 +147,9 @@ header
 }
 }
 
-
-/* Footer     //////Esto lo comento porque tampoco se hace uso, el footer que se trabaja está mucho mas abajo a partir de la linea 475
-footer {
-    display: flex;
-    flex-direction: column;
-    box-sizing: content-box;
-    background-color: rgb(0, 0, 0);
-}
-footer a { text-decoration: none; }
-footer p {
-    text-align: center;
-    font-size: clamp(0.8rem, 1dvw, 1rem);
-    margin: 0;
-    padding: auto;
-}
-footer h1 {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-size: clamp(1.5rem, 4dvw, 2rem);
-}
-footer li {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
-    font-size: clamp(0.8rem, 1dvw, 1rem);
-    margin: 0;
-    padding: auto;
-}
-footer ul {
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: auto;
-}
-
-*/
-
-/* Nav fijo por páginas */
-#index-page nav,
-#about-us nav,
-#contanct-page nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-#index-page nav a,
-#about-us nav a,
-#contanct-page nav a {
-    color: #F5F0E6;
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 10px 15px;
-    transition: color 0.3s ease;
-}
-#index-page nav a:hover,
-#about-us nav a:hover,
-#contanct-page nav a:hover { color: #FFD700; }
-
-/* Navbar utilities */
-.navbar a { text-decoration: none; color: white; font-weight: bold; }
-.navbar ul { list-style: none; display: flex; margin: 0; padding: 0; }
-.navbar li { margin: 0 15px; }
-
 /* ============================
-   SECCIÓN: WELCOME / HERO
+    SECCIÓN DESKTOP DE LA SECCION DE BIENVENIDA
    ============================ */
-
-
- /*esto borró el borde azulito, eliminar en caso de*/
-body
-{
-    margin: 0;
-}
-
-
 
 .welcomeSection {
     background-image: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1)), url(/assets/sources/img/represa.webp);
@@ -235,7 +157,7 @@ body
     background-position: center;
     background-repeat: no-repeat;
     min-height: 90dvh;
-    padding: 0 15dvw;
+    padding: 0 15rem;
     box-sizing: content-box;
     display: flex;
     flex-direction: column;
@@ -245,97 +167,188 @@ body
 
 #welcomeWrapper
 {
-    margin: 3rem 0;
+    margin: 5rem 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 10rem;
 }
-.welcomeTitle { text-align: center; margin: 2dvh 5dvw; }
-.welcomeText { text-align: left; margin: 2dvh 5dvw; }
 
-.desktopTitle{
+.welcomeTitle
+{
     font-size: 4rem;
-}
-.desktopText
-{
-    font-size: 1.5rem;
-}
-
-/*Textos Moviles*/
-@media (max-width: 768px) {
-
-#welcomeWrapper
-{
     margin: 0;
-    display: flex;
-    flex-direction: column;
 }
-
-.desktopTitle{
-    font-size: 3rem;
-}
-.desktopText
+.welcomeText
 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    margin: 0;
 }
+.viewMoreBtn {
+    background: linear-gradient(90deg, var(--water-mid), var(--water-dark));
+    color: #fff;
+    border-radius: 999px;
+    padding: .75rem 1.25rem;
+    box-shadow: 0 8px 30px rgba(11,61,145,0.28);
+    border: 1px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+    margin: 1.2rem;
 }
-/*Textos Moviles*/
-
-
-
 
 /* ============================
-   SECCIÓN: SERVICIOS   esto está comentado porque no se estaba usando en la pagina, se deja por si acaso
-   ============================
-.servicesSection {
-    background-color: rgb(0, 0, 0);
-    min-height: 50dvh;
-    box-sizing: content-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.servicesTitle { text-align: center; margin: 2.5rem 3rem 2.5rem 3rem; }
-.serviceswrapper { margin: 0; padding: 0; }
+    SECCIÓN MOVIL DE LA SECCION DE BIENVENIDA
+   ============================ */
 
-.servicesCards {
-    display: flex;
+@media (max-width: 768px) {
+
+.welcomeSection {
+    min-height: 80dvh;
+    padding: 0 10dvw;
+}
+#welcomeWrapper
+{
+    margin: 3rem 0;
     flex-direction: column;
-    justify-content: center;
+    gap: 5rem;
+}
+
+.welcomeTitle
+{
+    font-size: 3rem;
+}
+.welcomeText
+{
+    font-size: 1.27rem;
+}
+
+}
+/* ============================
+    SECCIÓN DESKTOP DE LA SECCION MISION VISION
+   ============================ */
+
+.mvoSection 
+{
+    padding: 5rem 2rem;
+    height: 75dvh;
+    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
     align-items: center;
-    min-height: 60dvh;
-    max-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mvoMainTitle {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 3rem;
+}
+
+.mvoWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mvoCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--water-mid);
+    border-radius: 15px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.mvoCard:hover {
+    transform: translateY(-10px);
+    border-color: var(--water-mid);
+    box-shadow: 0 10px 30px var(--water-mid);
+}
+
+.mvoIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.mvoCardTitle {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+.mvoCardText {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    line-height: 1.7;
+}
+
+/* ============================
+    SECCIÓN DESKTOP DE LA SECCION MISION VISION
+   ============================ */
+
+@media (max-width: 768px) 
+{
+.mvoSection 
+{
+    padding: 3rem 2rem;
     margin: 0;
-    box-sizing: content-box;
-}
-.servicesImg { height: auto; width: 25%; margin: 2.5rem auto; }
-.cardsInfo { text-align: left; margin: 0 10% 0 10%; }
-
-/* estilos por tipo de servicio (backgrounds) 
-.dronStyle {
-    background-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4)), url(../img/ui/indexDronSecBack.jpg);
-    background-color: rgb(0, 0, 0);
-    background-size: cover;
-    background-position: 50% 5%;
-    background-repeat: no-repeat;
-}
-.cameraStyle {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(../img/ui/indexCameraSecBack.jpg);
-    background-color: rgb(0, 0, 0);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.podcastStyle {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,1)), url(../img/ui/indexPodSecBack.jpg);
-    background-color: rgb(0, 0, 0);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    height: auto;
+    gap: 5rem;
 }
 
-*/
+.mvoMainTitle {
+    font-size: 2.2rem;
+    margin: 0;
+}
+.mvoWrapper 
+{
+    gap: 2.5rem;
+}
+.mvoCard 
+{
+    padding: 1.5rem 1rem;
+    text-align: left;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+.mvoIcon 
+{
+    text-align: center;
+    margin: 0;
+    font-size: 2.5rem;
+}
+.mvoCardTitle {
+    font-size: 1.7rem;
+    margin: 0;
+}
+.mvoCardText {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+}
+
+
+
+
+/* Sección Proyectos con Splide */
+.projectsSection {
+    height: 90dvh;
+    padding: 5rem 0;
+    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
+}
+@media (max-width: 768px) 
+{
+    .projectsSection {
+    height: auto;
+    }
+}
+
 
 
 
@@ -432,90 +445,8 @@ body
     line-height: 1.6;
 }   */
 
-/* Sección MVO mejorada */
-.mvoSection {
-    padding: 5rem 2rem;
-    height: 75dvh;
-    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 
-}
 
-.mvoMainTitle {
-    text-align: center;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    margin-bottom: 3rem;
-}
-
-.mvoWrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.mvoCard {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--water-mid);
-    border-radius: 15px;
-    padding: 2.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.mvoCard:hover {
-    transform: translateY(-10px);
-    border-color: var(--water-mid);
-    box-shadow: 0 10px 30px var(--water-mid);
-}
-
-.mvoIcon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.mvoCardTitle {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: 1.5rem;
-    color: var(--accent);
-}
-
-.mvoCardText {
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    line-height: 1.7;
-}
-
-/* Sección Descripción de Servicios */
-.servicesDescSection {
-    padding: 5rem 2rem;
-    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
-    text-align: center;
-}
-
-.servicesDescTitle {
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    margin-bottom: 2.5rem;
-}
-
-.servicesDescText {
-    max-width: 900px;
-    margin: 0 auto;
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    line-height: 1.8;
-    text-align: justify;
-}
-
-/* Sección Proyectos con Splide */
-.projectsSection {
-    height: 90dvh;
-    padding: 5rem 0;
-    background: linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0.6),rgba(0,0,0,1));
-}
 
 
 /* Reemplaza la definición anterior de projectSlide/projectOverlay */
@@ -665,22 +596,7 @@ body
     RESPONSIVE (MD UP)
    ============================ */
 @media (max-width:768px) {
-    .welcomeSection {
-        min-height: 95dvh;
-        box-sizing: content-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .welcomeTitle {
-        text-align: center;
-        margin: 3rem auto;
-        width: fit-content;
-        padding: 1rem 2rem;
-    }
-    .welcomeText { margin: 3rem 25%; text-align: center; }
-
+    
     .servicesSection {
         min-height: 100dvh;
         align-items: center;
