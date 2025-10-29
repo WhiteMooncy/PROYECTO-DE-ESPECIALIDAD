@@ -1,123 +1,129 @@
-/* ============================
-    VARIABLES (ROOT)
-   ============================ */
-:root {
-    --accent:     #38bdf8;
-    /* tarjeta formulario */
-    --bg:#0f1724;
-    --card:#0b1220;
-    --text:#e6eef8;
+/* ===========================
+    ESTILOS ESPECÍFICOS DEL FORMULARIO DE CUESTIONARIO
+   =========================== */
+
+/* Contenedor principal de la pregunta */
+body[data-theme="form"] .questionBlock {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--concrete-2);
 }
 
-/* ============================
-    GLOBAL / BASE
-   ============================ */
-body[data-theme="form"] {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/* Título de la pregunta */
+body[data-theme="form"] .question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--accent);
 }
 
-/* ============================
-   SCOPE: TEMA 'form' (formularios)
-   ============================ */
-body[data-theme="form"] {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(180deg,#071025 0%, #0a1626 100%);
-    color: var(--text);
-    font-family: system-ui, "Segoe UI", Roboto, Arial;
-    padding: 20px;
-}
-body[data-theme="form"] .card {
+/* --- ESTILO PARA INPUTS DE TEXTO Y TEXTAREA (NUEVO) --- */
+body[data-theme="form"] input[type="text"],
+body[data-theme="form"] textarea {
     width: 100%;
-    max-width: 720px;
-    background: var(--card);
-    border-radius: 12px;
-    padding: 26px;
-    box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--concrete-2);
+    background-color: var(--card); /* Fondo oscuro como la tarjeta */
+    color: var(--text); /* Color de texto claro */
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* Eliminar borde de enfoque por defecto en algunos navegadores */
+    outline: none; 
 }
-body[data-theme="form"] h1 { margin: 0 0 8px 0; font-size: 20px; }
-body[data-theme="form"] p.lead { margin: 0 0 18px 0; color: #a8c6d9; }
-body[data-theme="form"] .controls { margin-top: 18px; display: flex; gap: 10px; align-items: center; }
-body[data-theme="form"] button {
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 6px;
-    padding: 10px 16px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-body[data-theme="form"] button.secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--text);
-}
-body[data-theme="form"] .progress {
-    height: 8px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 999px;
-    overflow: hidden;
-    margin-top: 16px;
-}
-body[data-theme="form"] .progress > i {
-    display: block;
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg,var(--accent),#7dd3fc);
-    transition: width .35s ease;
-}
-body[data-theme="form"] .hidden { display: none; }
 
-/* ============================
-    RESPONSIVE: FORMULARIO (SMARTPHONE)
-   ============================ */
-@media (max-width: 480px) {
-    /* Ajustes del contenedor general */
-    body[data-theme="form"] {
-        padding: 12px;
-    }
+body[data-theme="form"] input[type="text"]:focus,
+body[data-theme="form"] textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3); /* Resplandor sutil del acento */
+}
 
-    /* Tarjeta del formulario: ancho completo con separación interna menor */
-    body[data-theme="form"] .card {
-        max-width: 420px;
-        width: 100%;
-        padding: 18px;
-        border-radius: 10px;
-    }
+/* Estilo para el placeholder */
+body[data-theme="form"] input::placeholder,
+body[data-theme="form"] textarea::placeholder {
+    color: var(--concrete-2); /* Placeholder en gris */
+    opacity: 0.7;
+}
 
-    /* Tipografías y espaciados */
-    body[data-theme="form"] h1 {
-        font-size: 1.25rem;
-        margin-bottom: 6px;
-    }
-    body[data-theme="form"] p.lead {
-        font-size: 0.95rem;
-        margin-bottom: 12px;
-    }
-
-    /* Controles: apilar verticalmente y botones a ancho completo */
-    body[data-theme="form"] .controls {
+/* Estilos de inputs (radio y checkbox) */
+body[data-theme="form"] .radio-group,
+body[data-theme="form"] .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+    /* Reducir el gap en móvil */
+    @media (max-width: 600px) {
         flex-direction: column;
         gap: 10px;
-        align-items: stretch;
     }
-    body[data-theme="form"] button {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-    }
-    body[data-theme="form"] button.secondary {
-        padding: 10px;
-    }
+}
 
-    /* Barra de progreso más ligera en móvil */
-    body[data-theme="form"] .progress {
-        height: 6px;
-        margin-top: 12px;
-    }
+body[data-theme="form"] .radio-label,
+body[data-theme="form"] .checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: var(--card); 
+    border: 1px solid var(--concrete-2);
+    transition: all 0.2s ease;
+}
+
+body[data-theme="form"] .radio-label:hover,
+body[data-theme="form"] .checkbox-label:hover {
+    background-color: #1a2a47; /* Ligeramente más claro */
+    border-color: var(--accent);
+}
+
+body[data-theme="form"] .radio-label input[type="radio"],
+body[data-theme="form"] .checkbox-label input[type="checkbox"] {
+    margin-right: 8px;
+    /* Estilos base para que sean visibles */
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent); /* Cambia el color nativo */
+}
+
+/* Feedback de validación y mensajes temporales */
+body[data-theme="form"] .error-message {
+    color: #ff5555;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    min-height: 18px; /* Evita Cumulative Layout Shift (CLS) */
+}
+
+body[data-theme="form"] #tempMessage {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+body[data-theme="form"] #tempMessage.error {
+    background-color: #ffdddd;
+    color: #cc0000;
+}
+
+/* Estilos para el resumen de resultados */
+body[data-theme="form"] .summary {
+    background-color: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid var(--concrete-2);
+}
+
+body[data-theme="form"] .summary-content {
+    white-space: pre-wrap; /* Mantiene saltos de línea y formateo */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Botón de envío */
+body[data-theme="form"] button.submit-btn {
+    background-color: #4CAF50; /* Verde para finalizar */
 }

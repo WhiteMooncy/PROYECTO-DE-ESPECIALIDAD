@@ -8,6 +8,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/theme-dashboard.css?v=2" />
+    <style>
+        /* Lista de Comentarios (CORE: Solución al problema) */
+#commentsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.comment-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 5px solid #ccc; /* Border default */
+}
+.comment-item.placeholder {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    border-left: 5px solid #ffc107;
+}
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.comment-category {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+.comment-sentiment {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    color: white;
+}
+.sentiment-positive {
+    background-color: var(--success);
+}
+.sentiment-negative {
+    background-color: var(--danger);
+}
+.sentiment-neutral {
+    background-color: #6c757d;
+}
+.comment-text {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+.comment-footer small {
+    color: #999;
+    font-size: 0.75rem;
+}
+    </style>
 </head>
 <body data-theme="dashboard">
     <!-- Barra lateral -->
@@ -105,10 +162,40 @@
                 <div id="usersTableBody" role="rowgroup"></div>
             </div>
         </section>
+        <section id="results" class="section active" aria-labelledby="results-title">
+            <div class="comments-section" role="region" aria-label="Comentarios filtrados por IA">
+                <div class="section-header">
+                    <h2 id="comments-title">Comentarios, Solicitudes y Reclamos (Filtrados por IA)</h2>
+                    <p>Utiliza los filtros de Categoría y Sentimiento para gestionar los comentarios.</p>
+                </div>
+                <div class="filter-controls">
+                    <label for="categoryFilter">Categoría (IA):</label>
+                    <select id="categoryFilter" class="dashboard-filter">
+                        <option value="all">Todas las Categorías</option>
+                        <option value="reclamo">Reclamo</option>
+                        <option value="solicitud">Solicitud</option>
+                        <option value="duda">Duda</option>
+                        <option value="general">General</option>
+                    </select>
+                    <label for="sentimentFilter">Sentimiento (IA):</label>
+                    <select id="sentimentFilter" class="dashboard-filter">
+                        <option value="all">Todo el Sentimiento</option>
+                        <option value="positivo">Positivo</option>
+                        <option value="negativo">Negativo</option>
+                        <option value="neutral">Neutral</option>
+                    </select>
+                    
+                    <button id="applyFilterBtn" class="filter-button">Aplicar Filtros</button>
+                </div>
+                <div class="comments-list" id="commentsList">
+                    <div class="comment-item placeholder">Cargando comentarios...</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script src="/assets/js/data.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
 </body>
 </html>
