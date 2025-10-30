@@ -6,80 +6,63 @@
     <title>Panel Administrativo - Encuestas</title>
     <meta name="description" content="Panel administrativo para visualización de resultados de encuestas">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap?v=2" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/theme-dashboard.css?v=2" />
 </head>
 <body data-theme="dashboard">
-    <!-- Barra lateral -->
-    <nav class="sidebar" role="navigation" aria-label="Navegación principal">
-        <div class="sidebar-header">
-            <h1>Hydro-Conecta</h1>
-            <h3>Panel Admin</h3>
-            <p>Sistema de Encuestas</p>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item active" data-section="results" role="button" tabindex="0">
-                <span class="nav-icon" aria-hidden="true">📊</span>
-                <span>Resultados</span>
-            </li>
-            <li class="nav-item" data-section="map" role="button" tabindex="0">
-                <span class="nav-icon" aria-hidden="true">🗺️</span>
-                <span>Mapa</span>
-            </li>
-            <li class="nav-item" data-section="users" role="button" tabindex="0">
-                <span class="nav-icon" aria-hidden="true">👥</span>
-                <span>Usuarios</span>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Contenido principal -->
+    <header>
+        <h1 class="headerLogo"> Hydro-Conecta</h1>
+        <nav class="headerNav" aria-label="Navegación principal">
+            <ul>
+                <li class="headerNavBlock" tabindex="0"><a class="headerNavLinks" href="">Resultados</a></li>
+                <li class="headerNavBlock" tabindex="0"><a class="headerNavLinks" href="">Mapa</a></li>
+                <li class="headerNavBlock" tabindex="0"><a class="headerNavLinks" href="">Usuarios</a></li>
+            </ul>
+        </nav>
+    </header>
     <main class="main-content" role="main">
-        <!-- Sección: Resultados -->
         <section id="results" class="section active" aria-labelledby="results-title">
-            <div class="section-header">
+            <div class="mvoCard-header">
                 <h2 id="results-title">Resultados de la Encuesta</h2>
                 <p>Análisis general de las respuestas recibidas</p>
             </div>
-
-            <div class="stats-grid" role="region" aria-label="Estadísticas generales">
-                <div class="stat-card">
-                    <div class="stat-label">Total Respuestas</div>
-                    <div class="stat-value">1,247</div>
-                    <div class="stat-change positive">↑ 12% esta semana</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Tasa de Completación</div>
-                    <div class="stat-value">87%</div>
-                    <div class="stat-change positive">↑ 5% esta semana</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Promedio Tiempo</div>
-                    <div class="stat-value">4.2m</div>
-                    <div class="stat-change negative">↓ 0.3m esta semana</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Satisfacción</div>
-                    <div class="stat-value">92%</div>
-                    <div class="stat-change positive">↑ 3% esta semana</div>
-                </div>
-            </div>
-
-            <div class="chart-container">
-                <div class="chart-title">Distribución de Respuestas por Pregunta</div>
-                <div class="chart">
-                    <div class="bar-chart" id="barChart" role="img" aria-label="Gráfico de barras de respuestas por pregunta"></div>
-                </div>
-            </div>
-
-            <div class="chart-container">
-                <div class="chart-title">Respuestas por Categoría</div>
-                <div class="chart">
-                    <div class="bar-chart" id="categoryChart" role="img" aria-label="Gráfico de barras de respuestas por categoría"></div>
+            <div class="mvoWrapper">
+                <div class="stats-grid" role="region" aria-label="Estadísticas generales">
+                    <div class="mvoCard">
+                        <div class="stat-label">Total Respuestas</div>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-change positive">↑ 12% esta semana</div>
+                    </div>
+                    <div class="mvoCard">
+                        <div class="stat-label">Tasa de Completación</div>
+                        <div class="stat-value">87%</div>
+                        <div class="stat-change positive">↑ 5% esta semana</div>
+                    </div>
+                    <div class="mvoCard">
+                        <div class="stat-label">Promedio Tiempo</div>
+                        <div class="stat-value">4.2m</div>
+                        <div class="stat-change negative">↓ 0.3m esta semana</div>
+                    </div>
+                    <div class="mvoCard">
+                        <div class="stat-label">Satisfacción</div>
+                        <div class="stat-value">92%</div>
+                        <div class="stat-change positive">↑ 3% esta semana</div>
+                    </div>
+                    <div class="mvoCard">
+                        <div class="chart-title">Distribución de Respuestas por Pregunta</div>
+                        <div class="chart">
+                            <div class="bar-chart" id="barChart" role="img" aria-label="Gráfico de barras de respuestas por pregunta"></div>
+                        </div>
+                    </div>
+                    <div class="mvoCard">
+                        <div class="chart-title">Respuestas por Categoría</div>
+                        <div class="chart">
+                            <div class="bar-chart" id="categoryChart" role="img" aria-label="Gráfico de barras de respuestas por categoría"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
         <!-- Sección: Mapa -->
         <section id="map-section" class="section" aria-labelledby="map-title">
             <div class="section-header">
@@ -88,7 +71,6 @@
             </div>
             <div id="map" role="region" aria-label="Mapa de ubicaciones de usuarios"></div>
         </section>
-
         <!-- Sección: Usuarios -->
         <section id="users-section" class="section" aria-labelledby="users-title">
             <div class="section-header">
@@ -105,10 +87,44 @@
                 <div id="usersTableBody" role="rowgroup"></div>
             </div>
         </section>
+        <section id="results" class="section active" aria-labelledby="results-title">
+            <div class="comments-section" role="region" aria-label="Comentarios filtrados por IA">
+                <div class="section-header">
+                    <h2 id="comments-title">Comentarios, Solicitudes y Reclamos (Filtrados por IA)</h2>
+                    <p>Utiliza los filtros de Categoría y Sentimiento para gestionar los comentarios.</p>
+                </div>
+                <div class="filter-controls">
+                    <label for="categoryFilter">Categoría (IA):</label>
+                    <select id="categoryFilter" class="dashboard-filter">
+                        <option value="all">Todas las Categorías</option>
+                        <option value="reclamo">Reclamo</option>
+                        <option value="solicitud">Solicitud</option>
+                        <option value="duda">Duda</option>
+                        <option value="general">General</option>
+                    </select>
+                    <label for="sentimentFilter">Sentimiento (IA):</label>
+                    <select id="sentimentFilter" class="dashboard-filter">
+                        <option value="all">Todo el Sentimiento</option>
+                        <option value="positivo">Positivo</option>
+                        <option value="negativo">Negativo</option>
+                        <option value="neutral">Neutral</option>
+                    </select>
+                    
+                    <button id="applyFilterBtn" class="filter-button">Aplicar Filtros</button>
+                </div>
+                <div class="comments-list" id="commentsList">
+                    <div class="comment-item placeholder">Cargando comentarios...</div>
+                </div>
+            </div>
+        </section>
     </main>
-
+    <footer>
+        <div class="mainFooterContent">
+            <p class="customFont text2 whiteText">© 2024 Hydro-Conecta. Todos los derechos reservados.</p>
+        </div>
+    </footer>
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script src="/assets/js/data.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
 </body>
 </html>
