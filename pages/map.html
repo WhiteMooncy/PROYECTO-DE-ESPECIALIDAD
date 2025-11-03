@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - Encuestas</title>
+    <meta name="description" content="Panel administrativo para visualización de resultados de encuestas">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap?v=2" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/theme-dashboard.css?v=2"/>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body data-theme="dashboard">
+    <header>
+        <h1 class="headerLogo"> Hydro-Conecta</h1>
+        <nav class="headerNav" aria-label="Navegación principal">
+            <ul>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/dashboard.html">Resultados</a></li>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/map.html">Mapa</a></li>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/users.html">Usuarios</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content">
+        <section id="map-section" aria-label="map-title">
+            <div class="section-header">
+                <h2 id="map-title" class="mvoCard">Mapa Interactivo</h2>
+                <p>Visualización geográfica de los resultados</p>
+            </div>
+            <div id="map" role="region" aria-label="Mapa de ubicaciones de usuarios"></div>
+        </section>
+    </main>
+    <footer>
+        <div class="mainFooterContent">
+            <p class="customFont text2 whiteText">© 2024 Hydro-Conecta. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="/assets/js/cont.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - Encuestas</title>
+    <meta name="description" content="Panel administrativo para visualización de resultados de encuestas">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap?v=2" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/theme-dashboard.css?v=2" />
+</head>
+<body data-theme="dashboard">
+    <header>
+        <h1 class="headerLogo"> Hydro-Conecta</h1>
+        <nav class="headerNav" aria-label="Navegación principal">
+            <ul>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/dashboard.html">Resultados</a></li>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/map.html">Mapa</a></li>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/users.html">Usuarios</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content" role="main">
+        <!-- Sección: Usuarios -->
+        <section id="users-section" class="section" aria-labelledby="users-title">
+            <div class="section-header">
+                <h2 id="users-title">Usuarios Participantes</h2>
+                <p>Lista de personas que han completado la encuesta</p>
+            </div>
+            <div class="users-table" role="region" aria-label="Tabla de usuarios">
+                <div class="table-header" role="row">
+                    <div role="columnheader">Usuario</div>
+                    <div role="columnheader">Ubicación</div>
+                    <div role="columnheader">Fecha de Respuesta</div>
+                    <div role="columnheader">Estado</div>
+                </div>
+                <div id="usersTableBody" role="rowgroup"></div>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <div class="mainFooterContent">
+            <p class="customFont text2 whiteText">© 2024 Hydro-Conecta. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="/assets/js/dashboard.js"></script>
+</body>
+</html>

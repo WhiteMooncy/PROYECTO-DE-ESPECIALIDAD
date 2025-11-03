@@ -14,9 +14,9 @@
         <h1 class="headerLogo"> Hydro-Conecta</h1>
         <nav class="headerNav" aria-label="Navegación principal">
             <ul>
-                <li class="headerNavBlock" tabindex="0"><a class="headerNavLinks" href="">Resultados</a></li>
-                <li class="headerNavBlock" tabindex="0"><a class="headerNavLinks" href="">Mapa</a></li>
-                <li class="headerNavBlock" tabindex="0"><a class="headerNavLinks" href="">Usuarios</a></li>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/dashboard.html">Resultados</a></li>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/map.html">Mapa</a></li>
+                <li class="headerNavBlock"><a class="headerNavLinks" href="/pages/users.html">Usuarios</a></li>
             </ul>
         </nav>
     </header>
@@ -48,13 +48,13 @@
                         <div class="stat-value">92%</div>
                         <div class="stat-change positive">↑ 3% esta semana</div>
                     </div>
-                    <div class="mvoCard">
+                    <div id="slide-graph-one" class="mvoCard">
                         <div class="chart-title">Distribución de Respuestas por Pregunta</div>
                         <div class="chart">
                             <div class="bar-chart" id="barChart" role="img" aria-label="Gráfico de barras de respuestas por pregunta"></div>
                         </div>
                     </div>
-                    <div class="mvoCard">
+                    <div id="slide-graph" class="mvoCard">
                         <div class="chart-title">Respuestas por Categoría</div>
                         <div class="chart">
                             <div class="bar-chart" id="categoryChart" role="img" aria-label="Gráfico de barras de respuestas por categoría"></div>
@@ -63,57 +63,35 @@
                 </div>
             </div>
         </section>
-        <!-- Sección: Mapa -->
-        <section id="map-section" class="section" aria-labelledby="map-title">
-            <div class="section-header">
-                <h2 id="map-title">Mapa Interactivo</h2>
-                <p>Visualización geográfica de los resultados</p>
-            </div>
-            <div id="map" role="region" aria-label="Mapa de ubicaciones de usuarios"></div>
-        </section>
-        <!-- Sección: Usuarios -->
-        <section id="users-section" class="section" aria-labelledby="users-title">
-            <div class="section-header">
-                <h2 id="users-title">Usuarios Participantes</h2>
-                <p>Lista de personas que han completado la encuesta</p>
-            </div>
-            <div class="users-table" role="region" aria-label="Tabla de usuarios">
-                <div class="table-header" role="row">
-                    <div role="columnheader">Usuario</div>
-                    <div role="columnheader">Ubicación</div>
-                    <div role="columnheader">Fecha de Respuesta</div>
-                    <div role="columnheader">Estado</div>
-                </div>
-                <div id="usersTableBody" role="rowgroup"></div>
-            </div>
-        </section>
         <section id="results" class="section active" aria-labelledby="results-title">
-            <div class="comments-section" role="region" aria-label="Comentarios filtrados por IA">
-                <div class="section-header">
-                    <h2 id="comments-title">Comentarios, Solicitudes y Reclamos (Filtrados por IA)</h2>
-                    <p>Utiliza los filtros de Categoría y Sentimiento para gestionar los comentarios.</p>
-                </div>
-                <div class="filter-controls">
-                    <label for="categoryFilter">Categoría (IA):</label>
-                    <select id="categoryFilter" class="dashboard-filter">
-                        <option value="all">Todas las Categorías</option>
-                        <option value="reclamo">Reclamo</option>
-                        <option value="solicitud">Solicitud</option>
-                        <option value="duda">Duda</option>
-                        <option value="general">General</option>
-                    </select>
-                    <label for="sentimentFilter">Sentimiento (IA):</label>
-                    <select id="sentimentFilter" class="dashboard-filter">
-                        <option value="all">Todo el Sentimiento</option>
-                        <option value="positivo">Positivo</option>
-                        <option value="negativo">Negativo</option>
-                        <option value="neutral">Neutral</option>
-                    </select>
-                    
-                    <button id="applyFilterBtn" class="filter-button">Aplicar Filtros</button>
-                </div>
-                <div class="comments-list" id="commentsList">
-                    <div class="comment-item placeholder">Cargando comentarios...</div>
+            <div class="mvoCard">
+                <div class="comments-section" role="region" aria-label="Comentarios filtrados por IA">
+                    <div class="section-header">
+                        <h2 id="comments-title">Comentarios, Solicitudes y Reclamos (Filtrados por IA)</h2>
+                        <p>Utiliza los filtros de Categoría y Sentimiento para gestionar los comentarios.</p>
+                    </div>
+                    <div class="filter-controls">
+                        <label for="categoryFilter">Categoría (IA):</label>
+                        <select id="categoryFilter" class="dashboard-filter">
+                            <option value="all">Todas las Categorías</option>
+                            <option value="reclamo">Reclamo</option>
+                            <option value="solicitud">Solicitud</option>
+                            <option value="duda">Duda</option>
+                            <option value="general">General</option>
+                        </select>
+                        <label for="sentimentFilter">Sentimiento (IA):</label>
+                        <select id="sentimentFilter" class="dashboard-filter">
+                            <option value="all">Todo el Sentimiento</option>
+                            <option value="positivo">Positivo</option>
+                            <option value="negativo">Negativo</option>
+                            <option value="neutral">Neutral</option>
+                        </select>
+                        
+                        <button id="applyFilterBtn" class="filter-button">Aplicar Filtros</button>
+                    </div>
+                    <div class="comments-list" id="commentsList">
+                        <div class="comment-item placeholder">Cargando comentarios...</div>
+                    </div>
                 </div>
             </div>
         </section>
