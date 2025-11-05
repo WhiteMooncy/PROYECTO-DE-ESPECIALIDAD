@@ -22,21 +22,85 @@
     </header>
     <main class="main-content" role="main">
         <!-- Sección: Usuarios -->
-        <section id="users-section" class="section" aria-labelledby="users-title">
-            <div class="section-header">
-                <h2 id="users-title">Usuarios Participantes</h2>
-                <p>Lista de personas que han completado la encuesta</p>
-            </div>
-            <div class="users-table" role="region" aria-label="Tabla de usuarios">
-                <div class="table-header" role="row">
-                    <div role="columnheader">Usuario</div>
-                    <div role="columnheader">Ubicación</div>
-                    <div role="columnheader">Fecha de Respuesta</div>
-                    <div role="columnheader">Estado</div>
+        <section id="users-section" class="section active">
+    
+    <div class="section-header">
+        <h2>Gestión de Usuarios</h2>
+        <p>Lista completa de usuarios, incluyendo datos de contacto y comentarios recientes.</p>
+    </div>
+
+    <div class="users-table">
+        
+        <div class="table-header">
+            <div>Usuario</div>
+            <div>RUT</div>
+            <div>Comentario Reciente</div>
+            <div>Estado</div>
+        </div>
+
+        <div class="table-row">
+            
+            <div class="user-info" data-label="Usuario">
+                <div class="user-avatar">AD</div>
+                <div>
+                    <div style="font-weight: 600;">Alejandra Díaz</div>
+                    <small style="color: rgba(255, 255, 255, 0.5);">alejandra@mail.com</small>
                 </div>
-                <div id="usersTableBody" role="rowgroup"></div>
             </div>
-        </section>
+
+            <div data-label="RUT">
+                18.765.432-1
+            </div>
+            
+            <div data-label="Comentario Reciente" style="opacity: 0.8; font-style: italic;">
+                "El dashboard está mucho más limpio después de la actualización."
+            </div>
+            
+            <div data-label="Estado">
+                <span class="badge badge-active">Activo</span>
+            </div>
+        </div>
+
+        <div class="table-row">
+            <div class="user-info" data-label="Usuario">
+                <div class="user-avatar" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">RM</div>
+                <div>
+                    <div style="font-weight: 600;">Ricardo Montero</div>
+                    <small style="color: rgba(255, 255, 255, 0.5);">ricardo@mail.com</small>
+                </div>
+            </div>
+            <div data-label="RUT">
+                19.234.567-K
+            </div>
+            <div data-label="Comentario Reciente" style="opacity: 0.8; font-style: italic;">
+                "Tuve problemas al filtrar los datos de la semana pasada."
+            </div>
+            <div data-label="Estado">
+                <span class="badge" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c;">Suspendido</span>
+            </div>
+        </div>
+
+        <div class="table-row">
+            <div class="user-info" data-label="Usuario">
+                <div class="user-avatar" style="background: linear-gradient(135deg, #f1c40f, #f39c12);">SL</div>
+                <div>
+                    <div style="font-weight: 600;">Sofía López</div>
+                    <small style="color: rgba(255, 255, 255, 0.5);">sofia@mail.com</small>
+                </div>
+            </div>
+            <div data-label="RUT">
+                17.890.123-5
+            </div>
+            <div data-label="Comentario Reciente" style="opacity: 0.8; font-style: italic;">
+                "No hay comentarios recientes."
+            </div>
+            <div data-label="Estado">
+                <span class="badge badge-active">Activo</span>
+            </div>
+        </div>
+
+    </div>
+</section>
 
     </main>
     <footer>
