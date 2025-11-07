@@ -1,62 +1,222 @@
 /* ===========================
-    ESTILOS ESPECÍFICOS DEL FORMULARIO DE CUESTIONARIO
+    VARIABLES CSS PARA FORMULARIO
    =========================== */
-
-/* Contenedor principal de la pregunta */
-body[data-theme="form"] .questionBlock {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--concrete-2);
+:root {
+    --form-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --accent: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --border-color: #334155;
+    --error-color: #ef4444;
+    --success-color: #22c55e;
+    --input-bg: #0f172a;
 }
 
-/* Título de la pregunta */
-body[data-theme="form"] .question {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 15px;
+/* ===========================
+    RESET Y ESTILOS BASE
+   =========================== */
+body[data-theme="form"] {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--form-bg);
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+body[data-theme="form"] * {
+    box-sizing: border-box;
+}
+
+/* ===========================
+    HEADER STYLES - ESTILO DASHBOARD
+   =========================== */
+body[data-theme="form"] header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, #000000 0%, #0a1428 70%, rgba(10, 20, 40, 0.8) 100%);
+    padding: 0 0 1rem 0;
+    margin: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Degradado suave después del header */
+body[data-theme="form"] header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(180deg, rgba(10, 20, 40, 0.6) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+body[data-theme="form"] .headerLogo {
+    margin: 1rem 2rem;
+    padding: 0;
+    text-align: left;
+    font-size: clamp(1.8rem, 2.5dvw, 2.5rem);
+    background: linear-gradient(135deg, var(--accent) 0%, #1e6fb3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+body[data-theme="form"] .headerNav {
+    margin: 0 2rem 0 0;
+}
+
+body[data-theme="form"] .headerNav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+body[data-theme="form"] .headerNavBlock {
+    padding: 0.75rem 1.5rem;
+    background: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+body[data-theme="form"] .headerNavBlock:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+}
+
+body[data-theme="form"] .headerNavLinks {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body[data-theme="form"] .headerNavLinks:hover {
     color: var(--accent);
 }
 
-/* --- ESTILO PARA INPUTS DE TEXTO Y TEXTAREA (NUEVO) --- */
+/* Iconos para los enlaces */
+body[data-theme="form"] .headerNavBlock:nth-child(1) .headerNavLinks::before {
+    content: '🏠';
+    font-size: 1.1rem;
+}
+
+body[data-theme="form"] .headerNavBlock:nth-child(2) .headerNavLinks::before {
+    content: '👥';
+    font-size: 1.1rem;
+}
+
+body[data-theme="form"] .headerNavBlock:nth-child(3) .headerNavLinks::before {
+    content: '🔐';
+    font-size: 1.1rem;
+}
+
+/* ===========================
+    TARJETA PRINCIPAL
+   =========================== */
+body[data-theme="form"] .card {
+    max-width: 700px;
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="form"] #title {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+body[data-theme="form"] .lead {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+/* ===========================
+    CONTENEDOR DE PREGUNTAS
+   =========================== */
+body[data-theme="form"] .questionBlock {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+body[data-theme="form"] .question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+/* ===========================
+    INPUTS DE TEXTO Y TEXTAREA
+   =========================== */
 body[data-theme="form"] input[type="text"],
 body[data-theme="form"] textarea {
     width: 100%;
-    padding: 12px 15px;
+    padding: 0.875rem 1rem;
     border-radius: 8px;
-    border: 1px solid var(--concrete-2);
-    background-color: var(--card); /* Fondo oscuro como la tarjeta */
-    color: var(--text); /* Color de texto claro */
+    border: 2px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
     font-size: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    /* Eliminar borde de enfoque por defecto en algunos navegadores */
-    outline: none; 
+    font-family: inherit;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+body[data-theme="form"] textarea {
+    min-height: 100px;
+    resize: vertical;
 }
 
 body[data-theme="form"] input[type="text"]:focus,
 body[data-theme="form"] textarea:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3); /* Resplandor sutil del acento */
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+    background-color: var(--card-bg);
 }
 
-/* Estilo para el placeholder */
 body[data-theme="form"] input::placeholder,
 body[data-theme="form"] textarea::placeholder {
-    color: var(--concrete-2); /* Placeholder en gris */
-    opacity: 0.7;
+    color: #64748b;
+    opacity: 1;
 }
 
-/* Estilos de inputs (radio y checkbox) */
+/* ===========================
+    RADIO Y CHECKBOX
+   =========================== */
 body[data-theme="form"] .radio-group,
 body[data-theme="form"] .checkbox-group {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 10px;
-    /* Reducir el gap en móvil */
-    @media (max-width: 600px) {
-        flex-direction: column;
-        gap: 10px;
-    }
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
 }
 
 body[data-theme="form"] .radio-label,
@@ -64,66 +224,335 @@ body[data-theme="form"] .checkbox-label {
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 0.95rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    background-color: var(--card); 
-    border: 1px solid var(--concrete-2);
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    background-color: var(--input-bg);
+    border: 2px solid var(--border-color);
     transition: all 0.2s ease;
+    font-size: 0.95rem;
 }
 
 body[data-theme="form"] .radio-label:hover,
 body[data-theme="form"] .checkbox-label:hover {
-    background-color: #1a2a47; /* Ligeramente más claro */
+    background-color: var(--card-bg);
     border-color: var(--accent);
 }
 
 body[data-theme="form"] .radio-label input[type="radio"],
 body[data-theme="form"] .checkbox-label input[type="checkbox"] {
-    margin-right: 8px;
-    /* Estilos base para que sean visibles */
-    width: 16px;
-    height: 16px;
-    accent-color: var(--accent); /* Cambia el color nativo */
+    margin-right: 0.75rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
 }
 
-/* Feedback de validación y mensajes temporales */
+/* ===========================
+    CONTROLES (BOTONES)
+   =========================== */
+body[data-theme="form"] .controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+body[data-theme="form"] button {
+    padding: 0.875rem 1.75rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+body[data-theme="form"] button:not(.secondary) {
+    background: var(--accent);
+    color: white;
+}
+
+body[data-theme="form"] button:not(.secondary):hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+}
+
+body[data-theme="form"] button.secondary {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+body[data-theme="form"] button.secondary:hover {
+    background: #475569;
+}
+
+body[data-theme="form"] button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+body[data-theme="form"] button.submit-btn {
+    background: var(--success-color);
+}
+
+body[data-theme="form"] button.submit-btn:hover {
+    background: #16a34a;
+}
+
+/* ===========================
+    BARRA DE PROGRESO
+   =========================== */
+body[data-theme="form"] .progress {
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    margin-top: 1.5rem;
+    overflow: hidden;
+}
+
+body[data-theme="form"] #progressBar {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+/* ===========================
+    MENSAJES Y VALIDACIÓN
+   =========================== */
 body[data-theme="form"] .error-message {
-    color: #ff5555;
-    font-size: 0.85rem;
-    margin-top: 5px;
-    min-height: 18px; /* Evita Cumulative Layout Shift (CLS) */
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    min-height: 20px;
 }
 
 body[data-theme="form"] #tempMessage {
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 15px;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
     text-align: center;
     font-weight: 500;
 }
 
 body[data-theme="form"] #tempMessage.error {
-    background-color: #ffdddd;
-    color: #cc0000;
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
 }
 
-/* Estilos para el resumen de resultados */
+body[data-theme="form"] #tempMessage.success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+/* ===========================
+    RESULTADO/RESUMEN
+   =========================== */
+body[data-theme="form"] #result {
+    margin-top: 2rem;
+}
+
+body[data-theme="form"] #result.hidden {
+    display: none;
+}
+
 body[data-theme="form"] .summary {
-    background-color: var(--card);
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    border: 1px solid var(--concrete-2);
+    background-color: var(--input-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    border: 1px solid var(--border-color);
 }
 
 body[data-theme="form"] .summary-content {
-    white-space: pre-wrap; /* Mantiene saltos de línea y formateo */
+    white-space: pre-wrap;
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.8;
+    color: var(--text-secondary);
 }
 
-/* Botón de envío */
-body[data-theme="form"] button.submit-btn {
-    background-color: #4CAF50; /* Verde para finalizar */
+/* ===========================
+    FOOTER
+   =========================== */
+body[data-theme="form"] .mainFooter {
+    background: rgba(30, 41, 59, 0.95);
+    color: var(--text-secondary);
+    padding: 2rem 1rem 1rem;
+    margin-top: 3rem;
+}
+
+body[data-theme="form"] .footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+body[data-theme="form"] .footerSection h3,
+body[data-theme="form"] .footerSection h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+body[data-theme="form"] .footerSection ul {
+    list-style: none;
+    padding: 0;
+}
+
+body[data-theme="form"] .footerSection li {
+    margin-bottom: 0.5rem;
+}
+
+body[data-theme="form"] .footerSection a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body[data-theme="form"] .footerSection a:hover {
+    color: var(--accent);
+}
+
+body[data-theme="form"] .footerBottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+body[data-theme="form"] .emailNPhoneText,
+body[data-theme="form"] .footerCompanyPhrase {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+body[data-theme="form"] .footerCompanyName {
+    color: var(--accent);
+    font-size: 1.25rem;
+}
+
+/* ===========================
+    RESPONSIVE - MOBILE
+   =========================== */
+@media (max-width: 1024px) {
+    body[data-theme="form"] header {
+        padding: 0.5rem 0;
+    }
+    
+    body[data-theme="form"] .headerLogo {
+        margin: 0.75rem 1.5rem;
+    }
+    
+    body[data-theme="form"] .headerNav {
+        margin: 0 1.5rem 0 0;
+    }
+    
+    body[data-theme="form"] .headerNav ul {
+        gap: 0.5rem;
+    }
+    
+    body[data-theme="form"] .headerNavBlock {
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body[data-theme="form"] header {
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 1rem;
+    }
+    
+    body[data-theme="form"] header::after {
+        bottom: -20px;
+        height: 20px;
+    }
+    
+    body[data-theme="form"] .headerLogo {
+        font-size: 1.5rem;
+        margin: 0.5rem 1rem;
+        text-align: center;
+    }
+    
+    body[data-theme="form"] .headerNav {
+        margin: 0;
+        width: 100%;
+    }
+    
+    body[data-theme="form"] .headerNav ul {
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+    }
+    
+    body[data-theme="form"] .headerNavBlock {
+        padding: 0.5rem 1rem;
+    }
+    
+    body[data-theme="form"] .headerNavLinks {
+        font-size: 0.85rem;
+    }
+    
+    body[data-theme="form"] .headerNavLinks::before {
+        font-size: 1rem;
+    }
+    
+    body[data-theme="form"] .card {
+        width: 95%;
+        margin: 1rem auto;
+        padding: 1.5rem;
+    }
+    
+    body[data-theme="form"] #title {
+        font-size: 1.5rem;
+    }
+    
+    body[data-theme="form"] .lead {
+        font-size: 0.9rem;
+    }
+    
+    body[data-theme="form"] .controls {
+        flex-direction: column;
+    }
+    
+    body[data-theme="form"] button {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    body[data-theme="form"] .footerContent {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body[data-theme="form"] .card {
+        padding: 1.25rem;
+    }
+    
+    body[data-theme="form"] #title {
+        font-size: 1.35rem;
+    }
+    
+    body[data-theme="form"] .question {
+        font-size: 1rem;
+    }
+    
+    body[data-theme="form"] input[type="text"],
+    body[data-theme="form"] textarea,
+    body[data-theme="form"] .radio-label,
+    body[data-theme="form"] .checkbox-label {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
 }

@@ -13,11 +13,11 @@
     <!-- Header -->
     <header>
         <h1 class="headerLogo">Hydro-Conecta</h1>
-        <nav class="headerNav">
+        <nav class="headerNav" aria-label="Navegación principal">
             <ul>
                 <li class="headerNavBlock"><a href="index.html" class="headerNavLinks">Inicio</a></li>
-                <li class="headerNavBlock"><a href="views/nosotros.html" class="headerNavLinks">Nosotros</a></li>
-                <li class="headerNavBlock"><a href="views/contacto.html" class="headerNavLinks">Contacto</a></li>
+                <li class="headerNavBlock"><a href="pages/nosotros.html" class="headerNavLinks">Nosotros</a></li>
+                <li class="headerNavBlock"><a href="pages/dashboard.html" class="headerNavLinks">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -31,7 +31,7 @@
                     Mediante este sitio web podrás subir tus dudas, reclamos y solicitudes, solo debes de ingresar tus datos personales y de contacto y nosotros te contactaremos a la brevedad
                 </p>
             </div>
-                <a class="viewMoreBtn" href="../FrontEnd/views/nosotros.php">
+                <a class="viewMoreBtn" href="pages/form.html">
                     Presiona aquí para continuar
                 </a>
         </section>
@@ -98,42 +98,38 @@
         </section>
     </main>
     <!-- Footer -->
-    <footer class="mainFooter">
+    <footer class="dashboardFooter">
         <div class="footerContent">
-            <div class="footerSection footerSectionFirst">
+            <div class="footerSection">
                 <h3 class="footerCompanyName">Hydro-Conecta</h3>
-                <p style="text-align: start;" class="footerCompanyPhrase">Somos la empresa encargada de gestionar y operar la infraestructura hidroeléctrica del valle.</p>
+                <p class="footerCompanyPhrase">Somos la empresa encargada de gestionar y operar la infraestructura hidroeléctrica del valle.</p>
             </div>
             <div class="footerSection">
-                <h4 class="customFont whiteText">Informativos</h4>
-                <ul>
-                    <li><a href="index.html" class="customFont text2 whiteText">Lugares de pago</a></li>
-                    <li><a href="views/nosotros.html" class="customFont text2 whiteText">Oficinas de atención</a></li>
-                    <li><a href="views/servicios.html" class="customFont text2 whiteText">Necesito ayuda</a></li>
-                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Preguntas Frecuentes</a></li>
-                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Regulación Vigente</a></li>
-                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Políticas de Privacidad</a></li>
-                    <li><a href="views/contacto.html" class="customFont text2 whiteText">Regulación Vigente</a></li>
+                <h4 class="footerTitle">Informativos</h4>
+                <ul class="footerLinks">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pages/nosotros.html">Nosotros</a></li>
+                    <li><a href="pages/form.html">Encuesta</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Políticas de Privacidad</a></li>
                 </ul>
             </div>
             <div class="footerSection">
-                <h4 class="customFont whiteText">Contacto</h4>
-                <p class="emailNPhoneText">Email: info@hydroconecta.com</p>
-                <p class="emailNPhoneText">Tel: +51 000 000 000</p>
+                <h4 class="footerTitle">Contacto</h4>
+                <p class="footerText">Email: info@hydroconecta.com</p>
+                <p class="footerText">Tel: +51 000 000 000</p>
             </div>
-            <div class="footerSection footerSectionLast">
-                <h4 class="customFont whiteText">Redes Sociales</h4>
-                <div class="socialLinks">
-                    <ul>
-                    <li><a href="#" class="customFont text2 whiteText">Facebook</a></li>
-                    <li><a href="#" class="customFont text2 whiteText">Instagram</a></li>
-                    <li><a href="#" class="customFont text2 whiteText">YouTube</a></li>
-                    </ul>
-                </div>
+            <div class="footerSection">
+                <h4 class="footerTitle">Redes Sociales</h4>
+                <ul class="footerLinks">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
             </div>
         </div>
         <div class="footerBottom">
-            <p class="customFont text2 whiteText">&copy; 2025 DataSAvers. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Hydro-Conecta. Todos los derechos reservados.</p>
         </div>
     </footer>
     <script src="/assets/js/animations/swiperInit.js"></script>

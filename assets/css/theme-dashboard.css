@@ -33,6 +33,9 @@ body[data-theme="dashboard"] {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ============================
@@ -43,20 +46,40 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background: linear-gradient(180deg, #000000 0%, #0a1428 70%, rgba(10, 20, 40, 0.8) 100%);
     padding: 0 0 1rem 0;
     margin: 0;
-}/*corregir */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Degradado suave después del header */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(180deg, rgba(10, 20, 40, 0.6) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: -1;
+}
 
 .headerLogo {
-    margin: 1rem;
+    margin: 1rem 2rem;
     padding: 0;
-    text-align: center;
-    font-size: clamp(2.4rem, 2.5dvw, 3rem);
+    text-align: left;
+    font-size: clamp(1.8rem, 2.5dvw, 2.5rem);
+    background: linear-gradient(135deg, var(--accent) 0%, var(--water-mid) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
 }
 
 .headerNav {
-    margin: 0;
+    margin: 0 2rem 0 0;
     padding: 0;
     width: auto;
     height: auto;
@@ -70,42 +93,72 @@ header {
     list-style-type: none;
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .headerNavBlock {
-    padding: 0.3rem 0;
-    background-color: transparent;
+    padding: 0.75rem 1.5rem;
+    background: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 8px;
     position: relative;
     display: inline-block;
     text-decoration: none;
-    color: transparent;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.headerNavBlock:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+}
+
+.headerNavBlock.active {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(30, 111, 179, 0.2) 100%);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
 }
 
 .headerNavBlock::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--water-mid);
-    box-shadow: 0 10px 30px var(--water-mid);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.2s ease-in;
-}
-.headerNavBlock:hover::after {
-    transform: scaleX(1);
+    display: none; /* Removemos el efecto de línea anterior */
 }
 
 .headerNavLinks {
     text-decoration: none;
     color: rgb(255, 255, 255);
-    font-size: clamp(1.3rem, 1.5dvw, 2rem);
-    font-weight: 300;
+    font-size: clamp(0.95rem, 1.2dvw, 1.1rem);
+    font-weight: 500;
     margin: 0;
     padding: 0;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.headerNavLinks:hover {
+    color: var(--accent);
+}
+
+/* Iconos opcionales para los enlaces (puedes agregarlos después) */
+.headerNavLinks::before {
+    font-size: 1.1rem;
+}
+
+/* Iconos específicos */
+.headerNavBlock:nth-child(1) .headerNavLinks::before {
+    content: '📊';
+}
+
+.headerNavBlock:nth-child(2) .headerNavLinks::before {
+    content: '🗺️';
+}
+
+.headerNavBlock:nth-child(3) .headerNavLinks::before {
+    content: '👥';
 }
 
 
@@ -117,6 +170,8 @@ header {
     /* Mantenemos el margin-left aunque sidebar-width sea 0, por si se usa en el futuro */
     margin-left: var(--sidebar-width);
     padding: 2rem;
+    flex: 1;
+    min-height: calc(100vh - 200px);
 }
 
 .section {
@@ -543,62 +598,78 @@ header
     position: absolute;
     bottom: 0;
 }
+
 /* ============================
-    SECCIÓN DESKTOP DEL HEADER
+   RESPONSIVE - HEADER MEJORADO
    ============================ */
 
-@media (min-width: 768px) 
-{
-    header 
-{
-    padding: 0;
+@media (max-width: 1024px) {
+    header {
+        padding: 0.5rem 0;
+    }
+    
+    .headerLogo {
+        margin: 0.75rem 1.5rem;
+    }
+    
+    .headerNav {
+        margin: 0 1.5rem 0 0;
+    }
+    
+    .headerNav ul {
+        gap: 0.5rem;
+    }
+    
+    .headerNavBlock {
+        padding: 0.6rem 1rem;
+    }
 }
-    .headerLogo
-{
-    margin: 0.2rem auto 0.8rem auto;
-    padding: 0;
-    text-align: center;
-    font-size: clamp(1.5rem, 2.5dvw, 2.8rem);
-
-}
-    .headerNavLinks 
-{ 
-    text-decoration: none; 
-    color: rgb(255, 255, 255);
-    font-size: clamp(1.2rem, 1.5dvw, 1.3rem);
-    font-weight: 300;
-    margin: 0;
-    padding: 0;
-}
-.headerNav ul 
-{
-    gap: 6rem;
-}
-}
-/* ============================
-   RESPONSIVE
-   ============================ */
 
 @media (max-width: 768px) {
     /* Ajustes para dispositivos móviles */
     
     /** Header y Navegación **/
     header {
-        /* Quita el padding vertical para compactar el header */
-        padding: 0; 
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 1rem;
     }
-    .headerNav ul {
-        /* Reduce aún más el espacio para que quepan todos */
-        gap: 2rem; 
+    
+    header::after {
+        bottom: -20px;
+        height: 20px;
     }
-    .headerNavLinks {
-        /* El tamaño más pequeño es 1.2rem en lugar de clamp, para asegurar */
-        font-size: 1.2rem; 
-    }
-    .Pfooter {
+    
+    .headerLogo {
+        margin: 0.5rem 1rem;
+        font-size: 1.5rem;
         text-align: center;
-        margin: 1rem 0;
     }
+    
+    .headerNav {
+        margin: 0;
+        width: 100%;
+    }
+    
+    .headerNav ul {
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        padding: 0 1rem;
+    }
+    
+    .headerNavBlock {
+        padding: 0.5rem 1rem;
+    }
+    
+    .headerNavLinks {
+        font-size: 0.85rem;
+    }
+    
+    .headerNavLinks::before {
+        font-size: 1rem;
+    }
+    
     /** Contenido Principal **/
     .main-content {
         min-height: 83dvh;
@@ -649,3 +720,156 @@ header
     }
 }
 
+/* ============================
+   FOOTER DEL DASHBOARD
+   ============================ */
+.dashboardFooter {
+    background: linear-gradient(135deg, rgba(11, 61, 145, 0.15) 0%, rgba(2, 6, 23, 0.95) 100%);
+    border-top: 2px solid rgba(56, 189, 248, 0.2);
+    margin-top: 4rem;
+    padding: 3rem 2rem 1.5rem;
+    color: var(--text-light);
+    backdrop-filter: blur(10px);
+}
+
+.dashboardFooter .footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    padding-bottom: 2rem;
+}
+
+.dashboardFooter .footerSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.dashboardFooter .footerCompanyName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--water-mid) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dashboardFooter .footerCompanyPhrase {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.dashboardFooter .footerTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.dashboardFooter .footerText {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.dashboardFooter .footerLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.dashboardFooter .footerLinks li {
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.dashboardFooter .footerLinks li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.dashboardFooter .footerLinks a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.dashboardFooter .footerLinks a:hover {
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+.dashboardFooter .footerBottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.dashboardFooter .footerBottom p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* RESPONSIVE FOOTER DASHBOARD */
+@media (max-width: 768px) {
+    .dashboardFooter {
+        padding: 2rem 1.5rem 1rem;
+        margin-top: 2rem;
+    }
+    
+    .dashboardFooter .footerContent {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .dashboardFooter .footerSection {
+        text-align: center;
+    }
+    
+    .dashboardFooter .footerLinks li {
+        padding-left: 0;
+    }
+    
+    .dashboardFooter .footerLinks li::before {
+        display: none;
+    }
+    
+    .dashboardFooter .footerTitle {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboardFooter {
+        padding: 1.5rem 1rem 0.75rem;
+    }
+    
+    .dashboardFooter .footerCompanyName {
+        font-size: 1.25rem;
+    }
+    
+    .dashboardFooter .footerContent {
+        gap: 1.5rem;
+    }
+}

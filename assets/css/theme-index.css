@@ -25,7 +25,7 @@ body[data-theme="represa"] {
 SECCIÓN MOVIL DEL HEADER
    ============================ */
 /* Header */
-header 
+header
 {
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@ header
 .headerNavBlock {
     padding: 0.3rem 0;
     background-color: transparent;
-    position: relative; 
+    position: relative;
     display: inline-block;
     text-decoration: none;
     color: transparent;
@@ -71,24 +71,24 @@ header
 .headerNavBlock::after {
     content: '';
     position: absolute;
-    bottom: 0; 
-    left: 0;    
-    width: 100%; 
-    height: 2px; 
-    background-color: var(--water-mid);  
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--water-mid);
     box-shadow: 0 10px 30px var(--water-mid);
-    transform: scaleX(0); 
-    transform-origin: center; 
+    transform: scaleX(0);
+    transform-origin: center;
     
-    transition: transform 0.2s ease-in; 
+    transition: transform 0.2s ease-in;
 }
 
 .headerNavBlock:hover::after {
-    transform: scaleX(1); 
+    transform: scaleX(1);
 }
-.headerNavLinks 
-{ 
-    text-decoration: none; 
+.headerNavLinks
+{
+    text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: clamp(1.3rem, 1.5dvw, 2rem);
     font-weight: 300;
@@ -109,9 +109,9 @@ header
     SECCIÓN DESKTOP DEL HEADER
    ============================ */
 
-@media (min-width: 768px) 
+@media (min-width: 768px)
 {
-    header 
+    header
 {
     padding: 0;
 }
@@ -123,16 +123,16 @@ header
     font-size: clamp(1.5rem, 2.5dvw, 2.8rem);
 
 }
-    .headerNavLinks 
-{ 
-    text-decoration: none; 
+    .headerNavLinks
+{
+    text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: clamp(1.2rem, 1.5dvw, 1.3rem);
     font-weight: 300;
     margin: 0;
     padding: 0;
 }
-.headerNav ul 
+.headerNav ul
 {
     gap: 6rem;
 }
@@ -213,6 +213,155 @@ header
     font-size: 1.27rem;
 }
 
+}
+
+/* ============================
+    SECCIÓN "QUIÉNES SOMOS" (ABOUT)
+   ============================ */
+
+.aboutSection {
+    background: linear-gradient(135deg, #0a1628 0%, #0f2744 100%);
+    padding: 4rem 2rem;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutContainer {
+    max-width: 1400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.aboutContent {
+    color: var(--text-light);
+}
+
+.aboutTitle {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.aboutText {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+.dam-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.dam-stat {
+    background: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.dam-stat:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.2);
+}
+
+.dam-stat .value {
+    display: block;
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.dam-stat .label {
+    display: block;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.aboutImage {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.aboutImage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* RESPONSIVE - TABLET */
+@media (max-width: 1024px) {
+    .aboutContainer {
+        gap: 3rem;
+    }
+    
+    .dam-stats {
+        gap: 1rem;
+    }
+}
+
+/* RESPONSIVE - MOBILE */
+@media (max-width: 768px) {
+    .aboutSection {
+        padding: 3rem 1.5rem;
+        min-height: auto;
+    }
+    
+    .aboutContainer {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .aboutImage {
+        min-height: 350px;
+        order: -1; /* Imagen primero en móviles */
+    }
+    
+    .dam-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .dam-stat {
+        padding: 1.25rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutSection {
+        padding: 2rem 1rem;
+    }
+    
+    .aboutImage {
+        min-height: 300px;
+    }
 }
 
 /* ============================
@@ -696,3 +845,156 @@ body[data-theme="represa"] .viewMoreBtn {
     }
 }
 
+/* ============================
+   FOOTER DEL INDEX (ESTILO DASHBOARD)
+   ============================ */
+.dashboardFooter {
+    background: linear-gradient(135deg, rgba(11, 61, 145, 0.15) 0%, rgba(2, 6, 23, 0.95) 100%);
+    border-top: 2px solid rgba(56, 189, 248, 0.2);
+    margin-top: 4rem;
+    padding: 3rem 2rem 1.5rem;
+    color: var(--text-light);
+    backdrop-filter: blur(10px);
+}
+
+.dashboardFooter .footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    padding-bottom: 2rem;
+}
+
+.dashboardFooter .footerSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.dashboardFooter .footerCompanyName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--water-mid) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dashboardFooter .footerCompanyPhrase {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.dashboardFooter .footerTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.dashboardFooter .footerText {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.dashboardFooter .footerLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.dashboardFooter .footerLinks li {
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.dashboardFooter .footerLinks li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.dashboardFooter .footerLinks a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.dashboardFooter .footerLinks a:hover {
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+.dashboardFooter .footerBottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.dashboardFooter .footerBottom p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* RESPONSIVE FOOTER DASHBOARD */
+@media (max-width: 768px) {
+    .dashboardFooter {
+        padding: 2rem 1.5rem 1rem;
+        margin-top: 2rem;
+    }
+    
+    .dashboardFooter .footerContent {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .dashboardFooter .footerSection {
+        text-align: center;
+    }
+    
+    .dashboardFooter .footerLinks li {
+        padding-left: 0;
+    }
+    
+    .dashboardFooter .footerLinks li::before {
+        display: none;
+    }
+    
+    .dashboardFooter .footerTitle {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboardFooter {
+        padding: 1.5rem 1rem 0.75rem;
+    }
+    
+    .dashboardFooter .footerCompanyName {
+        font-size: 1.25rem;
+    }
+    
+    .dashboardFooter .footerContent {
+        gap: 1.5rem;
+    }
+}
