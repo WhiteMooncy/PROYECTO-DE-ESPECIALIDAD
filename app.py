@@ -6,10 +6,6 @@
 
 from flask import Flask, jsonify
 from flask_cors import CORS 
-import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.pipeline import make_pipeline
 import random
 
 # ------------------------------------
@@ -23,42 +19,40 @@ CORS(app)
 # 2. SIMULACIÓN DE LA IA (Clasificador de Comentarios)
 # ------------------------------------
 
-# Datos de entrenamiento SIMULADOS
-training_data = pd.DataFrame({
-    'text': [
-        "El servicio al cliente es pésimo, una vergüenza. Necesito una solución urgente al corte de agua.",
-        "Me gustaría solicitar una copia del informe anual sobre el estado de la represa.",
-        "Tengo una duda sobre los horarios de atención, ¿están abiertos los fines de semana?",
-        "Felicito al equipo por el excelente trabajo en la reparación de la fuga, muy eficiente.",
-        "El acceso está bloqueado y es un problema constante en el sector norte.",
-        "¿Cuáles son los pasos para presentar un reclamo formal de facturación?",
-        "La página web funciona muy bien y es fácil de usar, gran mejora.",
-        "Necesitamos más información sobre el próximo corte programado.",
-        "La respuesta fue lenta, estoy muy insatisfecho.",
-        "Agradezco la pronta gestión de mi solicitud de cambio de medidor."
-    ],
-    'category': ['Reclamo', 'Solicitud', 'Duda', 'General', 'Reclamo', 'Duda', 'General', 'Duda', 'Reclamo', 'Solicitud'],
-    'sentiment': ['Negativo', 'Neutral', 'Neutral', 'Positivo', 'Negativo', 'Neutral', 'Positivo', 'Neutral', 'Negativo', 'Positivo']
-})
+# Palabras clave para clasificación simple
+RECLAMO_WORDS = ['pésimo', 'vergüenza', 'problema', 'malo', 'insatisfecho', 'inaceptable', 'grosero']
+SOLICITUD_WORDS = ['solicitar', 'solicitud', 'quiero', 'necesito', 'podría', 'gestión']
+DUDA_WORDS = ['duda', 'pregunta', '¿', 'cómo', 'cuándo', 'información']
 
-# Crear y entrenar el modelo de Pipeline (Vectorizador + Clasificador)
-# Usamos un modelo simple para la demostración
-model = make_pipeline(TfidfVectorizer(), MultinomialNB())
-model.fit(training_data['text'], training_data['category'])
-# Clonar y entrenar un modelo para sentimiento
-sentiment_model = make_pipeline(TfidfVectorizer(), MultinomialNB())
-sentiment_model.fit(training_data['text'], training_data['sentiment'])
-
+NEGATIVO_WORDS = ['pésimo', 'vergüenza', 'problema', 'malo', 'insatisfecho', 'inaceptable', 'grosero', 'lenta']
+POSITIVO_WORDS = ['excelente', 'felicito', 'fantástico', 'perfecto', 'satisfecho', 'gran', 'rápido']
 
 def classify_comment(text):
     """Clasifica el texto dado en una categoría y un sentimiento (simulación de IA)."""
     try:
-        category = model.predict([text])[0]
-        sentiment = sentiment_model.predict([text])[0]
+        text_lower = text.lower()
+        
+        # Clasificar categoría
+        if any(word in text_lower for word in RECLAMO_WORDS):
+            category = "Reclamo"
+        elif any(word in text_lower for word in SOLICITUD_WORDS):
+            category = "Solicitud"
+        elif any(word in text_lower for word in DUDA_WORDS):
+            category = "Duda"
+        else:
+            category = "General"
+        
+        # Clasificar sentimiento
+        if any(word in text_lower for word in NEGATIVO_WORDS):
+            sentiment = "Negativo"
+        elif any(word in text_lower for word in POSITIVO_WORDS):
+            sentiment = "Positivo"
+        else:
+            sentiment = "Neutral"
+            
         return category, sentiment
     except Exception as e:
-        print(f"Error en la clasificación de IA: {e}")
-        # Retorna valores por defecto si falla
+        print(f"Error en la clasificación: {e}")
         return "General", "Neutral" 
 
 
