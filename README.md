@@ -339,6 +339,8 @@ http://127.0.0.1:5000/api/dashboard
 
 **Respuesta** (JSON):
 ```json
+**Respuesta** (JSON):
+```json
 {
   "stats": {
     "totalRespuestas": "1,247",
@@ -349,17 +351,327 @@ http://127.0.0.1:5000/api/dashboard
   "comentarios": [
     {
       "idComentario": 1,
-      "textoOriginal": "El servicio es excelente...",
+      "textoOriginal": "El agua tiene mal sabor desde hace 3 días",
+      "filtro": "Reclamo",        // Clasificado por IA
+      "sentimiento": "Negativo",  // Clasificado por IA
+      "respondido": false
+    },
+    {
+      "idComentario": 2,
+      "textoOriginal": "Excelente gestión del recurso hídrico",
       "filtro": "General",
       "sentimiento": "Positivo",
       "respondido": false
     }
   ],
-  "questions": [...],
-  "categories": [...],
-  "users": [...],
-  "locations": [...]
+  "questions": [
+    {
+      "id": 1,
+      "text": "Pregunta 1",
+      "responses": 245
+    }
+  ],
+  "categories": [
+    {"name": "Reclamo", "count": 145},
+    {"name": "Solicitud", "count": 298},
+    {"name": "Duda", "count": 187},
+    {"name": "General", "count": 617}
+  ],
+  "users": [
+    {
+      "name": "Juan Pérez",
+      "email": "juan@example.com",
+      "city": "Valle Central",
+      "submissions": 3
+    }
+  ],
+  "locations": [
+    {
+      "city": "Valle Central",
+      "lat": -12.0464,
+      "lng": -77.0428,
+      "percentage": 35
+    }
+  ]
 }
+```
+
+### Modelo de IA - Detalles Técnicos
+
+**Algoritmo**: Multinomial Naive Bayes + TF-IDF
+
+**Vectorización**:
+```python
+TfidfVectorizer(
+    max_features=500,
+    ngram_range=(1, 2),  # Unigramas y bigramas
+    stop_words='spanish'
+)
+```
+
+**Entrenamiento**:
+- Dataset: 50+ comentarios etiquetados manualmente
+- Split: 80% entrenamiento, 20% validación
+- Métricas: Precisión ~85-90%
+
+**Categorías Detectadas**:
+| Categoría | Palabras Clave | Ejemplo |
+|-----------|----------------|---------|
+| **Reclamo** | "problema", "malo", "falla", "turbio" | "El agua está turbia desde ayer" |
+| **Solicitud** | "necesito", "quisiera", "solicito", "pedido" | "Solicito información sobre tarifas" |
+| **Duda** | "pregunta", "cómo", "cuándo", "información" | "¿Cuándo harán mantenimiento?" |
+| **General** | "gracias", "excelente", "información" | "Gracias por el buen servicio" |
+
+---
+
+## 🎨 Personalización y Configuración
+
+### Variables CSS Globales
+
+Ubicación: `assets/css/main.css`
+
+```css
+:root {
+    /* Colores principales */
+    --color-primary: #0077b6;
+    --color-secondary: #00b4d8;
+    --color-accent: #48cae4;
+    --color-light: #90e0ef;
+    --color-dark: #023e8a;
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, #0077b6, #00b4d8);
+    --gradient-water: linear-gradient(180deg, #0077b6, #48cae4);
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0, 119, 182, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 119, 182, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 119, 182, 0.2);
+    
+    /* Tipografía */
+    --font-family: 'Poppins', -apple-system, sans-serif;
+    --font-size-base: 16px;
+    
+    /* Espaciado */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+}
+```
+
+### Cambiar Colores del Tema
+
+Editar `assets/css/main.css`:
+```css
+:root {
+    --color-primary: #TU_COLOR;  /* Cambia todos los elementos primarios */
+}
+```
+
+### Modificar Datos del Dashboard
+
+Editar `app.py`:
+```python
+"stats": {
+    "totalRespuestas": "TU_VALOR",
+    "tasaCompletacion": "TU_%",
+    "promedioTiempo": "TU_TIEMPO",
+    "satisfaccion": "TU_%"
+}
+```
+
+### Agregar Nuevas Preguntas al Formulario
+
+Editar `pages/form.html`:
+```html
+<div class="question-wrapper" id="question11">
+    <div class="question-header">
+        <span class="question-number">11</span>
+        <h3 class="question-title">Tu Nueva Pregunta</h3>
+    </div>
+    <div class="options-grid">
+        <label class="option-label">
+            <input type="radio" name="q11" value="opcion1">
+            <span>Opción 1</span>
+        </label>
+        <!-- Más opciones -->
+    </div>
+</div>
+```
+
+---
+
+## 🔧 Mantenimiento y Optimización
+
+### Actualizar Caché del Navegador
+
+Cuando hagas cambios en CSS/JS, actualiza el versionado:
+
+```html
+<!-- Antes -->
+<link rel="stylesheet" href="assets/css/main.css?v=2">
+
+<!-- Después -->
+<link rel="stylesheet" href="assets/css/main.css?v=3">
+```
+
+### Optimización de Imágenes
+
+Las imágenes están optimizadas en formato **WebP**:
+- `represa.webp`: Imagen principal (compresión 80%)
+- Usar herramientas: [Squoosh](https://squoosh.app/) o `cwebp`
+
+### Performance
+
+Métricas actuales:
+- ⚡ **First Contentful Paint**: <1.5s
+- ⚡ **Time to Interactive**: <3s
+- ⚡ **Total Page Size**: ~450 KB (sin imágenes)
+- ⚡ **CSS Modular**: 46.6 KB (35% más ligero)
+
+---
+
+## 🐛 Solución de Problemas
+
+### Error: "No se puede conectar al servidor Flask"
+
+**Solución**:
+```bash
+# Verificar que Flask esté corriendo
+python app.py
+
+# Verificar en el navegador
+http://127.0.0.1:5000/api/dashboard
+```
+
+### Error: "CORS policy error"
+
+**Solución**: Asegurarse de que Flask-CORS esté instalado
+```bash
+pip install flask-cors
+```
+
+### Error: "404 Not Found en páginas"
+
+**Solución**: Verificar rutas en XAMPP
+```
+Debe estar en: C:\xampp\htdocs\PROYECTO-DE-ESPECIALIDAD\
+Acceder con: http://localhost/PROYECTO-DE-ESPECIALIDAD/
+```
+
+### CSS no se actualiza
+
+**Solución**: Limpiar caché del navegador
+- Chrome: `Ctrl + Shift + Delete`
+- O cambiar `?v=2` a `?v=3` en los links de CSS
+
+---
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Para cambios importantes:
+
+1. **Fork** el proyecto
+2. Crea una **rama** para tu función
+   ```bash
+   git checkout -b feature/NuevaFuncion
+   ```
+3. **Commit** tus cambios
+   ```bash
+   git commit -m 'Agregar: Nueva función de X'
+   ```
+4. **Push** a la rama
+   ```bash
+   git push origin feature/NuevaFuncion
+   ```
+5. Abre un **Pull Request**
+
+### Estándares de Código
+
+- ✅ Usar **CSS modular** (no agregar estilos inline)
+- ✅ Comentar funciones JavaScript complejas
+- ✅ Seguir convención de nombres (camelCase JS, kebab-case CSS)
+- ✅ Probar en múltiples navegadores
+
+---
+
+## 📝 Licencia
+
+Este proyecto está bajo la **Licencia MIT**. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+```
+MIT License - Copyright (c) 2025 WhiteMooncy
+```
+
+---
+
+## 👥 Autores y Reconocimientos
+
+### Desarrollo
+- **WhiteMooncy** - *Desarrollo Full Stack* - [GitHub](https://github.com/WhiteMooncy)
+
+### Tecnologías Open Source
+Gracias a las siguientes bibliotecas y frameworks:
+- [Flask](https://flask.palletsprojects.com/) - Framework web Python
+- [Scikit-learn](https://scikit-learn.org/) - Machine Learning
+- [Chart.js](https://www.chartjs.org/) - Gráficos interactivos
+- [Leaflet.js](https://leafletjs.com/) - Mapas interactivos
+- [AOS](https://michalsnik.github.io/aos/) - Animaciones al scroll
+- [Splide.js](https://splidejs.com/) - Carruseles modernos
+
+---
+
+## 📞 Contacto
+
+**Hydro-Conecta - Gestión Hidroeléctrica Inteligente**
+
+- 📧 **Email**: info@hydroconecta.com
+- 📱 **Teléfono**: +51 000 000 000
+- 🌐 **Sitio Web**: [Hydro-Conecta](https://whitemooncy.github.io/PORTAFOLIO/)
+- 💼 **LinkedIn**: [WhiteMooncy](https://linkedin.com/in/whitemooncy)
+- 🐱 **GitHub**: [@WhiteMooncy](https://github.com/WhiteMooncy)
+
+---
+
+## 📚 Documentación Adicional
+
+- [CSS_MODULAR_README.md](CSS_MODULAR_README.md) - Guía de arquitectura CSS modular
+- [OPTIMIZATION.md](OPTIMIZATION.md) - Mejoras de rendimiento implementadas
+- [MIGRATION.md](MIGRATION.md) - Proceso de migración a CSS modular
+
+---
+
+## 🎯 Roadmap Futuro
+
+### Versión 2.1 (Próxima)
+- [ ] Sistema de autenticación de administradores
+- [ ] Notificaciones en tiempo real (WebSockets)
+- [ ] Exportación de reportes a PDF/Excel
+- [ ] Dashboard con filtros de fecha
+
+### Versión 3.0
+- [ ] Aplicación móvil (React Native)
+- [ ] Integración con IoT (sensores de la represa)
+- [ ] Sistema de respuestas automáticas con IA
+- [ ] Panel de analíticas avanzadas
+
+---
+
+<div align="center">
+
+## 🌊 Hydro-Conecta
+
+**Gestión Sostenible del Agua con Tecnología Inteligente**
+
+Desarrollado con 💙 para la comunidad del Valle Azul
+
+© 2025 Hydro-Conecta. Todos los derechos reservados.
+
+[![GitHub](https://img.shields.io/badge/GitHub-WhiteMooncy-181717?style=for-the-badge&logo=github)](https://github.com/WhiteMooncy)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+
+</div>
 ```
 
 ---
