@@ -18,6 +18,15 @@
     backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: var(--radius-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.header-content {
+    flex: 1;
 }
 
 .dashboard-header h1 {
@@ -37,6 +46,63 @@
 .dashboard-header p {
     font-size: 1.1rem;
     color: var(--color-text-light);
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-filter,
+.btn-export {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-family);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    border: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-filter {
+    background: white;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-filter:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-export {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.btn-export:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, #006ba1, #0096c7);
+}
+
+.btn-filter:active,
+.btn-export:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-filter i,
+.btn-export i {
+    font-size: 1rem;
 }
 
 /* ==================== STATS GRID ==================== */
@@ -217,6 +283,75 @@
     opacity: 0.3;
 }
 
+/* ==================== CUSTOM BAR CHARTS ==================== */
+#barChart, #categoryChart {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.bar-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.bar-label {
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-dark);
+    margin-bottom: 0.25rem;
+}
+
+.bar-value {
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.bar-inner {
+    height: 40px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    color: white;
+    font-weight: var(--font-weight-medium);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.bar-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2));
+    animation: shimmer 2s infinite;
+}
+
+.bar-inner:hover {
+    transform: scaleX(1.02);
+    box-shadow: var(--shadow-md);
+}
+
+.bar-inner.category {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
 /* ==================== COMMENTS SECTION ==================== */
 .comments-section {
     background: white;
@@ -287,6 +422,94 @@
     outline: none;
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+}
+
+/* ==================== FILTER & ACTION BUTTONS ==================== */
+.filter-btn {
+    padding: 0.75rem 2rem;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-family);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, #006ba1, #0096c7);
+}
+
+.filter-btn:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-btn i {
+    font-size: 1.1rem;
+}
+
+/* ==================== CHART ACTION BUTTONS ==================== */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.chart-header h3 {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chart-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chart-action-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.chart-action-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.chart-action-btn:active {
+    transform: translateY(0);
+}
+
+.chart-action-btn i {
+    pointer-events: none;
 }
 
 .filter-button {
@@ -400,12 +623,25 @@
     
     .dashboard-header {
         padding: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     .dashboard-header h1 {
         font-size: 2rem;
         flex-direction: column;
         align-items: flex-start;
+    }
+    
+    .header-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .btn-filter,
+    .btn-export {
+        width: 100%;
+        justify-content: center;
     }
     
     .stats-grid {
@@ -416,6 +652,17 @@
         font-size: 2rem;
     }
     
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .chart-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
     .filter-controls {
         flex-direction: column;
     }
@@ -424,8 +671,29 @@
         width: 100%;
     }
     
+    .filter-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
     .filter-button {
         width: 100%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card-value {
+        font-size: 2rem;
+    }
+    
+    .chart-action-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
     }
 }

@@ -175,7 +175,7 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <canvas id="barChart"></canvas>
+                    <div id="barChart"></div>
                 </div>
             </div>
 
@@ -192,7 +192,7 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <canvas id="categoryChart"></canvas>
+                    <div id="categoryChart"></div>
                 </div>
             </div>
         </section>
@@ -307,5 +307,30 @@
             <p>Panel administrativo desarrollado con <i class="fas fa-heart"></i> para la comunidad</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar Toggle
+        const navbarToggler = document.getElementById('navbar-toggler');
+        const navbarMenu = document.getElementById('navbar-menu');
+        
+        if(navbarToggler){
+            navbarToggler.addEventListener('click', () => {
+                navbarMenu.classList.toggle('active');
+                navbarToggler.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>
