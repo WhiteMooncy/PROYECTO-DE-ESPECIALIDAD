@@ -3,128 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Administrativo - Encuestas</title>
+    <title>Panel Administrativo - Encuestas | Hydro-Conecta</title>
     <meta name="description" content="Panel administrativo para visualización de resultados de encuestas">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Leaflet para mapas -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap?v=2" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/theme-dashboard.css?v=2" />
+    
+    <!-- Stylesheets Modulares -->
+    <link rel="stylesheet" href="../assets/css/main.css?v=2">
+    <link rel="stylesheet" href="../assets/css/components.css?v=2">
+    <link rel="stylesheet" href="../assets/css/dashboard.css?v=2">
 </head>
 <body data-theme="dashboard">
-    <header>
-        <h1 class="headerLogo">Hydro-Conecta</h1>
-        <nav class="headerNav" aria-label="Navegación principal">
-            <ul>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="dashboard.html">Resultados</a></li>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="map.html">Mapa</a></li>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="users.html">Usuarios</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main-content" role="main">
-        <section id="results" class="section active" aria-labelledby="results-title">
-            <div class="mvoCard-header">
-                <h2 id="results-title">Resultados de la Encuesta</h2>
+    <!-- SVG Waves Background -->
+    <div class="waves-background">
+        <div class="wave wave-1">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,50 Q150,100 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="#0077b6"/>
+            </svg>
+        </div>
+        <div class="wave wave-2">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,70 Q200,20 400,70 T800,70 T1200,70 L1200,120 L0,120 Z" fill="#00b4d8"/>
+            </svg>
+        </div>
+        <div class="wave wave-3">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,30 Q250,80 500,30 T1000,30 T1500,30 L1500,120 L0,120 Z" fill="#48cae4"/>
+            </svg>
+        </div>
+        <div class="wave wave-4">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,90 Q300,40 600,90 T1200,90 L1200,120 L0,120 Z" fill="#90e0ef"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar-modern">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-brand">
+                <i class="fas fa-water"></i>
+                <span>Hydro-Conecta</span>
+            </a>
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="form.html" class="nav-link">Formulario</a>
+                <a href="dashboard.html" class="nav-link-login active">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Dashboard Content -->
+    <main class="dashboard-content" role="main">
+        <header class="dashboard-header" data-aos="fade-up">
+            <div class="header-content">
+                <h1>Resultados de la Encuesta</h1>
                 <p>Análisis general de las respuestas recibidas</p>
             </div>
-            <div class="mvoWrapper">
-                <div class="stats-grid" role="region" aria-label="Estadísticas generales">
-                    <div class="mvoCard">
-                        <div class="stat-label">Total Respuestas</div>
-                        <div class="stat-value">1,247</div>
-                        <div class="stat-change positive">↑ 12% esta semana</div>
+            <div class="header-actions">
+                <button class="btn-filter">
+                    <i class="fas fa-filter"></i>
+                    Filtros
+                </button>
+                <button class="btn-export">
+                    <i class="fas fa-download"></i>
+                    Exportar
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <section class="stats-grid" data-aos="fade-up" role="region" aria-label="Estadísticas generales">
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-label">Total Respuestas</span>
+                    <div class="stat-card-icon">
+                        <i class="fas fa-file-alt"></i>
                     </div>
-                    <div class="mvoCard">
-                        <div class="stat-label">Tasa de Completación</div>
-                        <div class="stat-value">87%</div>
-                        <div class="stat-change positive">↑ 5% esta semana</div>
+                </div>
+                <div class="stat-card-value">1,247</div>
+                <div class="stat-card-footer">
+                    <span class="stat-trend positive">
+                        <i class="fas fa-arrow-up"></i> +12%
+                    </span>
+                    <span class="stat-period">esta semana</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-label">Tasa de Completación</span>
+                    <div class="stat-card-icon">
+                        <i class="fas fa-check-circle"></i>
                     </div>
-                    <div class="mvoCard">
-                        <div class="stat-label">Promedio Tiempo</div>
-                        <div class="stat-value">4.2m</div>
-                        <div class="stat-change negative">↓ 0.3m esta semana</div>
+                </div>
+                <div class="stat-card-value">87%</div>
+                <div class="stat-card-footer">
+                    <span class="stat-trend positive">
+                        <i class="fas fa-arrow-up"></i> +5%
+                    </span>
+                    <span class="stat-period">esta semana</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-label">Promedio Tiempo</span>
+                    <div class="stat-card-icon">
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <div class="mvoCard">
-                        <div class="stat-label">Satisfacción</div>
-                        <div class="stat-value">92%</div>
-                        <div class="stat-change positive">↑ 3% esta semana</div>
+                </div>
+                <div class="stat-card-value">4.2m</div>
+                <div class="stat-card-footer">
+                    <span class="stat-trend negative">
+                        <i class="fas fa-arrow-down"></i> +0.3m
+                    </span>
+                    <span class="stat-period">esta semana</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-label">Satisfacción</span>
+                    <div class="stat-card-icon">
+                        <i class="fas fa-smile"></i>
                     </div>
-                    <div id="slide-graph-one" class="mvoCard">
-                        <div class="chart-title">Distribución de Respuestas por Pregunta</div>
-                        <div class="chart">
-                            <div class="bar-chart" id="barChart" role="img" aria-label="Gráfico de barras de respuestas por pregunta"></div>
-                        </div>
-                    </div>
-                    <div id="slide-graph" class="mvoCard">
-                        <div class="chart-title">Respuestas por Categoría</div>
-                        <div class="chart">
-                            <div class="bar-chart" id="categoryChart" role="img" aria-label="Gráfico de barras de respuestas por categoría"></div>
-                        </div>
-                    </div>
+                </div>
+                <div class="stat-card-value">92%</div>
+                <div class="stat-card-footer">
+                    <span class="stat-trend positive">
+                        <i class="fas fa-arrow-up"></i> +3%
+                    </span>
+                    <span class="stat-period">esta semana</span>
                 </div>
             </div>
         </section>
-        <section id="results" class="section active" aria-labelledby="results-title">
-            <div class="mvoCard">
-                <div class="comments-section" role="region" aria-label="Comentarios filtrados por IA">
-                    <div class="section-header">
-                        <h2 id="comments-title">Comentarios, Solicitudes y Reclamos (Filtrados por IA)</h2>
-                        <p>Utiliza los filtros de Categoría y Sentimiento para gestionar los comentarios.</p>
+
+        <!-- Charts Grid -->
+        <section class="charts-grid" data-aos="fade-up">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Distribución de Respuestas por Pregunta</h3>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" title="Actualizar">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button class="chart-action-btn" title="Pantalla completa">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
-                    <div class="filter-controls">
-                        <label for="categoryFilter">Categoría (IA):</label>
-                        <select id="categoryFilter" class="dashboard-filter">
-                            <option value="all">Todas las Categorías</option>
-                            <option value="reclamo">Reclamo</option>
-                            <option value="solicitud">Solicitud</option>
-                            <option value="duda">Duda</option>
-                            <option value="general">General</option>
-                        </select>
-                        <label for="sentimentFilter">Sentimiento (IA):</label>
-                        <select id="sentimentFilter" class="dashboard-filter">
-                            <option value="all">Todo el Sentimiento</option>
-                            <option value="positivo">Positivo</option>
-                            <option value="negativo">Negativo</option>
-                            <option value="neutral">Neutral</option>
-                        </select>
-                        
-                        <button id="applyFilterBtn" class="filter-button">Aplicar Filtros</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Respuestas por Categoría</h3>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" title="Actualizar">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button class="chart-action-btn" title="Pantalla completa">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
-                    <div class="comments-list" id="commentsList">
-                        <div class="comment-item placeholder">Cargando comentarios...</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="comments-section" data-aos="fade-up" role="region" aria-label="Comentarios filtrados por IA">
+            <div class="comments-header">
+                <h2>Comentarios, Solicitudes y Reclamos (Filtrados por IA)</h2>
+                <p>Utiliza los filtros de Categoría y Sentimiento para gestionar los comentarios.</p>
+            </div>
+
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="categoryFilter">Categoría (IA):</label>
+                    <select id="categoryFilter" class="dashboard-filter">
+                        <option value="all">Todas las Categorías</option>
+                        <option value="reclamo">Reclamo</option>
+                        <option value="solicitud">Solicitud</option>
+                        <option value="duda">Duda</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sentimentFilter">Sentimiento (IA):</label>
+                    <select id="sentimentFilter" class="dashboard-filter">
+                        <option value="all">Todo el Sentimiento</option>
+                        <option value="positivo">Positivo</option>
+                        <option value="negativo">Negativo</option>
+                        <option value="neutral">Neutral</option>
+                    </select>
+                </div>
+
+                <button id="applyFilterBtn" class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    Aplicar Filtros
+                </button>
+            </div>
+
+            <div class="comments-list" id="commentsList">
+                <div class="comment-card placeholder">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Cargando comentarios...</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <footer class="dashboardFooter">
-        <div class="footerContent">
-            <div class="footerSection">
-                <h3 class="footerCompanyName">Hydro-Conecta</h3>
-                <p class="footerCompanyPhrase">Panel Administrativo</p>
-                <p class="footerText">Gestión y monitoreo de encuestas en tiempo real</p>
-            </div>
-            <div class="footerSection">
-                <h4 class="footerTitle">Navegación</h4>
-                <ul class="footerLinks">
-                    <li><a href="dashboard.html">Resultados</a></li>
-                    <li><a href="map.html">Mapa Interactivo</a></li>
-                    <li><a href="users.html">Usuarios</a></li>
-                    <li><a href="../index.html">Volver al Inicio</a></li>
-                </ul>
-            </div>
-            <div class="footerSection">
-                <h4 class="footerTitle">Contacto</h4>
-                <p class="footerText">Email: admin@hydroconecta.com</p>
-                <p class="footerText">Tel: +51 000 000 000</p>
-                <p class="footerText">Soporte 24/7</p>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <i class="fas fa-water"></i>
+                        <span>Hydro-Conecta</span>
+                    </div>
+                    <p class="footer-description">
+                        Panel Administrativo - Gestión y monitoreo de encuestas en tiempo real
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="nosotros.html"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                        <li><a href="form.html"><i class="fas fa-chevron-right"></i> Formulario</a></li>
+                        <li><a href="dashboard.html"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Administración</h3>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html"><i class="fas fa-chevron-right"></i> Resultados</a></li>
+                        <li><a href="map.html"><i class="fas fa-chevron-right"></i> Mapa Interactivo</a></li>
+                        <li><a href="users.html"><i class="fas fa-chevron-right"></i> Usuarios</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Soporte 24/7</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>admin@hydroconecta.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+51 000 000 000</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Valle Azul, Región Central</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="footerBottom">
+        <div class="footer-bottom">
             <p>&copy; 2025 Hydro-Conecta. Todos los derechos reservados.</p>
+            <p>Panel administrativo desarrollado con <i class="fas fa-heart"></i> para la comunidad</p>
         </div>
     </footer>
+    
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="../assets/js/dashboard.js?v=2"></script>
 </body>
 </html>

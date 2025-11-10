@@ -3,155 +3,554 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Conoce al equipo de Hydro-Conecta, gestores de la Represa Valle Azul con más de 35 años de experiencia en gestión hídrica sostenible.">
+    <meta name="keywords" content="equipo, nosotros, represa valle azul, gestión hídrica, energía hidroeléctrica">
+    <meta name="theme-color" content="#0077b6">
+    
+    <title>Nosotros | Hydro-Conecta</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/modern-styles.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap?v=2" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/theme-index.css?v=2" />
-</head>
-<body ID="index-page" data-theme="represa">
-    <header>
-        <h1 class="headerLogo">Hydro-Conecta</h1>
-        <nav class="headerNav" aria-label="Navegación principal">
-            <ul>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="../index.html">Inicio</a></li>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="nosotros.html">Nosotros</a></li>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="dashboard.html">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="aboutSection" data-aos="fade-up">
-        <div class="aboutContainer">
-            <div class="aboutContent">
-                <h2 class="aboutTitle">¿Quiénes Somos?</h2>
-                <p class="aboutText">
-                    Somos el equipo responsable de la gestión, operación y mantenimiento de la Represa Valle Azul. Nuestra labor combina ingeniería, monitoreo ambiental y trabajo comunitario para garantizar suministro hídrico, generación de energía y protección del entorno.
-                </p>
-                
-                <div class="dam-stats" aria-label="Datos rápidos de la represa">
-                    <div class="dam-stat">
-                        <span class="value">1,200 hm³</span>
-                        <span class="label">Capacidad máxima</span>
-                    </div>
-                    <div class="dam-stat">
-                        <span class="value">95 m</span>
-                        <span class="label">Altura de muro</span>
-                    </div>
-                    <div class="dam-stat">
-                        <span class="value">1987</span>
-                        <span class="label">Inauguración</span>
-                    </div>
-                </div>
-                
-                <h2 class="aboutTitle" style="margin-top: 2rem;">¿A quienes ayudamos?</h2>
-                <p class="aboutText">
-                    Proveemos agua para consumo humano, riego agrícola e industria, además de suministrar energía hidroeléctrica local. Trabajamos con comunidades aledañas para fortalecer resiliencia frente a sequías e inundaciones y preservar la biodiversidad del embalse.
-                </p>
-            </div>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Hero About Section */
+        .about-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        .about-hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        .about-hero p {
+            font-size: 1.3rem;
+            color: var(--color-dark);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 2rem;
+            background: white;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            color: white;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .stat-box .value {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-box .label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* About Content Section */
+        .about-content-section {
+            padding: 6rem 2rem;
+            background: transparent;
+        }
+        
+        .about-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .team-grid {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-card-image {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .team-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-card-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 119, 182, 0.95), transparent);
+            color: white;
+        }
+        
+        .team-card-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-card-role {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
             
-            <div class="aboutImage">
-                <img src="../assets/sources/img/represa.webp" alt="Vista aérea de la represa" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .stat-box .value {
+                font-size: 2.5rem;
+            }
+            
+            .about-text h2 {
+                font-size: 2rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body data-theme="represa">
+    <!-- SVG Waves Background -->
+    <div class="waves-background">
+        <div class="wave wave-1">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,50 Q150,100 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="#0077b6"/>
+            </svg>
+        </div>
+        <div class="wave wave-2">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,70 Q200,20 400,70 T800,70 T1200,70 L1200,120 L0,120 Z" fill="#00b4d8"/>
+            </svg>
+        </div>
+        <div class="wave wave-3">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,30 Q250,80 500,30 T1000,30 T1500,30 L1500,120 L0,120 Z" fill="#48cae4"/>
+            </svg>
+        </div>
+        <div class="wave wave-4">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,90 Q300,40 600,90 T1200,90 L1200,120 L0,120 Z" fill="#90e0ef"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar-modern">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-brand">
+                <i class="fas fa-water"></i>
+                <span>Hydro-Conecta</span>
+            </a>
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="nosotros.html" class="nav-link active">Nosotros</a>
+                <a href="form.html" class="nav-link">Formulario</a>
+                <a href="dashboard.html" class="nav-link-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Acceder
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero" data-aos="fade-up">
+        <div class="about-hero-content">
+            <h1>¿Quiénes Somos?</h1>
+            <p>
+                Somos el equipo responsable de la gestión, operación y mantenimiento de la Represa Valle Azul. 
+                Nuestra labor combina ingeniería de vanguardia, monitoreo ambiental y trabajo comunitario 
+                para garantizar suministro hídrico, generación de energía limpia y protección del entorno.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" data-aos="fade-up">
+        <div class="stats-container">
+            <div class="stat-box">
+                <span class="value">1,200 hm³</span>
+                <span class="label">Capacidad Máxima</span>
+            </div>
+            <div class="stat-box">
+                <span class="value">95 m</span>
+                <span class="label">Altura de Muro</span>
+            </div>
+            <div class="stat-box">
+                <span class="value">1987</span>
+                <span class="label">Año de Inauguración</span>
             </div>
         </div>
     </section>
-    
-    <div class="teamSection" data-aos="fade-up">
-    <h2 class="title1 presentationTitle">Nuestro equipo</h2>
-    <div class="container swiper">
-        <div class="card-wrapper">
-            <ul class="card-list swiper-wrapper">
-                <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/example.jpg" alt="Foto - Director de Operaciones" class="card-image">
-                    <p class="card-text text1 customFont whiteText">María López</p>
-                    <p class="card-text text1 customFont whiteText">Directora de Operaciones</p>
-                </li>
-                <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/example.jpg" alt="Foto - Jefe de Mantenimiento" class="card-image">
-                    <p class="card-text text1 customFont whiteText">Carlos Reyes</p>
-                    <p class="card-text text1 customFont whiteText">Jefe de Mantenimiento</p>
-                </li>
-                <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/example.jpg" alt="Foto - Ingeniera Ambiental" class="card-image">
-                    <p class="card-text text1 customFont whiteText">Ana Martínez</p>
-                    <p class="card-text text1 customFont whiteText">Ingeniera Ambiental</p>
-                </li>
-                <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/example.jpg" alt="Foto - Operador de Planta" class="card-image">
-                    <p class="card-text text1 customFont whiteText">Luis Fernández</p>
-                    <p class="card-text text1 customFont whiteText">Operador de Planta</p>
-                </li>
-                <li class="card-item swiper-slide">
-                    <img src="../assets/sources/img/example.jpg" alt="Foto - Relaciones Comunitarias" class="card-image">
-                    <p class="card-text text1 customFont whiteText">Sofía Gómez</p>
-                    <p class="card-text text1 customFont whiteText">Relaciones Comunitarias</p>
-                </li>
-            </ul>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-slide-button swiper-button-prev"></div>
-            <div class="swiper-slide-button swiper-button-next"></div>
-        </div>
-    </div>
-    <div class="valuesSection customFont whiteText" data-aos="fade-up">
-        <div class="valuesTextWrapper">
-            <div class="missionTextBox">
-                <h2 class="title2">Misión</h2>
-                <p class="text1">
-                    Gestionar la represa con estándares de seguridad y sostenibilidad, garantizando agua y energía para la región mientras protegemos el entorno natural y fortalecemos a las comunidades locales.
+
+    <!-- About Content -->
+    <section class="about-content-section" data-aos="fade-up">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Nuestra Misión</h2>
+                <p>
+                    Gestionar la represa con los más altos estándares de seguridad y sostenibilidad, 
+                    garantizando agua y energía para la región mientras protegemos el entorno natural 
+                    y fortalecemos a las comunidades locales.
+                </p>
+                <h2 style="margin-top: 2rem;">¿A Quiénes Ayudamos?</h2>
+                <p>
+                    Proveemos agua para consumo humano, riego agrícola e industria, además de suministrar 
+                    energía hidroeléctrica local. Trabajamos con comunidades aledañas para fortalecer 
+                    resiliencia frente a sequías e inundaciones y preservar la biodiversidad del embalse.
                 </p>
             </div>
-            <div class="valuesTextBox">
-                <h2 class="title2">Visión</h2>
-                <p class="text1">
-                    Ser reconocidos como un referente regional en gestión hídrica y generación responsable de energía, innovando en tecnología y prácticas ambientales para las próximas décadas.
+            <div class="about-image">
+                <img src="../assets/sources/img/represa.webp" alt="Vista aérea de la Represa Valle Azul" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" data-aos="fade-up">
+        <div class="section-header">
+            <span class="section-tag">Nuestro Equipo</span>
+            <h2 class="section-title">Profesionales Comprometidos</h2>
+            <p class="section-subtitle">
+                Un equipo multidisciplinario dedicado a la excelencia operativa y el servicio a la comunidad
+            </p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-card" data-aos="fade-up">
+                <div class="team-card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="María López - Directora de Operaciones">
+                    <div class="team-card-overlay">
+                        <div class="team-card-name">María López</div>
+                        <div class="team-card-role">Directora de Operaciones</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Carlos Reyes - Jefe de Mantenimiento">
+                    <div class="team-card-overlay">
+                        <div class="team-card-name">Carlos Reyes</div>
+                        <div class="team-card-role">Jefe de Mantenimiento</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="team-card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Ana Martínez - Ingeniera Ambiental">
+                    <div class="team-card-overlay">
+                        <div class="team-card-name">Ana Martínez</div>
+                        <div class="team-card-role">Ingeniera Ambiental</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-card" data-aos="fade-up">
+                <div class="team-card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Luis Fernández - Operador de Planta">
+                    <div class="team-card-overlay">
+                        <div class="team-card-name">Luis Fernández</div>
+                        <div class="team-card-role">Operador de Planta</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-card-image">
+                    <img src="../assets/sources/img/example.jpg" alt="Sofía Gómez - Relaciones Comunitarias">
+                    <div class="team-card-overlay">
+                        <div class="team-card-name">Sofía Gómez</div>
+                        <div class="team-card-role">Relaciones Comunitarias</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="institutional-values" data-aos="fade-up">
+        <div class="section-header">
+            <span class="section-tag">Nuestros Valores</span>
+            <h2 class="section-title">Comprometidos con la Excelencia</h2>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="card-icon mission-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="card-title">Misión</h3>
+                <p class="card-description">
+                    Gestionar la represa con estándares de seguridad y sostenibilidad, garantizando agua y energía 
+                    para la región mientras protegemos el entorno natural y fortalecemos a las comunidades locales.
+                </p>
+            </div>
+            
+            <div class="value-card">
+                <div class="card-icon vision-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3 class="card-title">Visión</h3>
+                <p class="card-description">
+                    Ser reconocidos como un referente regional en gestión hídrica y generación responsable de energía, 
+                    innovando en tecnología y prácticas ambientales para las próximas décadas.
+                </p>
+            </div>
+            
+            <div class="value-card">
+                <div class="card-icon sustainability-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 class="card-title">Sostenibilidad</h3>
+                <p class="card-description">
+                    Nos comprometemos con prácticas sostenibles que protegen el medio ambiente, integrando 
+                    el equilibrio entre desarrollo energético y la conservación de nuestros recursos naturales.
                 </p>
             </div>
         </div>
-    </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="mainFooter">
-        <div class="footerContent">
-            <div class="footerSection footerSectionFirst">
-                <h3 class="footerCompanyName">Hydro-Conecta</h3>
-                <p style="text-align: start;" class="footerCompanyPhrase">Somos la empresa encargada de gestionar y operar la infraestructura hidroeléctrica del valle.</p>
-            </div>
-            <div class="footerSection">
-                <h4 class="customFont whiteText">Informativos</h4>
-                <ul>
-                    <li><a href="../index.html" class="customFont text2 whiteText">Inicio</a></li>
-                    <li><a href="nosotros.html" class="customFont text2 whiteText">Nosotros</a></li>
-                    <li><a href="form.html" class="customFont text2 whiteText">Encuesta</a></li>
-                    <li><a href="#" class="customFont text2 whiteText">Preguntas Frecuentes</a></li>
-                    <li><a href="#" class="customFont text2 whiteText">Políticas de Privacidad</a></li>
-                </ul>
-            </div>
-            <div class="footerSection">
-                <h4 class="customFont whiteText">Contacto</h4>
-                <p class="emailNPhoneText">Email: info@hydroconecta.com</p>
-                <p class="emailNPhoneText">Tel: +51 000 000 000</p>
-            </div>
-            <div class="footerSection footerSectionLast">
-                <h4 class="customFont whiteText">Redes Sociales</h4>
-                <div class="socialLinks">
-                    <ul>
-                    <li><a href="#" class="customFont text2 whiteText">Facebook</a></li>
-                    <li><a href="#" class="customFont text2 whiteText">Instagram</a></li>
-                    <li><a href="#" class="customFont text2 whiteText">YouTube</a></li>
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <i class="fas fa-water"></i>
+                        <span>Hydro-Conecta</span>
+                    </div>
+                    <p class="footer-description">
+                        Gestión inteligente de infraestructura hidroeléctrica con tecnología de vanguardia 
+                        y compromiso con la sostenibilidad.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="nosotros.html"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                        <li><a href="form.html"><i class="fas fa-chevron-right"></i> Formulario</a></li>
+                        <li><a href="dashboard.html"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Información</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Preguntas Frecuentes</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Políticas de Privacidad</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Términos de Servicio</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Transparencia</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@hydroconecta.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+51 000 000 000</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Valle Azul, Región Central</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="footerBottom">
-            <p class="customFont text2 whiteText">&copy; 2025 Hydro-Conecta. Todos los derechos reservados.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hydro-Conecta. Todos los derechos reservados.</p>
+            <p>Sistema desarrollado con <i class="fas fa-heart"></i> para el valle</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="../../BackEnd/js/swiperInitIndex.js"></script>
+    
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        AOS.init({
-        duration: 250,
-        easing: "ease-in-out",
-        once: false,
+        // AOS Animation
+        AOS.init({ 
+            once: true,
+            duration: 800,
+            offset: 100
+        });
+        
+        // Navbar Toggle
+        const navbarToggler = document.getElementById('navbar-toggler');
+        const navbarMenu = document.getElementById('navbar-menu');
+        
+        if(navbarToggler){
+            navbarToggler.addEventListener('click', () => {
+                navbarMenu.classList.toggle('active');
+                navbarToggler.classList.toggle('active');
+            });
+        }
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-modern');
+            if(navbar){
+                if(window.scrollY > 50){
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
         });
     </script>
 </body>

@@ -3,59 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hydro-Conecta | Inicio</title>
-    <link rel="stylesheet" href="assets/css/theme-index.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Hydro-Conecta - Sistema de gestión y monitoreo de infraestructura hidroeléctrica. Represa Valle Azul con tecnología de análisis inteligente.">
+    <meta name="keywords" content="represa, hidroeléctrica, gestión hídrica, energía renovable, valle azul, monitoreo">
+    <meta name="author" content="Hydro-Conecta">
+    <meta name="theme-color" content="#0077b6">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hydro-Conecta - Gestión Hidroeléctrica Inteligente">
+    <meta property="og:description" content="Sistema integral para gestión y monitoreo de infraestructura hidroeléctrica con IA">
+    <meta property="og:url" content="https://whitemooncy.github.io/PROYECTO-DE-ESPECIALIDAD/">
+    
+    <title>Hydro-Conecta | Gestión Hidroeléctrica Inteligente</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/sources/img/favicon.ico">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="assets/css/modern-styles.css?v=2" as="style">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/modern-styles.css?v=2">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body data-theme="represa">
-    <!-- Header -->
-    <header>
-        <h1 class="headerLogo">Hydro-Conecta</h1>
-        <nav class="headerNav" aria-label="Navegación principal">
-            <ul>
-                <li class="headerNavBlock"><a href="index.html" class="headerNavLinks">Inicio</a></li>
-                <li class="headerNavBlock"><a href="pages/nosotros.html" class="headerNavLinks">Nosotros</a></li>
-                <li class="headerNavBlock"><a href="pages/dashboard.html" class="headerNavLinks">Login</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- SVG Waves Background -->
+    <div class="waves-background">
+        <div class="wave wave-1">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,50 Q150,100 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="#0077b6"/>
+            </svg>
+        </div>
+        <div class="wave wave-2">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,70 Q200,20 400,70 T800,70 T1200,70 L1200,120 L0,120 Z" fill="#00b4d8"/>
+            </svg>
+        </div>
+        <div class="wave wave-3">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,30 Q250,80 500,30 T1000,30 T1500,30 L1500,120 L0,120 Z" fill="#48cae4"/>
+            </svg>
+        </div>
+        <div class="wave wave-4">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,90 Q300,40 600,90 T1200,90 L1200,120 L0,120 Z" fill="#90e0ef"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar-modern">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <i class="fas fa-water"></i>
+                <span>Hydro-Conecta</span>
+            </a>
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="index.html" class="nav-link active">Inicio</a>
+                <a href="pages/nosotros.html" class="nav-link">Nosotros</a>
+                <a href="pages/form.html" class="nav-link">Formulario</a>
+                <a href="pages/dashboard.html" class="nav-link nav-link-login">
+                    <i class="fas fa-sign-in-alt"></i> Acceder
+                </a>
+            </div>
+        </div>
+    </nav>
     <main>
-        <section class="welcomeSection" data-aos="fade-up">
-            <div id="welcomeWrapper">
-                <h2 class="welcomeTitle">
-                    ¡Bienvenido!
+        <!-- Main Banner / Presentation Section -->
+        <section class="presentation-banner" data-aos="fade-up">
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <div class="banner-text-wrapper" data-aos="fade-right" data-aos-delay="200">
+                    <span class="banner-tag">Sistema Inteligente de Gestión</span>
+                    <h1 class="banner-title">
+                        Bienvenido a <span class="highlight">Hydro-Conecta</span>
+                    </h1>
+                    <p class="banner-description">
+                        Plataforma integral para la gestión de la <strong>Represa Valle Azul</strong>. 
+                        Envía tus consultas, reclamos o solicitudes y nuestro equipo te responderá a la brevedad. 
+                        Sistema potenciado con análisis inteligente de comentarios.
+                    </p>
+                    <div class="banner-actions">
+                        <a class="btn-primary" href="pages/form.html">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Consulta
+                        </a>
+                        <a class="btn-secondary" href="pages/nosotros.html">
+                            <i class="fas fa-info-circle"></i>
+                            Conocer Más
+                        </a>
+                    </div>
+                    <div class="banner-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>1,247</strong>
+                                <span>Usuarios Atendidos</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>< 24h</strong>
+                                <span>Tiempo de Respuesta</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <strong>92%</strong>
+                                <span>Satisfacción</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-visual" data-aos="fade-left" data-aos-delay="400">
+                    <div class="visual-card">
+                        <i class="fas fa-bolt-lightning"></i>
+                        <h3>Energía Limpia</h3>
+                        <p>100% Renovable</p>
+                    </div>
+                    <div class="visual-card">
+                        <i class="fas fa-shield-halved"></i>
+                        <h3>Seguridad</h3>
+                        <p>Monitoreo 24/7</p>
+                    </div>
+                    <div class="visual-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>IA Integrada</h3>
+                        <p>Análisis Inteligente</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wave-divider">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+                </svg>
+            </div>
+        </section>
+        <!-- Mission & Vision Section -->
+        <section class="institutional-values" data-aos="fade-up">
+            <div class="section-header">
+                <span class="section-tag">Nuestros Principios</span>
+                <h2 class="section-title">
+                    Valores como Empresa
                 </h2>
-                <p class="welcomeText">
-                    Mediante este sitio web podrás subir tus dudas, reclamos y solicitudes, solo debes de ingresar tus datos personales y de contacto y nosotros te contactaremos a la brevedad
+                <p class="section-subtitle">
+                    Comprometidos con la excelencia en gestión hidroeléctrica y servicio a la comunidad
                 </p>
             </div>
-                <a class="viewMoreBtn" href="pages/form.html">
-                    Presiona aquí para continuar
-                </a>
-        </section>
-        <!-- Sección Misión, Visión y Objetivo -->
-        <section class="mvoSection" data-aos="fade-up">
-            <h2 class="mvoMainTitle">
-                Nuestros valores como empresa
-            </h2>
-            <div class="mvoWrapper">
-                <div class="mvoCard" data-aos="fade-up" data-aos-delay="100">
-                    <div class="mvoIcon">🎯</div>
-                    <h3 class="mvoCardTitle">Misión</h3>
-                    <p class="mvoCardText">
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title">Misión</h3>
+                    <p class="card-description">
                         Proveer soluciones de infraestructura hídrica confiables y de vanguardia en el valle,
                         empleando materiales de máxima calidad y rigurosos protocolos normalizados para garantizar 
                         un servicio ininterrumpido y eficiente, logrando la plena satisfacción de la comunidad.
                     </p>
                 </div>
-                <div class="mvoCard" data-aos="fade-up" data-aos-delay="200">
-                    <div class="mvoIcon">👁️</div>
-                    <h3 class="mvoCardTitle">Visión</h3>
-                    <p class="mvoCardText">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon vision-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="card-title">Visión</h3>
+                    <p class="card-description">
                         Visualizamos un futuro donde cada hogar y negocio en el valle cuente con un suministro hídrico perfectamente integrado,
                         ininterrumpido y sostenible, impulsado por nuestra innovación y compromiso con el uso responsable de los recursos.
+                    </p>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon sustainability-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="card-title">Sostenibilidad</h3>
+                    <p class="card-description">
+                        Nos comprometemos con prácticas sostenibles que protejan el medio ambiente, 
+                        asegurando el equilibrio entre el desarrollo energético y la conservación de nuestros recursos naturales.
                     </p>
                 </div>
             </div>
@@ -72,24 +212,44 @@
 
 
 
-        <!-- Sección Nuestros Proyectos con Splide -->
-        <section class="projectsSection" data-aos="fade-up">
-            <h2 class="mediaTitle customFont title1 whiteText pinkUnderLine">
-                    Nuestros proyectos
+        <!-- Projects Gallery Section -->
+        <section class="projects-gallery" data-aos="fade-up">
+            <div class="section-header">
+                <span class="section-tag">Galería</span>
+                <h2 class="section-title">
+                    Nuestros Proyectos
                 </h2>
-            <div class="mediaSection" data-aos="fade-up">
-                <div class="container swiper">
-                    <div class="card-wrapper">
-                        <ul class="card-list swiper-wrapper">
-                            <li class="card-item swiper-slide">
-                                <img src="assets/sources/img/indexCameraSecBack.jpg" alt="DronImage" class="card-image">
-                                <h3 class="card-text text1 customFont whiteText">Leyenda de la imagen</h3>
-                                <p>hidroeléctrica</p>
+                <p class="section-subtitle">
+                    Infraestructura de vanguardia para el desarrollo sostenible del valle
+                </p>
+            </div>
+            <div class="gallery-container" data-aos="fade-up">
+                <div class="splide" id="projectsCarousel">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="project-card">
+                                    <img src="assets/sources/img/indexCameraSecBack.jpg" alt="Represa Valle Azul" class="project-image" loading="lazy">
+                                    <div class="project-overlay">
+                                        <div class="project-info">
+                                            <i class="fas fa-water"></i>
+                                            <h3>Represa Valle Azul</h3>
+                                            <p>Capacidad 50,000m³ - Energía Limpia</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
-                            <li class="card-item swiper-slide">
-                                <img src="assets/sources/img/indexDronSecBack.jpg" alt="DronImage" class="card-image">
-                                <p class="card-text text1 customFont whiteText">Leyenda de la imagen</p>
-                                <p>hidroeléctrica</p>
+                            <li class="splide__slide">
+                                <div class="project-card">
+                                    <img src="assets/sources/img/indexDronSecBack.jpg" alt="Vista Aérea Complejo" class="project-image" loading="lazy">
+                                    <div class="project-overlay">
+                                        <div class="project-info">
+                                            <i class="fas fa-mountain"></i>
+                                            <h3>Complejo Hidroeléctrico</h3>
+                                            <p>Sistema Integrado de Generación</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -97,61 +257,119 @@
             </div>
         </section>
     </main>
+    
     <!-- Footer -->
-    <footer class="dashboardFooter">
-        <div class="footerContent">
-            <div class="footerSection">
-                <h3 class="footerCompanyName">Hydro-Conecta</h3>
-                <p class="footerCompanyPhrase">Somos la empresa encargada de gestionar y operar la infraestructura hidroeléctrica del valle.</p>
-            </div>
-            <div class="footerSection">
-                <h4 class="footerTitle">Informativos</h4>
-                <ul class="footerLinks">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="pages/nosotros.html">Nosotros</a></li>
-                    <li><a href="pages/form.html">Encuesta</a></li>
-                    <li><a href="#">Preguntas Frecuentes</a></li>
-                    <li><a href="#">Políticas de Privacidad</a></li>
-                </ul>
-            </div>
-            <div class="footerSection">
-                <h4 class="footerTitle">Contacto</h4>
-                <p class="footerText">Email: info@hydroconecta.com</p>
-                <p class="footerText">Tel: +51 000 000 000</p>
-            </div>
-            <div class="footerSection">
-                <h4 class="footerTitle">Redes Sociales</h4>
-                <ul class="footerLinks">
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">YouTube</a></li>
-                </ul>
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column brand-column">
+                    <h3 class="footer-brand">
+                        <i class="fas fa-water"></i>
+                        Hydro-Conecta
+                    </h3>
+                    <p class="footer-description">
+                        Gestión inteligente de infraestructura hidroeléctrica 
+                        con tecnología de vanguardia y compromiso con la sostenibilidad.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Navegación</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="pages/nosotros.html"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                        <li><a href="pages/form.html"><i class="fas fa-chevron-right"></i> Formulario</a></li>
+                        <li><a href="pages/dashboard.html"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Información</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Preguntas Frecuentes</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Políticas de Privacidad</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Términos de Servicio</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Transparencia</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-title">Contacto</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@hydroconecta.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+51 000 000 000</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Valle Azul, Región Central</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="footerBottom">
+        <div class="footer-bottom">
             <p>&copy; 2025 Hydro-Conecta. Todos los derechos reservados.</p>
+            <p>Sistema desarrollado con <i class="fas fa-heart"></i> para el valle</p>
         </div>
     </footer>
-    <script src="assets/js/animations/swiperInit.js"></script>
+    
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-      // Ejecutar al cargar el DOM
-        document.addEventListener('DOMContentLoaded', function () {
-        // Inicializar AOS
-        AOS.init({ once: true });
-
-        // Inicializar Splide si existe el contenedor .splide
-        const splideEl = document.querySelector('.splide');
-        if (splideEl) {
-            new Splide(splideEl, {
-            type: 'loop',
-            perPage: 1,
-            autoplay: true,
-            pauseOnHover: true,
-            resetProgress: false,
+        // AOS Animation
+        AOS.init({ 
+            once: true,
+            duration: 800,
+            offset: 100
+        });
+        
+        // Splide Carousel
+        if(document.querySelector('#projectsCarousel')){
+            new Splide('#projectsCarousel', {
+                type: 'loop',
+                perPage: 2,
+                gap: '2rem',
+                autoplay: true,
+                pauseOnHover: true,
+                breakpoints: {
+                    768: { perPage: 1 }
+                }
             }).mount();
         }
+        
+        // Navbar Toggle
+        const navbarToggler = document.getElementById('navbar-toggler');
+        const navbarMenu = document.getElementById('navbar-menu');
+        
+        if(navbarToggler){
+            navbarToggler.addEventListener('click', () => {
+                navbarMenu.classList.toggle('active');
+                navbarToggler.classList.toggle('active');
+            });
+        }
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-modern');
+            if(navbar){
+                if(window.scrollY > 50){
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
         });
     </script>
 </body>
