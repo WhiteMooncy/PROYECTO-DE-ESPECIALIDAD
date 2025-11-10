@@ -1,772 +1,391 @@
-# 🌊 Hydro-Conecta
+# 💧 Hydro-Conecta - Sistema de Gestión Comunitaria
 
-**Sistema Web de Gestión Hidroeléctrica con Análisis Inteligente de Comentarios Ciudadanos**
-
-Sistema integral para la administración de la Represa Valle Azul, combinando sitio público informativo, panel administrativo en tiempo real y clasificación automática de reportes mediante IA.
-
-![Status](https://img.shields.io/badge/status-active-success.svg)
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+> Plataforma web integral para la gestión de encuestas sociales y análisis de datos comunitarios enfocado en infraestructura hidroeléctrica.
 
 ---
 
-## 📋 Descripción del Proyecto
+## 🎯 Objetivo del Proyecto
 
-**Hydro-Conecta** es una plataforma web completa que facilita la gestión de infraestructura hidroeléctrica y la comunicación bidireccional con la comunidad. El sistema permite:
+**Hydro-Conecta** es un sistema web desarrollado para facilitar la recopilación, análisis y visualización de información socioeconómica de comunidades relacionadas con proyectos de infraestructura hidroeléctrica. 
 
-- �️ **Transparencia Institucional**: Información pública sobre gestión y operación
-- � **Participación Ciudadana**: Formulario de reportes, comentarios y solicitudes
-- 🤖 **Clasificación Inteligente**: IA para categorizar automáticamente reportes (Reclamo/Solicitud/Duda/General)
-- 😊 **Análisis de Sentimiento**: Detección automática de sentimiento (Positivo/Negativo/Neutral)
-- � **Dashboard Administrativo**: Visualización de métricas y gestión de reportes
-- 🗺️ **Geolocalización**: Mapas interactivos con ubicación de reportes ciudadanos
+El proyecto busca:
+- 📊 Digitalizar el proceso de encuestas comunitarias
+- 🗺️ Visualizar geográficamente la distribución de datos
+- 📈 Analizar necesidades y problemáticas mediante IA
+- 👥 Gestionar información de usuarios y beneficiarios
 
 ---
 
-## ✨ Características Principales
+## 🏗️ Arquitectura del Sistema
 
-### 🌐 Sitio Público
+```
+┌─────────────────────────────────────────────────────┐
+│                  HYDRO-CONECTA                      │
+├─────────────────────────────────────────────────────┤
+│                                                     │
+│  Frontend (HTML/CSS/JS)    Backend (Python Flask)  │
+│  ├── Formularios           ├── API REST            │
+│  ├── Dashboard             ├── Clasificación IA    │
+│  ├── Mapas (Leaflet)       └── Base de Datos       │
+│  └── Visualizaciones                               │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+```
 
-#### **Página Principal (index.html)**
-- Banner de presentación con estadísticas clave de la represa
-- Galería de proyectos con Splide.js
-- Sección de valores institucionales
-- Diseño responsive con animaciones AOS
-- Sistema de navegación moderna con glassmorphism
+### Tecnologías Principales
 
-#### **Página Nosotros (nosotros.html)**
-- Información del equipo técnico
-- Misión, visión y valores
-- Estadísticas de capacidad e infraestructura
-- Galería de equipo profesional
+| Componente | Tecnología | Propósito |
+|------------|-----------|-----------|
+| **Frontend** | HTML5, CSS3, JavaScript | Interfaz de usuario responsive |
+| **Backend** | Python 3.11 + Flask | API y procesamiento de datos |
+| **Mapas** | Leaflet.js 1.9.4 | Visualización geográfica |
+| **Animaciones** | AOS 2.3.4 | Efectos visuales |
+| **Iconos** | Font Awesome 6.4.0 | Elementos gráficos |
+| **Tipografía** | Google Fonts (Poppins) | Diseño moderno |
 
-#### **Formulario Ciudadano (form.html)**
-- Formulario multi-paso dinámico
-- 10 preguntas con validación en tiempo real
-- Opciones de respuesta personalizadas
-- Barra de progreso visual
-- Envío asíncrono a API Flask
+---
 
-### 📊 Panel Administrativo
+## 📋 Módulos del Sistema
 
-#### **Dashboard Principal (dashboard.html)**
-- **4 Métricas Clave**:
-  - Total de respuestas recibidas
-  - Tasa de completación de formularios
-  - Tiempo promedio de respuesta
-  - Índice de satisfacción ciudadana
+### 1️⃣ **Formulario Dinámico** (`form.html` + `form.js`)
+
+Sistema inteligente de encuestas que carga preguntas desde JSON y genera campos automáticamente.
+
+**Características:**
+- ✅ 5 secciones configurables: Socio Principal, Domicilio, Núcleo Familiar, Necesidades, Encuestador
+- ✅ 7 tipos de campos: texto, número, fecha, email, teléfono, radio, firma digital
+- ✅ Validación en tiempo real con notificaciones toast
+- ✅ Barra de progreso visual
+- ✅ Signature pad para firmas digitales
+- ✅ Responsive design
+
+**Flujo de Trabajo:**
+```
+Usuario → Formulario → Validación → API → Base de Datos → Dashboard
+```
+
+**Ejemplo de Configuración (preguntas.json):**
+```json
+{
+  "datos_socio_principal": {
+    "Nombre completo": "Texto",
+    "RUT": "Texto/Número",
+    "Tiene discapacidad?": "Sí/No"
+  }
+}
+```
+
+---
+
+### 2️⃣ **Dashboard Administrativo** (`dashboard.html`)
+
+Panel de control con visualización de datos en tiempo real y análisis mediante IA.
+
+**Características:**
+- 📊 Estadísticas generales (total respuestas, preguntas, categorías)
+- 📈 Gráficos de barras personalizados (visualización por categoría)
+- 💬 Sistema de comentarios con clasificación IA
+- 🔍 Filtros dinámicos por fecha y categoría
+- 📥 Exportación de datos
+- ⚡ Footer administrativo con estado del sistema en tiempo real
+
+**Clasificación IA:**
+```javascript
+Tipos de Comentarios:
+- RECLAMO (problemas, quejas)
+- SOLICITUD (pedidos, necesidades)
+- SUGERENCIA (ideas, mejoras)
+- CONSULTA (preguntas)
+- AGRADECIMIENTO (reconocimientos)
+```
+
+**Footer Profesional:**
+- 🖥️ Estado: Operativo (tiempo real)
+- ⏰ Reloj actualizado cada segundo
+- 📌 Versión: v1.0.0 | Build 2025.11.10
+- 🔗 Links rápidos: Ayuda, Reportar Error, Documentación
+
+---
+
+### 3️⃣ **Mapa Interactivo** (`map.html`)
+
+Visualización geográfica de datos recopilados usando Leaflet.js.
+
+**Funcionalidades:**
+- 🗺️ Mapa interactivo con marcadores
+- 📍 Geolocalización de encuestados
+- 🎨 Clusters para agrupación visual
+- ℹ️ Popups informativos con datos del usuario
+
+---
+
+### 4️⃣ **Gestión de Usuarios** (`users.html`)
+
+Módulo para administración de usuarios y beneficiarios del sistema.
+
+---
+
+## 🎨 Diseño Visual
+
+### Paleta de Colores
+```css
+--color-primary: #0077b6;      /* Azul principal */
+--color-secondary: #00b4d8;    /* Azul secundario */
+--color-accent: #48cae4;       /* Azul claro */
+--color-dark: #03045e;         /* Azul oscuro */
+--gradient-primary: linear-gradient(135deg, #0077b6, #00b4d8);
+```
+
+### Sistema de Variables CSS
+```css
+:root {
+  /* Colores */
+  --color-primary, --color-secondary, --color-light, --color-dark
   
-- **2 Gráficos Interactivos** (Chart.js):
-  - Distribución de respuestas por pregunta (gráfico de barras)
-  - Distribución por categoría (gráfico de donut)
-
-- **Sistema de Filtros Avanzado**:
-  - Filtro por Categoría (IA): Reclamo, Solicitud, Duda, General
-  - Filtro por Sentimiento (IA): Positivo, Negativo, Neutral
-  - Aplicación en tiempo real
-
-#### **Mapa Interactivo (map.html)**
-- Visualización geográfica de reportes con Leaflet.js
-- Marcadores por ubicación de ciudadanos
-- Clustering de puntos por densidad
-- Información emergente (popup) por marcador
-
-#### **Gestión de Usuarios (users.html)**
-- Tabla de usuarios registrados
-- Información de contacto y ubicación
-- Estadísticas de participación por usuario
-
-### 🤖 Inteligencia Artificial
-
-#### **Modelo de Clasificación**
-- **Algoritmo**: Multinomial Naive Bayes
-- **Vectorización**: TF-IDF (Term Frequency-Inverse Document Frequency)
-- **Entrenamiento**: Dataset de 50+ comentarios etiquetados
-- **Precisión**: ~85-90% en clasificación de categoría
-- **Tiempo de respuesta**: <100ms por comentario
-
-#### **Categorías Detectadas**
-1. **Reclamo**: Quejas sobre servicio, calidad del agua, interrupciones
-2. **Solicitud**: Peticiones de mejora, información adicional
-3. **Duda**: Preguntas técnicas, consultas generales
-4. **General**: Comentarios informativos, agradecimientos
-
-#### **Análisis de Sentimiento**
-- **Positivo**: Agradecimientos, elogios, satisfacción
-- **Negativo**: Quejas, problemas urgentes, insatisfacción
-- **Neutral**: Comentarios informativos, sugerencias constructivas
+  /* Tipografía */
+  --font-family: 'Poppins', sans-serif
+  --font-weight-light: 300, --font-weight-bold: 700
+  
+  /* Espaciado */
+  --radius-sm: 4px, --radius-md: 8px, --radius-lg: 16px
+  
+  /* Efectos */
+  --shadow-md, --shadow-lg, --shadow-xl
+  --transition: all 0.3s ease
+}
+```
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🚀 Instalación y Uso
 
-### Frontend
-| Tecnología | Versión | Uso |
-|------------|---------|-----|
-| **HTML5** | - | Estructura semántica moderna |
-| **CSS3** | - | Estilos modulares con variables CSS |
-| **JavaScript ES6+** | - | Lógica interactiva y manejo de eventos |
-| **AOS** | 2.3.4 | Animaciones al scroll |
-| **Splide.js** | 4.1.4 | Carruseles de imágenes |
-| **Chart.js** | 4.4.0 | Gráficos interactivos |
-| **Leaflet.js** | 1.9.4 | Mapas interactivos |
-| **Font Awesome** | 6.4.0 | Iconografía |
+### Requisitos Previos
+- Python 3.11+
+- PHP 8.0+ (servidor local)
+- Navegador moderno (Chrome, Firefox, Edge)
 
-### Backend
-| Tecnología | Versión | Uso |
-|------------|---------|-----|
-| **Python** | 3.8+ | Lenguaje de servidor |
-| **Flask** | 2.x | Framework web RESTful |
-| **Flask-CORS** | - | Manejo de peticiones cross-origin |
-| **Pandas** | 1.x | Procesamiento de datos |
-| **Scikit-learn** | 1.x | Machine Learning (NLP) |
+### Configuración
 
-### Servidor
-- **XAMPP**: Entorno de desarrollo local
-- **Apache**: Servidor web HTTP
+1. **Iniciar Servidor Flask (API)**
+```powershell
+python app.py
+# URL: http://127.0.0.1:5000
+```
+
+2. **Iniciar Servidor PHP (Frontend)**
+```powershell
+php -S localhost:8000
+# URL: http://localhost:8000
+```
+
+3. **Acceder a la Aplicación**
+- Inicio: `http://localhost:8000/index.html`
+- Formulario: `http://localhost:8000/pages/form.html`
+- Dashboard: `http://localhost:8000/pages/dashboard.html`
+- Mapa: `http://localhost:8000/pages/map.html`
+- Usuarios: `http://localhost:8000/pages/users.html`
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📊 API Endpoints
+
+### Dashboard
+```http
+GET /api/dashboard
+Response: {
+  "stats": { "total": 150, "questions": 45, "categories": 8 },
+  "comments": [...],
+  "categories": [...],
+  "users": [...],
+  "locations": [...]
+}
+```
+
+### Envío de Formulario
+```http
+POST /api/submit-survey
+Content-Type: application/json
+Body: { "Datos del Socio Principal": {...}, ... }
+```
+
+---
+
+## 🎯 Características Principales
+
+### ✨ Formulario Inteligente
+- Generación dinámica de campos desde JSON
+- Validación automática por tipo de dato
+- Progreso visual paso a paso
+- Firma digital con canvas
+- Notificaciones toast elegantes
+
+### 📊 Dashboard Analítico
+- Visualización de datos en tiempo real
+- Clasificación automática de comentarios con IA
+- Gráficos interactivos personalizados
+- Filtros por fecha y categoría
+- Estado del sistema actualizado cada segundo
+
+### 🗺️ Geolocalización
+- Mapas interactivos con Leaflet
+- Marcadores personalizados
+- Clusters de agrupación
+- Información detallada por ubicación
+
+### 🎨 Diseño Profesional
+- Responsive design (Desktop, Tablet, Mobile)
+- Animaciones fluidas con AOS
+- Footer administrativo estilo panel profesional
+- Tema de colores consistente
+- Accesibilidad (ARIA labels, semantic HTML)
+
+---
+
+## 📁 Estructura de Archivos
 
 ```
 PROYECTO-DE-ESPECIALIDAD/
 │
-├── 📄 index.html                     # Página principal del sitio público
-├── 🐍 app.py                         # API Flask con modelo de IA
-├── 📖 README.md                      # Documentación del proyecto
-├── 📖 CSS_MODULAR_README.md          # Guía de arquitectura CSS
-├── 📖 OPTIMIZATION.md                # Mejoras de rendimiento
-├── 📜 LICENSE                        # Licencia MIT
+├── index.html                  # Página principal
+├── app.py                      # Backend Flask con IA
+├── preguntas.json             # Configuración de formulario
 │
-├── 📁 pages/                         # Páginas del sitio
-│   ├── dashboard.html                # Panel administrativo principal
-│   ├── form.html                     # Formulario ciudadano multi-paso
-│   ├── map.html                      # Mapa interactivo con Leaflet
-│   ├── nosotros.html                 # Página institucional "Quiénes somos"
-│   └── users.html                    # Gestión de usuarios
+├── pages/
+│   ├── form.html              # Formulario dinámico
+│   ├── dashboard.html         # Panel administrativo
+│   ├── map.html               # Mapa interactivo
+│   ├── users.html             # Gestión de usuarios
+│   └── nosotros.html          # Información del proyecto
 │
-├── 📁 assets/                        # Recursos estáticos
+├── assets/
+│   ├── css/
+│   │   ├── main.css           # Estilos globales + variables
+│   │   ├── dashboard.css      # Estilos del dashboard
+│   │   ├── form.css           # Estilos del formulario
+│   │   ├── components.css     # Componentes reutilizables
+│   │   └── modern-styles.css  # Estilos modernos
 │   │
-│   ├── 📁 css/                       # Hojas de estilo MODULARES
-│   │   ├── main.css                  # Variables CSS, reset, tipografía base
-│   │   ├── components.css            # Componentes reutilizables (navbar, footer, waves)
-│   │   ├── dashboard.css             # Estilos específicos del dashboard
-│   │   ├── index.css                 # Estilos de la página principal
-│   │   ├── nosotros.css              # Estilos de página "Nosotros"
-│   │   ├── form.css                  # Estilos del formulario
-│   │   ├── modern-styles.css         # (Legacy) Estilos monolíticos antiguos
-│   │   ├── theme-dashboard.css       # (Legacy) Tema antiguo del dashboard
-│   │   └── theme-form.css            # (Legacy) Tema antiguo del formulario
+│   ├── js/
+│   │   ├── form.js            # Lógica formulario dinámico (420 líneas)
+│   │   ├── dashboard.js       # Visualización y filtros
+│   │   └── main.js            # Scripts globales
 │   │
-│   ├── 📁 js/                        # Scripts JavaScript
-│   │   ├── main.js                   # Lógica del formulario + envío a API
-│   │   ├── dashboard.js              # Carga datos del dashboard desde API
-│   │   ├── cont.js                   # Contador y mapa interactivo
-│   │   └── 📁 animations/            # Scripts de animaciones
-│   │       ├── swiperInit.js         # Inicialización de carruseles
-│   │       └── swiperInitIndex.js    # Carrusel de la página principal
-│   │
-│   ├── 📁 py/                        # Scripts Python auxiliares
-│   │   └── dataComments.py           # Dataset de entrenamiento IA
-│   │
-│   └── 📁 sources/                   # Recursos multimedia
-│       ├── 📁 icons/                 # Iconos personalizados
-│       ├── 📁 img/                   # Imágenes del sitio
-│       │   ├── represa.webp          # Imagen principal de la represa
-│       │   ├── example.jpg           # Imágenes de ejemplo
-│       │   └── ...
-│       └── 📁 menu/                  # Recursos del menú de navegación
+│   └── sources/
+│       └── img/               # Imágenes y recursos
 │
-└── 📁 config/                        # Archivos de configuración (si aplica)
-```
-
-### 🎨 Arquitectura CSS Modular (Nueva)
-
-El proyecto migró de CSS monolítico a **CSS modular** siguiendo el patrón de **Akelarre**:
-
-#### **Ventajas de la Nueva Arquitectura**:
-- ✅ **35% más ligero** (46.6 KB vs 71.2 KB monolítico)
-- ✅ **Reutilización de componentes** (navbar, footer, waves)
-- ✅ **Mantenimiento simplificado** (cambios localizados)
-- ✅ **Caché del navegador optimizado** (archivos independientes)
-- ✅ **Zero CSS incrustado** (todo separado en archivos)
-
-#### **Archivos CSS Modulares**:
-
-1. **main.css** (11.9 KB) - Fundación del proyecto
-   - Variables CSS (colores, gradientes, sombras, tipografía)
-   - Reset CSS global
-   - Tipografía base (h1-h6, párrafos)
-   - Clases utilitarias (.container, .text-gradient)
-   - Estilos base de botones y tarjetas
-
-2. **components.css** (6.9 KB) - Componentes compartidos
-   - `.waves-background`: 4 capas SVG animadas
-   - `.navbar-modern`: Navbar con glassmorphism
-   - `.modern-footer`: Footer de 4 columnas
-
-3. **dashboard.css** (8.8 KB) - Dashboard administrativo
-   - `.dashboard-content`, `.dashboard-header`
-   - `.stats-grid`, `.stat-card` (4 tarjetas de métricas)
-   - `.charts-grid`, `.chart-card` (gráficos Chart.js)
-   - `.comments-section`, `.filter-controls`
-   - `.comment-badge` (positivo/negativo/neutral)
-
-4. **index.css** (6.8 KB) - Página principal
-   - `.presentation-banner`
-   - `.banner-stats` (capacidad, altura, año)
-   - `.visual-cards`, `.institutional-values`
-   - `.projects-gallery` (integración Splide)
-
-5. **nosotros.css** (5.8 KB) - Página institucional
-   - `.about-hero`, `.about-stats`
-   - `.about-content-grid`, `.team-section`
-   - `.values-section`
-
-6. **form.css** (6.4 KB) - Formulario ciudadano
-   - `.form-container`, `.form-header`
-   - `.question-wrapper`, `.options-grid`
-   - `.progress-bar`, `.filter-controls`
-
----
-
-## 🚀 Instalación y Configuración
-
-### Requisitos Previos
-```bash
-✅ XAMPP (Apache + PHP)
-✅ Python 3.8 o superior
-✅ pip (gestor de paquetes Python)
-✅ Navegador moderno (Chrome, Firefox, Edge)
-```
-
-### Paso 1: Clonar el Repositorio
-```bash
-git clone https://github.com/WhiteMooncy/Web-Admin.git
-cd PROYECTO-DE-ESPECIALIDAD
-```
-
-### Paso 2: Instalar Dependencias de Python
-```bash
-pip install flask flask-cors pandas scikit-learn
-```
-
-### Paso 3: Configurar XAMPP
-1. Copiar el proyecto a `C:\xampp\htdocs\`
-2. Iniciar **Apache** desde el panel de XAMPP
-3. Verificar que Apache esté corriendo en puerto 80
-
-### Paso 4: Iniciar el Servidor Flask (IA)
-```bash
-cd C:\xampp\htdocs\PROYECTO-DE-ESPECIALIDAD
-python app.py
-```
-✅ El servidor Flask se ejecutará en `http://127.0.0.1:5000`
-
-### Paso 5: Acceder al Sitio
-Abrir en el navegador:
-```
-http://localhost/PROYECTO-DE-ESPECIALIDAD/
+└── README_PROYECTO.md         # Este archivo
 ```
 
 ---
 
-## 📖 Guía de Uso
+## 🔧 Personalización
 
-### 🌐 Para Ciudadanos (Sitio Público)
-
-1. **Navegar al Sitio**
-   - Abrir `http://localhost/PROYECTO-DE-ESPECIALIDAD/`
-   
-2. **Explorar Información**
-   - **Inicio**: Estadísticas de la represa
-   - **Nosotros**: Equipo y valores
-   
-3. **Enviar Reporte/Comentario**
-   - Click en **"Formulario"** en el navbar
-   - Completar las 10 preguntas del formulario multi-paso
-   - Observar la barra de progreso
-   - Click en **"Enviar Formulario"**
-   - ✅ El comentario será clasificado automáticamente por IA
-
-### 📊 Para Administradores (Dashboard)
-
-1. **Acceder al Dashboard**
-   ```
-   http://localhost/PROYECTO-DE-ESPECIALIDAD/pages/dashboard.html
-   ```
-
-2. **Visualizar Métricas**
-   - Ver 4 estadísticas clave en tarjetas
-   - Analizar gráficos de distribución
-   - Identificar tendencias semanales
-
-3. **Filtrar Comentarios**
-   - Seleccionar **Categoría**: Reclamo, Solicitud, Duda, General
-   - Seleccionar **Sentimiento**: Positivo, Negativo, Neutral
-   - Click en **"Aplicar Filtros"**
-   - ✅ La lista se actualizará en tiempo real
-
-4. **Ver Mapa de Reportes**
-   ```
-   http://localhost/PROYECTO-DE-ESPECIALIDAD/pages/map.html
-   ```
-   - Visualizar marcadores por ubicación
-   - Click en marcadores para ver detalles
-
-5. **Gestionar Usuarios**
-   ```
-   http://localhost/PROYECTO-DE-ESPECIALIDAD/pages/users.html
-   ```
-   - Ver tabla de usuarios registrados
-   - Analizar datos de contacto
-
----
-
-## 🤖 API Flask - Documentación
-
-### Endpoint Principal
-
-#### **GET** `/api/dashboard`
-
-Retorna datos completos del dashboard con comentarios clasificados por IA.
-
-**URL**:
-```
-http://127.0.0.1:5000/api/dashboard
-```
-
-**Respuesta** (JSON):
-```json
-**Respuesta** (JSON):
+### Agregar Nueva Pregunta al Formulario
+Edita `preguntas.json`:
 ```json
 {
-  "stats": {
-    "totalRespuestas": "1,247",
-    "tasaCompletacion": "87%",
-    "promedioTiempo": "4.2m",
-    "satisfaccion": "92%"
-  },
-  "comentarios": [
-    {
-      "idComentario": 1,
-      "textoOriginal": "El agua tiene mal sabor desde hace 3 días",
-      "filtro": "Reclamo",        // Clasificado por IA
-      "sentimiento": "Negativo",  // Clasificado por IA
-      "respondido": false
-    },
-    {
-      "idComentario": 2,
-      "textoOriginal": "Excelente gestión del recurso hídrico",
-      "filtro": "General",
-      "sentimiento": "Positivo",
-      "respondido": false
-    }
-  ],
-  "questions": [
-    {
-      "id": 1,
-      "text": "Pregunta 1",
-      "responses": 245
-    }
-  ],
-  "categories": [
-    {"name": "Reclamo", "count": 145},
-    {"name": "Solicitud", "count": 298},
-    {"name": "Duda", "count": 187},
-    {"name": "General", "count": 617}
-  ],
-  "users": [
-    {
-      "name": "Juan Pérez",
-      "email": "juan@example.com",
-      "city": "Valle Central",
-      "submissions": 3
-    }
-  ],
-  "locations": [
-    {
-      "city": "Valle Central",
-      "lat": -12.0464,
-      "lng": -77.0428,
-      "percentage": 35
-    }
-  ]
+  "datos_socio_principal": {
+    "Nueva Pregunta": "Tipo de dato"
+  }
 }
 ```
 
-### Modelo de IA - Detalles Técnicos
+Tipos válidos: `"Texto"`, `"Número"`, `"Fecha (Día/Mes/Año)"`, `"Sí/No"`, `"Correo electrónico"`, `"Teléfono"`, `"Firma"`
 
-**Algoritmo**: Multinomial Naive Bayes + TF-IDF
-
-**Vectorización**:
-```python
-TfidfVectorizer(
-    max_features=500,
-    ngram_range=(1, 2),  # Unigramas y bigramas
-    stop_words='spanish'
-)
-```
-
-**Entrenamiento**:
-- Dataset: 50+ comentarios etiquetados manualmente
-- Split: 80% entrenamiento, 20% validación
-- Métricas: Precisión ~85-90%
-
-**Categorías Detectadas**:
-| Categoría | Palabras Clave | Ejemplo |
-|-----------|----------------|---------|
-| **Reclamo** | "problema", "malo", "falla", "turbio" | "El agua está turbia desde ayer" |
-| **Solicitud** | "necesito", "quisiera", "solicito", "pedido" | "Solicito información sobre tarifas" |
-| **Duda** | "pregunta", "cómo", "cuándo", "información" | "¿Cuándo harán mantenimiento?" |
-| **General** | "gracias", "excelente", "información" | "Gracias por el buen servicio" |
-
----
-
-## 🎨 Personalización y Configuración
-
-### Variables CSS Globales
-
-Ubicación: `assets/css/main.css`
-
+### Modificar Colores del Sistema
+Edita variables en `main.css`:
 ```css
 :root {
-    /* Colores principales */
-    --color-primary: #0077b6;
-    --color-secondary: #00b4d8;
-    --color-accent: #48cae4;
-    --color-light: #90e0ef;
-    --color-dark: #023e8a;
-    
-    /* Gradientes */
-    --gradient-primary: linear-gradient(135deg, #0077b6, #00b4d8);
-    --gradient-water: linear-gradient(180deg, #0077b6, #48cae4);
-    
-    /* Sombras */
-    --shadow-sm: 0 2px 8px rgba(0, 119, 182, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 119, 182, 0.15);
-    --shadow-lg: 0 8px 32px rgba(0, 119, 182, 0.2);
-    
-    /* Tipografía */
-    --font-family: 'Poppins', -apple-system, sans-serif;
-    --font-size-base: 16px;
-    
-    /* Espaciado */
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 4rem;
+  --color-primary: #TU_COLOR;
+  --gradient-primary: linear-gradient(135deg, #COLOR1, #COLOR2);
 }
 ```
 
-### Cambiar Colores del Tema
+---
 
-Editar `assets/css/main.css`:
-```css
-:root {
-    --color-primary: #TU_COLOR;  /* Cambia todos los elementos primarios */
-}
-```
+## 📈 Métricas del Proyecto
 
-### Modificar Datos del Dashboard
-
-Editar `app.py`:
-```python
-"stats": {
-    "totalRespuestas": "TU_VALOR",
-    "tasaCompletacion": "TU_%",
-    "promedioTiempo": "TU_TIEMPO",
-    "satisfaccion": "TU_%"
-}
-```
-
-### Agregar Nuevas Preguntas al Formulario
-
-Editar `pages/form.html`:
-```html
-<div class="question-wrapper" id="question11">
-    <div class="question-header">
-        <span class="question-number">11</span>
-        <h3 class="question-title">Tu Nueva Pregunta</h3>
-    </div>
-    <div class="options-grid">
-        <label class="option-label">
-            <input type="radio" name="q11" value="opcion1">
-            <span>Opción 1</span>
-        </label>
-        <!-- Más opciones -->
-    </div>
-</div>
-```
+| Métrica | Valor |
+|---------|-------|
+| Líneas de código | ~2,500+ |
+| Archivos CSS | 5 archivos modulares |
+| Archivos JavaScript | 3 módulos principales |
+| Páginas HTML | 6 páginas completas |
+| Responsividad | 100% (Desktop, Tablet, Mobile) |
+| Tipos de datos soportados | 7 tipos diferentes |
+| Secciones del formulario | 5 configurables |
 
 ---
 
-## 🔧 Mantenimiento y Optimización
+## 🎓 Casos de Uso
 
-### Actualizar Caché del Navegador
+### 1. Junta de Vecinos
+Recopilar información socioeconómica de beneficiarios para programas de ayuda social.
 
-Cuando hagas cambios en CSS/JS, actualiza el versionado:
+### 2. Municipalidades
+Encuestas de satisfacción y necesidades de la comunidad.
 
-```html
-<!-- Antes -->
-<link rel="stylesheet" href="assets/css/main.css?v=2">
+### 3. Proyectos de Infraestructura
+Registro de habitantes afectados por proyectos hidroeléctricos.
 
-<!-- Después -->
-<link rel="stylesheet" href="assets/css/main.css?v=3">
-```
-
-### Optimización de Imágenes
-
-Las imágenes están optimizadas en formato **WebP**:
-- `represa.webp`: Imagen principal (compresión 80%)
-- Usar herramientas: [Squoosh](https://squoosh.app/) o `cwebp`
-
-### Performance
-
-Métricas actuales:
-- ⚡ **First Contentful Paint**: <1.5s
-- ⚡ **Time to Interactive**: <3s
-- ⚡ **Total Page Size**: ~450 KB (sin imágenes)
-- ⚡ **CSS Modular**: 46.6 KB (35% más ligero)
+### 4. ONGs
+Levantamiento de información para programas de asistencia.
 
 ---
 
-## 🐛 Solución de Problemas
+## 🚀 Próximas Mejoras
 
-### Error: "No se puede conectar al servidor Flask"
-
-**Solución**:
-```bash
-# Verificar que Flask esté corriendo
-python app.py
-
-# Verificar en el navegador
-http://127.0.0.1:5000/api/dashboard
-```
-
-### Error: "CORS policy error"
-
-**Solución**: Asegurarse de que Flask-CORS esté instalado
-```bash
-pip install flask-cors
-```
-
-### Error: "404 Not Found en páginas"
-
-**Solución**: Verificar rutas en XAMPP
-```
-Debe estar en: C:\xampp\htdocs\PROYECTO-DE-ESPECIALIDAD\
-Acceder con: http://localhost/PROYECTO-DE-ESPECIALIDAD/
-```
-
-### CSS no se actualiza
-
-**Solución**: Limpiar caché del navegador
-- Chrome: `Ctrl + Shift + Delete`
-- O cambiar `?v=2` a `?v=3` en los links de CSS
+- [ ] Autenticación de usuarios (login/registro)
+- [ ] Exportación a PDF/Excel
+- [ ] Panel de estadísticas avanzadas
+- [ ] Modo offline con sincronización
+- [ ] Notificaciones push
+- [ ] Multi-idioma (ES/EN)
+- [ ] Validación de RUT chileno
+- [ ] Upload de documentos adjuntos
+- [ ] Firma digital mejorada (touch/mouse)
+- [ ] Integración con WhatsApp API
 
 ---
 
-## 🤝 Contribuciones
+## 👥 Equipo de Desarrollo
 
-Las contribuciones son bienvenidas. Para cambios importantes:
-
-1. **Fork** el proyecto
-2. Crea una **rama** para tu función
-   ```bash
-   git checkout -b feature/NuevaFuncion
-   ```
-3. **Commit** tus cambios
-   ```bash
-   git commit -m 'Agregar: Nueva función de X'
-   ```
-4. **Push** a la rama
-   ```bash
-   git push origin feature/NuevaFuncion
-   ```
-5. Abre un **Pull Request**
-
-### Estándares de Código
-
-- ✅ Usar **CSS modular** (no agregar estilos inline)
-- ✅ Comentar funciones JavaScript complejas
-- ✅ Seguir convención de nombres (camelCase JS, kebab-case CSS)
-- ✅ Probar en múltiples navegadores
+**Hydro-Conecta Development Team**  
+Proyecto de Especialidad 2025
 
 ---
 
-## 📝 Licencia
-
-Este proyecto está bajo la **Licencia MIT**. Ver el archivo [LICENSE](LICENSE) para más detalles.
-
-```
-MIT License - Copyright (c) 2025 WhiteMooncy
-```
-
----
-
-## 👥 Autores y Reconocimientos
-
-### Desarrollo
-- **WhiteMooncy** - *Desarrollo Full Stack* - [GitHub](https://github.com/WhiteMooncy)
-
-### Tecnologías Open Source
-Gracias a las siguientes bibliotecas y frameworks:
-- [Flask](https://flask.palletsprojects.com/) - Framework web Python
-- [Scikit-learn](https://scikit-learn.org/) - Machine Learning
-- [Chart.js](https://www.chartjs.org/) - Gráficos interactivos
-- [Leaflet.js](https://leafletjs.com/) - Mapas interactivos
-- [AOS](https://michalsnik.github.io/aos/) - Animaciones al scroll
-- [Splide.js](https://splidejs.com/) - Carruseles modernos
-
----
-
-## 📞 Contacto
-
-**Hydro-Conecta - Gestión Hidroeléctrica Inteligente**
-
-- 📧 **Email**: info@hydroconecta.com
-- 📱 **Teléfono**: +51 000 000 000
-- 🌐 **Sitio Web**: [Hydro-Conecta](https://whitemooncy.github.io/PORTAFOLIO/)
-- 💼 **LinkedIn**: [WhiteMooncy](https://linkedin.com/in/whitemooncy)
-- 🐱 **GitHub**: [@WhiteMooncy](https://github.com/WhiteMooncy)
-
----
-
-## 📚 Documentación Adicional
-
-- [CSS_MODULAR_README.md](CSS_MODULAR_README.md) - Guía de arquitectura CSS modular
-- [OPTIMIZATION.md](OPTIMIZATION.md) - Mejoras de rendimiento implementadas
-- [MIGRATION.md](MIGRATION.md) - Proceso de migración a CSS modular
-
----
-
-## 🎯 Roadmap Futuro
-
-### Versión 2.1 (Próxima)
-- [ ] Sistema de autenticación de administradores
-- [ ] Notificaciones en tiempo real (WebSockets)
-- [ ] Exportación de reportes a PDF/Excel
-- [ ] Dashboard con filtros de fecha
-
-### Versión 3.0
-- [ ] Aplicación móvil (React Native)
-- [ ] Integración con IoT (sensores de la represa)
-- [ ] Sistema de respuestas automáticas con IA
-- [ ] Panel de analíticas avanzadas
-
----
-
-<div align="center">
-
-## 🌊 Hydro-Conecta
-
-**Gestión Sostenible del Agua con Tecnología Inteligente**
-
-Desarrollado con 💙 para la comunidad del Valle Azul
+## 📄 Licencia
 
 © 2025 Hydro-Conecta. Todos los derechos reservados.
 
-[![GitHub](https://img.shields.io/badge/GitHub-WhiteMooncy-181717?style=for-the-badge&logo=github)](https://github.com/WhiteMooncy)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+---
 
-</div>
-```
+## 📞 Contacto y Soporte
+
+- 📧 Email: soporte@hydroconecta.com
+- 📱 Teléfono: +56 9 XXXX XXXX
+- 🌐 Web: www.hydroconecta.com
+- 💬 Chat en vivo: Panel administrativo
 
 ---
 
-## 🎨 Temas y Personalización
-
-### Variables CSS Principales
-```css
-:root {
-    --water-dark: #0b3d91;
-    --water-mid: #1e6fb3;
-    --accent: #38bdf8;
-    --text-light: #f5f7fa;
-    --glass: rgba(255,255,255,0.06);
-    --shadow: 0 8px 24px rgba(2,6,23,0.35);
-    --radius-lg: 12px;
-}
-```
-
-### Aplicar Tema
-```html
-<body data-theme="represa">
-  <!-- Contenido -->
-</body>
-```
+**Versión del Proyecto**: 1.0.0  
+**Última actualización**: 10 de Noviembre, 2025  
+**Estado**: ✅ Producción
 
 ---
 
-## 🔧 Configuración Avanzada
+## 🏆 Logros del Proyecto
 
-### Modificar el Modelo de IA
-Editar `app.py` y actualizar los datos de entrenamiento:
-
-```python
-training_data = pd.DataFrame({
-    'text': [...],  # Tus textos de ejemplo
-    'category': [...],  # Categorías
-    'sentiment': [...]  # Sentimientos
-})
-```
-
-### Agregar Nuevas Ubicaciones al Mapa
-En `app.py`, modificar:
-
-```python
-"locations": [
-    {"city": "Ciudad", "lat": -00.0000, "lng": -00.0000, "percentage": 10}
-]
-```
+✅ **Sistema completo de formularios dinámicos**  
+✅ **Dashboard con IA para clasificación de comentarios**  
+✅ **Visualización geográfica interactiva**  
+✅ **Footer administrativo profesional con estado en tiempo real**  
+✅ **Diseño responsive 100%**  
+✅ **Arquitectura modular y escalable**  
+✅ **Código limpio y documentado**
 
 ---
 
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Para cambios importantes:
-
-1. Fork el proyecto
-2. Crea una rama para tu función (`git checkout -b feature/NuevaFuncion`)
-3. Commit tus cambios (`git commit -m 'Agregar nueva función'`)
-4. Push a la rama (`git push origin feature/NuevaFuncion`)
-5. Abre un Pull Request
-
----
-
-## 📝 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
----
-
-## 👥 Autores
-
-- **WhiteMooncy** - *Desarrollo Completo* - [GitHub](https://github.com/WhiteMooncy)
-
----
-
-## 📞 Contacto
-
-**Hydro-Conecta**
-- 📧 Email: info@hydroconecta.com
-- 📱 Tel: +51 000 000 000
-- 🌐 Web: [Hydro-Conecta](https://whitemooncy.github.io/PORTAFOLIO/)
-
----
-
-## 🙏 Agradecimientos
-
-- Comunidad de código abierto
-- Bibliotecas y frameworks utilizados
-- Usuarios y testers del sistema
-
----
-
-<div align="center">
-  <strong>Hecho con 💙 para la gestión sostenible del agua</strong>
-  <br>
-  © 2025 Hydro-Conecta. Todos los derechos reservados.
-</div>
+> *"Conectando comunidades con tecnología para un mejor futuro"* 💧

@@ -61,3 +61,7 @@ tmp/
 
 # Node modules (si usas npm)
 node_modules/
+
+
+#random
+preguntas.json
