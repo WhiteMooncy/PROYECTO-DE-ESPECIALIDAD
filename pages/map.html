@@ -7,19 +7,33 @@
     <meta name="description" content="Panel administrativo para visualización de resultados de encuestas">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../sources/img/icon/icon.webp">
+    <link rel="icon" type="image/x-icon" href="../assets/sources/img/icon/icon.webp">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap?v=2" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/theme-dashboard.css?v=2"/>
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/sources/css/modern-styles.css?v=2"/>
+    <link rel="stylesheet" href="../assets/sources/css/map.css?v=2"/>
 </head>
 <body data-theme="dashboard">
+    <!-- SVG Waves Background -->
+    <div class="waves-background">
+        <div class="wave wave-1">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,50 Q150,100 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="#0077b6"/>
+            </svg>
+        </div>
+        <div class="wave wave-2">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,60 Q150,90 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" fill="#00b4d8"/>
+            </svg>
+        </div>
+        <div class="wave wave-3">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,70 Q150,80 300,70 T600,70 T900,70 T1200,70 L1200,120 L0,120 Z" fill="#90e0ef"/>
+            </svg>
+        </div>
+    </div>
+    
     <header>
         <h1 class="headerLogo">Hydro-Conecta</h1>
         <nav class="headerNav" aria-label="Navegación principal">
@@ -68,6 +82,6 @@
     </footer>
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script src="../assets/js/cont.js?v=2"></script>
+    <script src="../assets/sources/js/cont.js?v=2"></script>
 </body>
 </html>
