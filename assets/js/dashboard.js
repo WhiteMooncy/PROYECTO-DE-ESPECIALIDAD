@@ -276,10 +276,13 @@ async function fetchDataAndRender() {
         setupCommentFilters();
 
         // 3. Renderizar Estadísticas
-        document.querySelector('.stat-value:nth-child(2)').textContent = allDashboardData.stats.totalRespuestas;
-        document.querySelector('.stat-value:nth-child(5)').textContent = allDashboardData.stats.tasaCompletacion;
-        document.querySelector('.stat-value:nth-child(8)').textContent = allDashboardData.stats.promedioTiempo;
-        document.querySelector('.stat-value:nth-child(11)').textContent = allDashboardData.stats.satisfaccion;
+        const statCards = document.querySelectorAll('.stat-card');
+        if (statCards.length >= 4) {
+            statCards[0].querySelector('.stat-card-value').textContent = allDashboardData.stats.totalRespuestas;
+            statCards[1].querySelector('.stat-card-value').textContent = allDashboardData.stats.tasaCompletacion;
+            statCards[2].querySelector('.stat-card-value').textContent = allDashboardData.stats.promedioTiempo;
+            statCards[3].querySelector('.stat-card-value').textContent = allDashboardData.stats.satisfaccion;
+        }
 
         // 4. Renderizar Gráficos
         renderBarChart(allDashboardData.questions);
