@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Administrativo - Encuestas</title>
-    <meta name="description" content="Panel administrativo para visualización de resultados de encuestas">
+    <title>Gestión de Usuarios - Panel Administrativo | Hydro-Conecta</title>
+    <meta name="description" content="Gestión y visualización de usuarios del sistema de encuestas">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../assets/sources/img/icon/icon.webp">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap?v=2" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/sources/css/main.css?v=2">
+    <link rel="stylesheet" href="../assets/sources/css/components.css?v=2">
     <link rel="stylesheet" href="../assets/sources/css/modern-styles.css?v=2"/>
-    <link rel="stylesheet" href="../assets/sources/css/users.css?v=2"/>
+    <link rel="stylesheet" href="../assets/sources/css/users.css?v=3"/>
 </head>
-<body data-theme="dashboard">
+<body>
     <!-- SVG Waves Background -->
     <div class="waves-background">
         <div class="wave wave-1">
@@ -24,33 +33,149 @@
         </div>
         <div class="wave wave-2">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,60 Q150,90 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" fill="#00b4d8"/>
+                <path d="M0,70 Q200,20 400,70 T800,70 T1200,70 L1200,120 L0,120 Z" fill="#00b4d8"/>
             </svg>
         </div>
         <div class="wave wave-3">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,70 Q150,80 300,70 T600,70 T900,70 T1200,70 L1200,120 L0,120 Z" fill="#90e0ef"/>
+                <path d="M0,30 Q250,80 500,30 T1000,30 T1500,30 L1500,120 L0,120 Z" fill="#48cae4"/>
+            </svg>
+        </div>
+        <div class="wave wave-4">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,90 Q300,40 600,90 T1200,90 L1200,120 L0,120 Z" fill="#90e0ef"/>
             </svg>
         </div>
     </div>
     
-    <header>
-        <h1 class="headerLogo">Hydro-Conecta</h1>
-        <nav class="headerNav" aria-label="Navegación principal">
-            <ul>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="dashboard.html">Resultados</a></li>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="map.html">Mapa</a></li>
-                <li class="headerNavBlock"><a class="headerNavLinks" href="users.html">Usuarios</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar-modern">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-brand">
+                <i class="fas fa-water"></i>
+                <span>Hydro-Conecta</span>
+            </a>
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="form.html" class="nav-link">Formulario</a>
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+                <a href="map.html" class="nav-link">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Mapa
+                </a>
+                <a href="users.html" class="nav-link-login active">
+                    <i class="fas fa-users-cog"></i>
+                    Usuarios
+                </a>
+            </div>
+        </div>
+    </nav>
+    
     <main class="main-content" role="main">
         <!-- Sección: Usuarios -->
         <section id="users-section" class="section active">
     
+    <!-- KPI Stats Cards -->
+    <div class="kpi-container">
+        <div class="kpi-card">
+            <div class="kpi-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="kpi-content">
+                <span class="kpi-value" id="total-users">8</span>
+                <span class="kpi-label">Total Usuarios</span>
+            </div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">
+                <i class="fas fa-user-check"></i>
+            </div>
+            <div class="kpi-content">
+                <span class="kpi-value" id="active-users">6</span>
+                <span class="kpi-label">Activos</span>
+            </div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">
+                <i class="fas fa-user-clock"></i>
+            </div>
+            <div class="kpi-content">
+                <span class="kpi-value" id="pending-users">2</span>
+                <span class="kpi-label">Pendientes</span>
+            </div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <div class="kpi-content">
+                <span class="kpi-value" id="total-comments">24</span>
+                <span class="kpi-label">Comentarios</span>
+            </div>
+        </div>
+    </div>
+
     <div class="section-header">
-        <h2>Gestión de Usuarios</h2>
-        <p>Lista completa de usuarios, incluyendo datos de contacto y comentarios recientes.</p>
+        <div class="header-left">
+            <h2><i class="fas fa-users-cog"></i> Gestión de Usuarios</h2>
+            <p>Lista completa de usuarios, incluyendo datos de contacto y comentarios recientes.</p>
+        </div>
+        <div class="header-actions">
+            <button class="action-btn" id="search-toggle" title="Buscar usuario">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="action-btn" id="filter-toggle" title="Filtrar">
+                <i class="fas fa-filter"></i>
+            </button>
+            <button class="action-btn" id="export-users-btn" title="Exportar usuarios">
+                <i class="fas fa-file-export"></i>
+            </button>
+            <button class="action-btn" id="add-user-btn" title="Agregar usuario">
+                <i class="fas fa-user-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Search Panel -->
+    <div class="search-panel" id="search-panel" style="display: none;">
+        <div class="search-input-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="user-search" placeholder="Buscar por nombre, email o RUT..." autocomplete="off">
+        </div>
+    </div>
+
+    <!-- Filter Panel -->
+    <div class="filter-panel" id="filter-panel" style="display: none;">
+        <h3><i class="fas fa-sliders-h"></i> Filtros</h3>
+        <div class="filter-group">
+            <label><i class="fas fa-toggle-on"></i> Estado</label>
+            <select id="status-filter">
+                <option value="all">Todos los estados</option>
+                <option value="active">Activos</option>
+                <option value="pending">Pendientes</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label><i class="fas fa-sort-alpha-down"></i> Ordenar por</label>
+            <select id="sort-filter">
+                <option value="name">Nombre (A-Z)</option>
+                <option value="name-desc">Nombre (Z-A)</option>
+                <option value="recent">Más recientes</option>
+                <option value="comments">Más comentarios</option>
+            </select>
+        </div>
+        <button class="apply-filters-btn" id="apply-user-filters">
+            Aplicar Filtros <i class="fas fa-check"></i>
+        </button>
     </div>
 
     <div class="users-table">
@@ -157,5 +282,189 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <script src="../assets/sources/js/dashboard.js?v=2"></script>
+    
+    <script>
+        // Navbar Toggle
+        const navbarToggler = document.getElementById('navbar-toggler');
+        const navbarMenu = document.getElementById('navbar-menu');
+        
+        if(navbarToggler){
+            navbarToggler.addEventListener('click', () => {
+                navbarMenu.classList.toggle('active');
+                navbarToggler.classList.toggle('active');
+            });
+        }
+
+        // Search Toggle
+        const searchToggle = document.getElementById('search-toggle');
+        const searchPanel = document.getElementById('search-panel');
+        const filterToggle = document.getElementById('filter-toggle');
+        const filterPanel = document.getElementById('filter-panel');
+
+        if(searchToggle && searchPanel) {
+            searchToggle.addEventListener('click', () => {
+                const isVisible = searchPanel.style.display !== 'none';
+                searchPanel.style.display = isVisible ? 'none' : 'block';
+                searchToggle.classList.toggle('active');
+                
+                if (!isVisible && filterPanel) {
+                    filterPanel.style.display = 'none';
+                    if(filterToggle) filterToggle.classList.remove('active');
+                }
+            });
+        }
+
+        if(filterToggle && filterPanel) {
+            filterToggle.addEventListener('click', () => {
+                const isVisible = filterPanel.style.display !== 'none';
+                filterPanel.style.display = isVisible ? 'none' : 'block';
+                filterToggle.classList.toggle('active');
+                
+                if (!isVisible && searchPanel) {
+                    searchPanel.style.display = 'none';
+                    if(searchToggle) searchToggle.classList.remove('active');
+                }
+            });
+        }
+
+        // Search Functionality
+        const userSearch = document.getElementById('user-search');
+        if(userSearch) {
+            userSearch.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const tableRows = document.querySelectorAll('.users-table .table-row');
+                
+                tableRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(searchTerm) ? '' : 'none';
+                });
+            });
+        }
+
+        // Filter Functionality
+        const applyFilters = document.getElementById('apply-user-filters');
+        if(applyFilters) {
+            applyFilters.addEventListener('click', () => {
+                const statusFilter = document.getElementById('status-filter').value;
+                const sortFilter = document.getElementById('sort-filter').value;
+                const tableRows = Array.from(document.querySelectorAll('.users-table .table-row'));
+                
+                // Filter by status
+                tableRows.forEach(row => {
+                    if(statusFilter === 'all') {
+                        row.style.display = '';
+                    } else {
+                        const statusBadge = row.querySelector('.status-badge');
+                        const isActive = statusBadge && statusBadge.textContent.toLowerCase().includes('activo');
+                        
+                        if(statusFilter === 'active' && isActive) {
+                            row.style.display = '';
+                        } else if(statusFilter === 'pending' && !isActive) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    }
+                });
+
+                // Sort
+                const container = document.querySelector('.users-table');
+                const header = container.querySelector('.table-header');
+                
+                if(sortFilter === 'name') {
+                    tableRows.sort((a, b) => {
+                        const nameA = a.querySelector('.user-info div div').textContent;
+                        const nameB = b.querySelector('.user-info div div').textContent;
+                        return nameA.localeCompare(nameB);
+                    });
+                } else if(sortFilter === 'name-desc') {
+                    tableRows.sort((a, b) => {
+                        const nameA = a.querySelector('.user-info div div').textContent;
+                        const nameB = b.querySelector('.user-info div div').textContent;
+                        return nameB.localeCompare(nameA);
+                    });
+                }
+                
+                tableRows.forEach(row => container.appendChild(row));
+                
+                alert('Filtros aplicados correctamente');
+            });
+        }
+
+        // Export Users
+        const exportBtn = document.getElementById('export-users-btn');
+        if(exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                const users = [];
+                const tableRows = document.querySelectorAll('.users-table .table-row');
+                
+                tableRows.forEach(row => {
+                    const userName = row.querySelector('.user-info div div').textContent;
+                    const userEmail = row.querySelector('.user-info small').textContent;
+                    const rut = row.querySelectorAll('[data-label="RUT"]')[0]?.textContent.trim();
+                    const status = row.querySelector('.status-badge')?.textContent.trim();
+                    
+                    users.push({
+                        nombre: userName,
+                        email: userEmail,
+                        rut: rut,
+                        estado: status
+                    });
+                });
+
+                const data = {
+                    usuarios: users,
+                    total: users.length,
+                    exportDate: new Date().toISOString()
+                };
+
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'hydro-conecta-usuarios-' + new Date().toISOString().split('T')[0] + '.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                alert('¡Usuarios exportados exitosamente!');
+            });
+        }
+
+        // Add User Button
+        const addUserBtn = document.getElementById('add-user-btn');
+        if(addUserBtn) {
+            addUserBtn.addEventListener('click', () => {
+                alert('Funcionalidad de agregar usuario en desarrollo');
+            });
+        }
+
+        // Animate KPI values on load
+        function animateValue(id, start, end, duration) {
+            const element = document.getElementById(id);
+            if (!element) return;
+            const range = end - start;
+            const increment = range / (duration / 16);
+            let current = start;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    element.textContent = Math.round(end);
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.round(current);
+                }
+            }, 16);
+        }
+
+        // Animate KPIs on load
+        window.addEventListener('load', () => {
+            animateValue('total-users', 0, 8, 1000);
+            animateValue('active-users', 0, 6, 1200);
+            animateValue('pending-users', 0, 2, 800);
+            animateValue('total-comments', 0, 24, 1500);
+        });
+    </script>
 </body>
 </html>
