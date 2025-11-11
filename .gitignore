@@ -28,6 +28,9 @@ instance/
 .webassets-cache
 .env
 .flaskenv
+*.env.local
+*.env.production
+*.env.development
 
 # IDE
 .vscode/
@@ -35,33 +38,134 @@ instance/
 *.swp
 *.swo
 *~
+.project
+.classpath
+.settings/
 
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
+*.lnk
 
 # Logs
 *.log
 logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Database
 *.db
 *.sqlite
 *.sqlite3
+*.db-journal
+*.sql
 
-# Secrets
+# Secrets & Credentials
 config/secrets.py
+config/credentials.py
+config/database.php
 *.key
 *.pem
+*.cert
+*.crt
+.secret
+secrets/
+credentials/
+.credentials/
+
+# API Keys & Tokens
+.api_keys
+api_keys.json
+.token
+tokens/
 
 # Temporary
 temp/
 tmp/
 *.tmp
+*.bak
+*.backup
+*.swp
+*.cache
+.cache/
 
 # Node modules (si usas npm)
 node_modules/
+package-lock.json
+yarn.lock
 
+# Backups
+*.old
+*.orig
+*~
+*.corrupted
+*.backup
 
+# Project Specific
 #random
 preguntas.json
+respuestas.json
+usuarios.json
+
+# Sensitive Data
+data/
+private/
+confidential/
+
+# Email & SMTP configs
+smtp_config.json
+email_credentials.json
+
+# Session files
+sessions/
+*.session
+
+# Compiled files
+*.pyc
+*.pyo
+*.class
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage/
+*.cover
+
+# Testing
+.pytest_cache/
+.tox/
+nosetests.xml
+coverage.xml
+*.coveragerc
+
+# Documentation builds
+docs/_build/
+site/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+$RECYCLE.BIN/
+Desktop.ini
+ehthumbs.db
+
+# Sensitive Config Files
+config/production.py
+config/local.py
+config/*.local.*
+settings.local.py
+settings.production.py
