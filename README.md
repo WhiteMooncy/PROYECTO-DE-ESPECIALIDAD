@@ -48,10 +48,11 @@ PROYECTO-DE-ESPECIALIDAD/
 **Hydro-Conecta** es un sistema web desarrollado para facilitar la recopilación, análisis y visualización de información socioeconómica de comunidades relacionadas con proyectos de infraestructura hidroeléctrica. 
 
 El proyecto busca:
-- 📊 Digitalizar el proceso de encuestas comunitarias
+- 📊 Digitalizar el proceso de censo social comunitario
 - 🗺️ Visualizar geográficamente la distribución de datos
 - 📈 Analizar necesidades y problemáticas mediante IA
-- 👥 Gestionar información de usuarios y beneficiarios
+- 👥 Gestionar información de usuarios y núcleo familiar
+- 📋 Recopilar datos estructurados para programas sociales
 
 ---
 
@@ -86,197 +87,21 @@ El proyecto busca:
 
 ## 📋 Módulos del Sistema
 
-### 1️⃣ **Formulario Dinámico** (`form.html` + `form.js`)
+### 1️⃣ **Formulario Censo Social** (`form.html` + `form-page.js`)
 
-Sistema inteligente de encuestas que carga preguntas desde JSON y genera campos automáticamente.
-
-**Características:**
-- ✅ 5 secciones configurables: Socio Principal, Domicilio, Núcleo Familiar, Necesidades, Encuestador
-- ✅ 7 tipos de campos: texto, número, fecha, email, teléfono, radio, firma digital
-- ✅ Validación en tiempo real con notificaciones toast
-- ✅ Barra de progreso visual
-- ✅ Signature pad para firmas digitales
-- ✅ Responsive design
-
-**Flujo de Trabajo:**
-```
-Usuario → Formulario → Validación → API → Base de Datos → Dashboard
-```
-
-**Ejemplo de Configuración (preguntas.json):**
-```json
-{
-  "datos_socio_principal": {
-    "Nombre completo": "Texto",
-    "RUT": "Texto/Número",
-    "Tiene discapacidad?": "Sí/No"
-  }
-}
-```
-
----
-
-### 2️⃣ **Dashboard Administrativo** (`dashboard.html`)
-
-Panel de control con visualización de datos en tiempo real y análisis mediante IA.
+Sistema procedural de censo social en 5 pasos con validación completa y campos dinámicos.
 
 **Características:**
-- 📊 Estadísticas generales (total respuestas, preguntas, categorías)
-- 📈 Gráficos de barras personalizados (visualización por categoría)
-- 💬 Sistema de comentarios con clasificación IA
-- 🔍 Filtros dinámicos por fecha y categoría
-- 📥 Exportación de datos
-- ⚡ Footer administrativo con estado del sistema en tiempo real
-
-**Clasificación IA:**
-```javascript
-Tipos de Comentarios:
-- RECLAMO (problemas, quejas)
-- SOLICITUD (pedidos, necesidades)
-- SUGERENCIA (ideas, mejoras)
-- CONSULTA (preguntas)
-- AGRADECIMIENTO (reconocimientos)
-```
-
-**Footer Profesional:**
-- 🖥️ Estado: Operativo (tiempo real)
-- ⏰ Reloj actualizado cada segundo
-- 📌 Versión: v1.0.0 | Build 2025.11.10
-- 🔗 Links rápidos: Ayuda, Reportar Error, Documentación
-
----
-
-### 3️⃣ **Mapa Interactivo** (`map.html`)
-
-Visualización geográfica de datos recopilados usando Leaflet.js.
-
-**Funcionalidades:**
-- 🗺️ Mapa interactivo con marcadores
-- 📍 Geolocalización de encuestados
-- 🎨 Clusters para agrupación visual
-- ℹ️ Popups informativos con datos del usuario
-
----
-
-### 4️⃣ **Gestión de Usuarios** (`users.html`)
-
-Módulo para administración de usuarios y beneficiarios del sistema.
-
----
-
-## 🎨 Diseño Visual
-
-### Paleta de Colores
-```css
---color-primary: #0077b6;      /* Azul principal */
---color-secondary: #00b4d8;    /* Azul secundario */
---color-accent: #48cae4;       /* Azul claro */
---color-dark: #03045e;         /* Azul oscuro */
---gradient-primary: linear-gradient(135deg, #0077b6, #00b4d8);
-```
-
-### Sistema de Variables CSS
-```css
-:root {
-  /* Colores */
-  --color-primary, --color-secondary, --color-light, --color-dark
-  
-  /* Tipografía */
-  --font-family: 'Poppins', sans-serif
-  --font-weight-light: 300, --font-weight-bold: 700
-  
-  /* Espaciado */
-  --radius-sm: 4px, --radius-md: 8px, --radius-lg: 16px
-  
-  /* Efectos */
-  --shadow-md, --shadow-lg, --shadow-xl
-  --transition: all 0.3s ease
-}
-```
-
----
-
-## 🚀 Instalación y Uso
-
-### Requisitos Previos
-- Python 3.11+
-- PHP 8.0+ (servidor local)
-- Navegador moderno (Chrome, Firefox, Edge)
-
-### Configuración
-
-1. **Iniciar Servidor Flask (API)**
-```powershell
-python app.py
-# URL: http://127.0.0.1:5000
-```
-
-2. **Iniciar Servidor PHP (Frontend)**
-```powershell
-php -S localhost:8000
-# URL: http://localhost:8000
-```
-
-3. **Acceder a la Aplicación**
-- Inicio: `http://localhost:8000/index.html`
-- Formulario: `http://localhost:8000/pages/form.html`
-- Dashboard: `http://localhost:8000/pages/dashboard.html`
-- Mapa: `http://localhost:8000/pages/map.html`
-- Usuarios: `http://localhost:8000/pages/users.html`
-
----
-
-## 📊 API Endpoints
-
-### Dashboard
-```http
-GET /api/dashboard
-Response: {
-  "stats": { "total": 150, "questions": 45, "categories": 8 },
-  "comments": [...],
-  "categories": [...],
-  "users": [...],
-  "locations": [...]
-}
-```
-
-### Envío de Formulario
-```http
-POST /api/submit-survey
-Content-Type: application/json
-Body: { "Datos del Socio Principal": {...}, ... }
-```
-
----
-
-## 🎯 Características Principales
-
-### ✨ Formulario Inteligente
-- Generación dinámica de campos desde JSON
-- Validación automática por tipo de dato
-- Progreso visual paso a paso
-- Firma digital con canvas
-- Notificaciones toast elegantes
-
-### 📊 Dashboard Analítico
-- Visualización de datos en tiempo real
-- Clasificación automática de comentarios con IA
-- Gráficos interactivos personalizados
-- Filtros por fecha y categoría
-- Estado del sistema actualizado cada segundo
-
-### 🗺️ Geolocalización
-- Mapas interactivos con Leaflet
-- Marcadores personalizados
-- Clusters de agrupación
-- Información detallada por ubicación
-
-### 🎨 Diseño Profesional
-- Responsive design (Desktop, Tablet, Mobile)
-- Animaciones fluidas con AOS
-- Footer administrativo estilo panel profesional
-- Tema de colores consistente
-- Accesibilidad (ARIA labels, semantic HTML)
+- ✅ 5 pasos visuales: Datos Personales, Domicilio, Núcleo Familiar, Necesidades, Confirmación
+- ✅ Indicadores de progreso animados con efectos visuales avanzados
+- ✅ Campos condicionales que se muestran según respuestas
+- ✅ Gestión dinámica de familiares (agregar/eliminar)
+- ✅ Cálculo automático de edad desde fecha de nacimiento
+- ✅ Validación en tiempo real por paso
+- ✅ Resumen completo antes de enviar
+- ✅ Botón DEV para autocompletar (desarrollo)
+- ✅ Responsive design con adaptación a móvil/tablet
+- ✅ Guardado en localStorage
 
 ---
 
@@ -290,140 +115,72 @@ PROYECTO-DE-ESPECIALIDAD/
 ├── preguntas.json             # Configuración de formulario
 │
 ├── pages/
-│   ├── form.html              # Formulario dinámico
+│   ├── form.html              # Formulario censo social (5 pasos)
 │   ├── dashboard.html         # Panel administrativo
 │   ├── map.html               # Mapa interactivo
 │   ├── users.html             # Gestión de usuarios
 │   └── nosotros.html          # Información del proyecto
 │
-├── assets/
+├── src/
 │   ├── css/
-│   │   ├── main.css           # Estilos globales + variables
-│   │   ├── dashboard.css      # Estilos del dashboard
-│   │   ├── form.css           # Estilos del formulario
-│   │   ├── components.css     # Componentes reutilizables
-│   │   └── modern-styles.css  # Estilos modernos
+│   │   └── layout/
+│   │       └── modern-styles.css  # Estilos completos del sistema
 │   │
 │   ├── js/
-│   │   ├── form.js            # Lógica formulario dinámico (420 líneas)
-│   │   ├── dashboard.js       # Visualización y filtros
-│   │   └── main.js            # Scripts globales
+│   │   └── pages/
+│   │       ├── form-page.js    # Lógica formulario censo (600+ líneas)
+│   │       ├── nosotros-page.js # Página nosotros con carousel
+│   │       └── dashboard.js    # Visualización y filtros
 │   │
-│   └── sources/
-│       └── img/               # Imágenes y recursos
+│   └── images/
+│       └── content/           # Imágenes y recursos
 │
 └── README_PROYECTO.md         # Este archivo
 ```
 
 ---
 
-## 🔧 Personalización
-
-### Agregar Nueva Pregunta al Formulario
-Edita `preguntas.json`:
-```json
-{
-  "datos_socio_principal": {
-    "Nueva Pregunta": "Tipo de dato"
-  }
-}
-```
-
-Tipos válidos: `"Texto"`, `"Número"`, `"Fecha (Día/Mes/Año)"`, `"Sí/No"`, `"Correo electrónico"`, `"Teléfono"`, `"Firma"`
-
-### Modificar Colores del Sistema
-Edita variables en `main.css`:
-```css
-:root {
-  --color-primary: #TU_COLOR;
-  --gradient-primary: linear-gradient(135deg, #COLOR1, #COLOR2);
-}
-```
-
----
-
-## 📈 Métricas del Proyecto
-
-| Métrica | Valor |
-|---------|-------|
-| Líneas de código | ~2,500+ |
-| Archivos CSS | 5 archivos modulares |
-| Archivos JavaScript | 3 módulos principales |
-| Páginas HTML | 6 páginas completas |
-| Responsividad | 100% (Desktop, Tablet, Mobile) |
-| Tipos de datos soportados | 7 tipos diferentes |
-| Secciones del formulario | 5 configurables |
-
----
-
-## 🎓 Casos de Uso
-
-### 1. Junta de Vecinos
-Recopilar información socioeconómica de beneficiarios para programas de ayuda social.
-
-### 2. Municipalidades
-Encuestas de satisfacción y necesidades de la comunidad.
-
-### 3. Proyectos de Infraestructura
-Registro de habitantes afectados por proyectos hidroeléctricos.
-
-### 4. ONGs
-Levantamiento de información para programas de asistencia.
-
----
-
 ## 🚀 Próximas Mejoras
 
 - [ ] Autenticación de usuarios (login/registro)
-- [ ] Exportación a PDF/Excel
-- [ ] Panel de estadísticas avanzadas
+- [ ] Exportación a PDF/Excel de censos
+- [ ] Panel de estadísticas avanzadas por familia
 - [ ] Modo offline con sincronización
 - [ ] Notificaciones push
 - [ ] Multi-idioma (ES/EN)
-- [ ] Validación de RUT chileno
+- [ ] Validación de RUT chileno con dígito verificador
 - [ ] Upload de documentos adjuntos
-- [ ] Firma digital mejorada (touch/mouse)
+- [ ] Impresión de resumen de censo
 - [ ] Integración con WhatsApp API
+- [ ] Búsqueda avanzada de censos por RUT/nombre
+- [ ] Historial de modificaciones
 
 ---
 
 ## 👥 Equipo de Desarrollo
 
-**Hydro-Conecta Development Team**  
+**Inveciles-team**  
 Proyecto de Especialidad 2025
-
----
-
-## 📄 Licencia
-
-© 2025 Hydro-Conecta. Todos los derechos reservados.
-
----
-
-## 📞 Contacto y Soporte
-
-- 📧 Email: soporte@hydroconecta.com
-- 📱 Teléfono: +56 9 XXXX XXXX
-- 🌐 Web: www.hydroconecta.com
-- 💬 Chat en vivo: Panel administrativo
-
----
-
-**Versión del Proyecto**: 1.0.0  
-**Última actualización**: 10 de Noviembre, 2025  
+**Versión del Proyecto**: 2.0.0  
+**Última actualización**: 17 de Noviembre, 2025  
 **Estado**: ✅ Producción
 
 ---
 
 ## 🏆 Logros del Proyecto
 
-✅ **Sistema completo de formularios dinámicos**  
+✅ **Sistema completo de censo social en 5 pasos**  
+✅ **Formulario procedural con validación por paso**  
+✅ **Gestión dinámica de núcleo familiar**  
+✅ **Campos condicionales inteligentes**  
 ✅ **Dashboard con IA para clasificación de comentarios**  
 ✅ **Visualización geográfica interactiva**  
+✅ **Indicadores de progreso animados con efectos avanzados**  
 ✅ **Footer administrativo profesional con estado en tiempo real**  
 ✅ **Diseño responsive 100%**  
 ✅ **Arquitectura modular y escalable**  
-✅ **Código limpio y documentado**
+✅ **Código limpio y documentado**  
+✅ **Botón DEV para testing rápido**
 
 ---
 
