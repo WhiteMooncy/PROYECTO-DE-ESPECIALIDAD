@@ -1,0 +1,109 @@
+{
+  "comentarios": [
+    {
+      "idComentario": 1,
+      "textoOriginal": "Estoy muy satisfecho con el proyecto de la represa. Traerá desarrollo y mejores oportunidades para nuestra comunidad.",
+      "filtro": "agradecimiento",
+      "sentimiento": "positivo",
+      "respondido": true
+    },
+    {
+      "idComentario": 2,
+      "textoOriginal": "¿Cuál será el impacto ambiental de la construcción de la represa en nuestra zona?",
+      "filtro": "duda",
+      "sentimiento": "neutral",
+      "respondido": true
+    },
+    {
+      "idComentario": 3,
+      "textoOriginal": "Me preocupa que la construcción de la represa afecte nuestras tierras agrícolas. No hemos recibido información clara al respecto.",
+      "filtro": "reclamo",
+      "sentimiento": "negativo",
+      "respondido": false
+    },
+    {
+      "idComentario": 4,
+      "textoOriginal": "Solicito información sobre los planes de reubicación y compensación para las familias afectadas por la represa.",
+      "filtro": "solicitud",
+      "sentimiento": "neutral",
+      "respondido": false
+    },
+    {
+      "idComentario": 5,
+      "textoOriginal": "El ruido y el polvo de la construcción están afectando nuestra calidad de vida. Necesitamos que tomen medidas urgentes.",
+      "filtro": "reclamo",
+      "sentimiento": "negativo",
+      "respondido": false
+    },
+    {
+      "idComentario": 6,
+      "textoOriginal": "¿Habrá fuentes de empleo para la comunidad local durante y después de la construcción de la represa?",
+      "filtro": "duda",
+      "sentimiento": "neutral",
+      "respondido": true
+    },
+    {
+      "idComentario": 7,
+      "textoOriginal": "Agradezco las reuniones informativas que han realizado. Es importante que nos mantengan informados sobre el avance del proyecto.",
+      "filtro": "agradecimiento",
+      "sentimiento": "positivo",
+      "respondido": true
+    },
+    {
+      "idComentario": 8,
+      "textoOriginal": "Solicito que se realice un estudio de impacto social más detallado antes de continuar con la construcción.",
+      "filtro": "solicitud",
+      "sentimiento": "neutral",
+      "respondido": false
+    },
+    {
+      "idComentario": 9,
+      "textoOriginal": "Estoy en desacuerdo con el proyecto. La represa inundará zonas de valor histórico y cultural para nuestra comunidad.",
+      "filtro": "reclamo",
+      "sentimiento": "negativo",
+      "respondido": false
+    },
+    {
+      "idComentario": 10,
+      "textoOriginal": "¿Cuándo estarán disponibles los beneficios de energía eléctrica para nuestra comunidad una vez terminada la represa?",
+      "filtro": "duda",
+      "sentimiento": "neutral",
+      "respondido": true
+    },
+    {
+      "idComentario": 11,
+      "textoOriginal": "Me parece excelente que hayan contratado mano de obra local. Esto beneficia directamente a nuestras familias.",
+      "filtro": "agradecimiento",
+      "sentimiento": "positivo",
+      "respondido": true
+    },
+    {
+      "idComentario": 12,
+      "textoOriginal": "El acceso a nuestra comunidad se ha vuelto difícil por la construcción. Necesitamos rutas alternativas.",
+      "filtro": "reclamo",
+      "sentimiento": "negativo",
+      "respondido": false
+    },
+    {
+      "idComentario": 13,
+      "textoOriginal": "Solicito información sobre los programas de capacitación para trabajar en el mantenimiento de la represa.",
+      "filtro": "solicitud",
+      "sentimiento": "neutral",
+      "respondido": false
+    },
+    {
+      "idComentario": 14,
+      "textoOriginal": "¿Qué medidas de seguridad se implementarán para prevenir inundaciones una vez operativa la represa?",
+      "filtro": "duda",
+      "sentimiento": "neutral",
+      "respondido": true
+    },
+    {
+      "idComentario": 15,
+      "textoOriginal": "Agradezco el apoyo económico que han brindado a los negocios locales durante la construcción del proyecto.",
+      "filtro": "agradecimiento",
+      "sentimiento": "positivo",
+      "respondido": true
+    }
+  ]
+}
