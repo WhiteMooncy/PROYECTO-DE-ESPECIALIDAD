@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respuestas - Panel Administrativo | Hydro-Conecta</title>
+    <meta name="description" content="Gestión de comentarios, solicitudes y reclamos clasificados por IA">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/sources/img/icon/icon.webp">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Stylesheets Modulares -->
+    <link rel="stylesheet" href="../assets/sources/css/variables.css">
+    <link rel="stylesheet" href="../assets/sources/css/shared.css">
+    <link rel="stylesheet" href="../assets/sources/css/admin.css">
+</head>
+<body>
+    <!-- SVG Waves Background -->
+    <div class="waves-background">
+        <div class="wave wave-1">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,50 Q150,100 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="#0077b6"/>
+            </svg>
+        </div>
+        <div class="wave wave-2">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,70 Q200,20 400,70 T800,70 T1200,70 L1200,120 L0,120 Z" fill="#00b4d8"/>
+            </svg>
+        </div>
+        <div class="wave wave-3">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,30 Q250,80 500,30 T1000,30 T1500,30 L1500,120 L0,120 Z" fill="#48cae4"/>
+            </svg>
+        </div>
+        <div class="wave wave-4">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,90 Q300,40 600,90 T1200,90 L1200,120 L0,120 Z" fill="#90e0ef"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar-modern">
+        <div class="navbar-container">
+            <a href="../index.html" class="navbar-brand">
+                <i class="fas fa-water"></i>
+                <span>Hydro-Conecta</span>
+            </a>
+            <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
+                <a href="map.html" class="nav-link">
+                    <i class="fas fa-map-marked-alt"></i>
+                    Mapa
+                </a>
+                <a href="users.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    Usuarios
+                </a>
+                <a href="responses.html" class="nav-link-login active">
+                    <i class="fas fa-reply"></i>
+                    Respuestas
+                </a>
+                <a href="dashboard.html" class="nav-link-login">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="dashboard-content" role="main">
+        <header class="dashboard-header" data-aos="fade-up">
+            <div class="header-content">
+                <h1>Comentarios, Solicitudes y Reclamos</h1>
+                <p>Sistema de clasificación automática mediante Inteligencia Artificial</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-export" id="exportBtn">
+                    <i class="fas fa-download"></i>
+                    Exportar Datos
+                </button>
+                <button class="btn-filter" id="clearFiltersBtn">
+                    <i class="fas fa-redo"></i>
+                    Limpiar Filtros
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Summary -->
+        <section class="stats-grid" data-aos="fade-up" role="region" aria-label="Resumen de respuestas">
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-label">Total Comentarios</span>
+                    <div class="stat-card-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                </div>
+                <div class="stat-card-value" id="totalComments">0</div>
+                <div class="stat-card-footer">
+                    <span class="stat-period">registrados en el sistema</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-label">Reclamos</span>
+                    <div class="stat-card-icon" style="background: #dc3545;">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-card-value" id="reclamosCount">0</div>
+                <div class="stat-card-footer">
+                    <span class="stat-period" id="reclamosPercent">0%</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-label">Solicitudes</span>
+                    <div class="stat-card-icon" style="background: #ffc107;">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                </div>
+                <div class="stat-card-value" id="solicitudesCount">0</div>
+                <div class="stat-card-footer">
+                    <span class="stat-period" id="solicitudesPercent">0%</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-header">
+                    <span class="stat-card-label">Pendientes</span>
+                    <div class="stat-card-icon" style="background: #6c757d;">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+                <div class="stat-card-value" id="pendientesCount">0</div>
+                <div class="stat-card-footer">
+                    <span class="stat-period" id="pendientesPercent">0%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="comments-section" data-aos="fade-up" role="region" aria-label="Comentarios filtrados por IA">
+            <div class="comments-header">
+                <h2>Gestión de Comentarios</h2>
+                <p>Utiliza los filtros de Categoría y Sentimiento para gestionar los comentarios.</p>
+            </div>
+
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="categoryFilter">Categoría (IA):</label>
+                    <select id="categoryFilter" class="dashboard-filter">
+                        <option value="all">Todas las Categorías</option>
+                        <option value="reclamo">Reclamo</option>
+                        <option value="solicitud">Solicitud</option>
+                        <option value="duda">Duda</option>
+                        <option value="agradecimiento">Agradecimiento</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sentimentFilter">Sentimiento (IA):</label>
+                    <select id="sentimentFilter" class="dashboard-filter">
+                        <option value="all">Todo el Sentimiento</option>
+                        <option value="positivo">Positivo</option>
+                        <option value="negativo">Negativo</option>
+                        <option value="neutral">Neutral</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="statusFilter">Estado:</label>
+                    <select id="statusFilter" class="dashboard-filter">
+                        <option value="all">Todos los Estados</option>
+                        <option value="pending">Pendiente</option>
+                        <option value="responded">Respondido</option>
+                    </select>
+                </div>
+
+                <button id="applyFilterBtn" class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    Aplicar Filtros
+                </button>
+            </div>
+
+            <div class="comments-list" id="commentsList">
+                <div class="comment-card placeholder">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Cargando comentarios...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer se carga dinámicamente -->
+
+    <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Scripts de la aplicación -->
+    <script src="../assets/sources/js/auth.js"></script>
+    <script src="../assets/sources/js/ai-classifier.js"></script>
+    <script src="../assets/sources/js/storage-manager.js"></script>
+    <script src="../assets/sources/js/admin-footer.js"></script>
+    
+    <script>
+        // Inicializar sistema de autenticación
+        const auth = new AuthManager();
+        auth.initDashboard();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Inicializar StorageManager
+        const storageManager = new StorageManager();
+        let allComments = [];
+        let filteredComments = [];
+
+        // Cargar datos al iniciar
+        async function loadData() {
+            try {
+                // Cargar comentarios estáticos
+                const response = await fetch('../data/dashboard-data.json');
+                if (!response.ok) throw new Error('Error al cargar datos');
+                
+                const data = await response.json();
+                allComments = data.comentarios || [];
+
+                // Agregar comentarios de localStorage
+                const userComments = storageManager.getComments();
+                allComments = [...allComments, ...userComments];
+
+                filteredComments = [...allComments];
+                
+                updateStats();
+                renderComments(filteredComments);
+            } catch (error) {
+                console.error('Error cargando datos:', error);
+                showError('Error al cargar los comentarios. Por favor, recarga la página.');
+            }
+        }
+
+        // Actualizar estadísticas
+        function updateStats() {
+            const total = allComments.length;
+            const reclamos = allComments.filter(c => 
+                c.filtro?.toLowerCase() === 'reclamo' || c.category?.toLowerCase() === 'reclamo'
+            ).length;
+            const solicitudes = allComments.filter(c => 
+                c.filtro?.toLowerCase() === 'solicitud' || c.category?.toLowerCase() === 'solicitud'
+            ).length;
+            const pendientes = allComments.filter(c => !c.respondido).length;
+
+            document.getElementById('totalComments').textContent = total;
+            document.getElementById('reclamosCount').textContent = reclamos;
+            document.getElementById('solicitudesCount').textContent = solicitudes;
+            document.getElementById('pendientesCount').textContent = pendientes;
+
+            document.getElementById('reclamosPercent').textContent = 
+                total > 0 ? `${Math.round((reclamos / total) * 100)}%` : '0%';
+            document.getElementById('solicitudesPercent').textContent = 
+                total > 0 ? `${Math.round((solicitudes / total) * 100)}%` : '0%';
+            document.getElementById('pendientesPercent').textContent = 
+                total > 0 ? `${Math.round((pendientes / total) * 100)}%` : '0%';
+        }
+
+        // Renderizar comentarios
+        function renderComments(comments) {
+            const container = document.getElementById('commentsList');
+            
+            if (comments.length === 0) {
+                container.innerHTML = `
+                    <div class="comment-card placeholder">
+                        <div class="loading-spinner">
+                            <i class="fas fa-inbox"></i>
+                            <p>No se encontraron comentarios con los filtros seleccionados.</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = comments.map((comment, index) => {
+                const category = comment.filtro || comment.category || 'General';
+                const sentiment = comment.sentimiento || comment.sentiment || 'Neutral';
+                const text = comment.textoOriginal || comment.text || '';
+                const id = comment.idComentario || comment.id || index + 1;
+                const responded = comment.respondido || false;
+
+                // Colores por categoría
+                const categoryColors = {
+                    'reclamo': '#dc3545',
+                    'solicitud': '#ffc107',
+                    'duda': '#17a2b8',
+                    'agradecimiento': '#28a745',
+                    'general': '#6c757d'
+                };
+
+                // Colores por sentimiento
+                const sentimentColors = {
+                    'positivo': '#28a745',
+                    'negativo': '#dc3545',
+                    'neutral': '#6c757d'
+                };
+
+                return `
+                    <div class="comment-card" data-aos="fade-up" data-aos-delay="${index * 50}">
+                        <div class="comment-header">
+                            <div class="comment-badges">
+                                <span class="badge" style="background: ${categoryColors[category.toLowerCase()] || '#6c757d'}">
+                                    ${category}
+                                </span>
+                                <span class="badge" style="background: ${sentimentColors[sentiment.toLowerCase()] || '#6c757d'}">
+                                    ${sentiment}
+                                </span>
+                                ${responded ? '<span class="badge" style="background: #28a745">Respondido</span>' : '<span class="badge" style="background: #ffc107; color: #000">Pendiente</span>'}
+                            </div>
+                            <span class="comment-id">ID: ${id}</span>
+                        </div>
+                        <div class="comment-body">
+                            <p>${text}</p>
+                        </div>
+                        <div class="comment-footer">
+                            <button class="comment-action-btn" onclick="toggleResponse(${id})" title="${responded ? 'Marcar como pendiente' : 'Marcar como respondido'}">
+                                <i class="fas ${responded ? 'fa-undo' : 'fa-check'}"></i>
+                                ${responded ? 'Pendiente' : 'Responder'}
+                            </button>
+                            <button class="comment-action-btn" onclick="viewDetails(${id})" title="Ver detalles">
+                                <i class="fas fa-eye"></i>
+                                Detalles
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Aplicar filtros
+        function applyFilters() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const sentimentFilter = document.getElementById('sentimentFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+
+            filteredComments = allComments.filter(comment => {
+                const category = (comment.filtro || comment.category || 'General').toLowerCase();
+                const sentiment = (comment.sentimiento || comment.sentiment || 'Neutral').toLowerCase();
+                const responded = comment.respondido || false;
+
+                const categoryMatch = categoryFilter === 'all' || category === categoryFilter;
+                const sentimentMatch = sentimentFilter === 'all' || sentiment === sentimentFilter;
+                const statusMatch = statusFilter === 'all' || 
+                    (statusFilter === 'responded' && responded) ||
+                    (statusFilter === 'pending' && !responded);
+
+                return categoryMatch && sentimentMatch && statusMatch;
+            });
+
+            renderComments(filteredComments);
+        }
+
+        // Toggle response status
+        function toggleResponse(id) {
+            const comment = allComments.find(c => (c.idComentario || c.id) === id);
+            if (comment) {
+                comment.respondido = !comment.respondido;
+                renderComments(filteredComments);
+                updateStats();
+            }
+        }
+
+        // View details
+        function viewDetails(id) {
+            const comment = allComments.find(c => (c.idComentario || c.id) === id);
+            if (comment) {
+                alert(`ID: ${id}\nCategoría: ${comment.filtro || comment.category}\nSentimiento: ${comment.sentimiento || comment.sentiment}\n\nTexto:\n${comment.textoOriginal || comment.text}`);
+            }
+        }
+
+        // Mostrar error
+        function showError(message) {
+            const container = document.getElementById('commentsList');
+            container.innerHTML = `
+                <div class="comment-card placeholder">
+                    <div class="loading-spinner">
+                        <i class="fas fa-exclamation-triangle" style="color: #dc3545;"></i>
+                        <p>${message}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Event Listeners
+        document.getElementById('applyFilterBtn').addEventListener('click', applyFilters);
+        
+        document.getElementById('clearFiltersBtn').addEventListener('click', () => {
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('sentimentFilter').value = 'all';
+            document.getElementById('statusFilter').value = 'all';
+            filteredComments = [...allComments];
+            renderComments(filteredComments);
+        });
+
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            const data = storageManager.exportData();
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `hydro-conecta-responses-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Navbar Toggle
+        const navbarToggler = document.getElementById('navbar-toggler');
+        const navbarMenu = document.getElementById('navbar-menu');
+        
+        if(navbarToggler){
+            navbarToggler.addEventListener('click', () => {
+                navbarMenu.classList.toggle('active');
+                navbarToggler.classList.toggle('active');
+            });
+        }
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-modern');
+            if(navbar){
+                if(window.scrollY > 50){
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+        });
+        
+        // Update footer timestamp
+        function updateFooterTime() {
+            const lastUpdate = document.getElementById('lastUpdate');
+            if (lastUpdate) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('es-CL', { 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                lastUpdate.textContent = timeString;
+            }
+        }
+        
+        // Update time every second
+        updateFooterTime();
+        setInterval(updateFooterTime, 1000);
+
+        // Cargar datos al iniciar
+        loadData();
+    </script>
+</body>
+</html>

@@ -357,17 +357,12 @@ class FormularioDinamico {
         const result = document.getElementById('result');
         const quiz = document.getElementById('quiz');
 
-        // Enviar datos al servidor
         try {
-            const response = await fetch('/api/submit-survey', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(this.formData)
-            });
+            // Usar StorageManager en lugar de fetch al backend
+            const storage = new StorageManager();
+            const response = storage.saveSurvey(this.formData);
 
-            if (response.ok) {
+            if (response.success) {
                 quiz.classList.add('hidden');
                 result.classList.remove('hidden');
                 result.innerHTML = `
@@ -376,6 +371,10 @@ class FormularioDinamico {
                     </div>
                     <h2>¡Gracias por tu participación!</h2>
                     <p>Tus respuestas han sido registradas exitosamente.</p>
+                    <p class="result-details">
+                        <small>ID: ${response.id}<br>
+                        Fecha: ${new Date(response.timestamp).toLocaleString('es-CL')}</small>
+                    </p>
                     <button class="btn-restart" onclick="formApp.restart()">
                         <i class="fas fa-redo"></i>
                         Nueva Encuesta
@@ -383,11 +382,11 @@ class FormularioDinamico {
                 `;
                 this.scrollToTop();
             } else {
-                throw new Error('Error al enviar el formulario');
+                throw new Error(response.error || 'Error al guardar');
             }
         } catch (error) {
             console.error('Error:', error);
-            this.showNotification('Error al enviar el formulario. Por favor intente nuevamente.', 'error');
+            this.showNotification('Error al guardar el formulario. Por favor intente nuevamente.', 'error');
         }
     }
 

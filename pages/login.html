@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Panel Administrativo | Hydro-Conecta</title>
+    <meta name="description" content="Acceso al panel administrativo">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/sources/img/icon/icon.webp">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets Modulares -->
+    <link rel="stylesheet" href="../assets/sources/css/variables.css">
+    <link rel="stylesheet" href="../assets/sources/css/shared.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 50%, #48cae4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Waves Background */
+        .waves-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 150px;
+            animation: wave-animation 15s infinite linear;
+        }
+
+        .wave:nth-child(2) {
+            animation-duration: 20s;
+            opacity: 0.5;
+            bottom: 20px;
+        }
+
+        .wave:nth-child(3) {
+            animation-duration: 25s;
+            opacity: 0.3;
+            bottom: 40px;
+        }
+
+        @keyframes wave-animation {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .wave svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Login Container */
+        .login-container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .login-logo i {
+            font-size: 2.5rem;
+            color: #0077b6;
+        }
+
+        .login-logo h1 {
+            font-size: 1.8rem;
+            color: #023e8a;
+            font-weight: 700;
+        }
+
+        .login-header p {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #023e8a;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0077b6;
+            box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #6c757d;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: #0077b6;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #495057;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #0077b6;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #0077b6, #00b4d8);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 119, 182, 0.3);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-dev {
+            width: 100%;
+            padding: 0.8rem;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-dev:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .login-divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: #6c757d;
+            font-size: 0.85rem;
+            position: relative;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #dee2e6;
+        }
+
+        .login-divider::before {
+            left: 0;
+        }
+
+        .login-divider::after {
+            right: 0;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert i {
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .login-logo h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Waves Background -->
+    <div class="waves-background">
+        <div class="wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,50 Q150,100 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.1)"/>
+            </svg>
+        </div>
+        <div class="wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,70 Q200,20 400,70 T800,70 T1200,70 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.08)"/>
+            </svg>
+        </div>
+        <div class="wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,30 Q250,80 500,30 T1000,30 T1500,30 L1500,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-logo">
+                <i class="fas fa-water"></i>
+                <h1>Hydro-Conecta</h1>
+            </div>
+            <p>Panel Administrativo</p>
+        </div>
+
+        <div id="alertBox" class="alert"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">
+                    <i class="fas fa-user"></i>
+                    Usuario
+                </label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        class="form-control" 
+                        placeholder="Ingrese su usuario"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                    Contraseña
+                </label>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-control" 
+                        placeholder="Ingrese su contraseña"
+                        required
+                        autocomplete="current-password"
+                    >
+                    <button type="button" class="password-toggle" id="togglePassword">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <label class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <span>Recordarme</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i>
+                Iniciar Sesión
+            </button>
+
+            <div class="login-divider">o</div>
+
+            <button type="button" class="btn-dev" id="devBypass">
+                <i class="fas fa-code"></i>
+                Acceso Desarrollo (Dev)
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // Credenciales hardcodeadas (sin base de datos)
+        const CREDENTIALS = {
+            username: 'admin',
+            password: 'hydro2025'
+        };
+
+        // Elementos del DOM
+        const loginForm = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+        const devBypass = document.getElementById('devBypass');
+        const alertBox = document.getElementById('alertBox');
+        const rememberMe = document.getElementById('rememberMe');
+
+        // Toggle password visibility
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            const icon = togglePassword.querySelector('i');
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        });
+
+        // Show alert
+        function showAlert(message, type = 'danger') {
+            alertBox.textContent = message;
+            alertBox.className = `alert alert-${type}`;
+            alertBox.style.display = 'block';
+            
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
+
+        // Check if already logged in
+        if (sessionStorage.getItem('authenticated') === 'true' || localStorage.getItem('authenticated') === 'true') {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Login form submit
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+
+            // Validar credenciales
+            if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
+                // Login exitoso
+                if (rememberMe.checked) {
+                    localStorage.setItem('authenticated', 'true');
+                    localStorage.setItem('username', username);
+                } else {
+                    sessionStorage.setItem('authenticated', 'true');
+                    sessionStorage.setItem('username', username);
+                }
+
+                showAlert('¡Login exitoso! Redirigiendo...', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+            } else {
+                // Login fallido
+                showAlert('Usuario o contraseña incorrectos. Intente de nuevo.');
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        });
+
+        // Dev Bypass button
+        devBypass.addEventListener('click', () => {
+            sessionStorage.setItem('authenticated', 'true');
+            sessionStorage.setItem('username', 'dev');
+            sessionStorage.setItem('devMode', 'true');
+            
+            showAlert('Acceso de desarrollo activado. Redirigiendo...', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 800);
+        });
+
+        // Auto-fill hint on page load (for demo purposes)
+        setTimeout(() => {
+            const hint = document.createElement('div');
+            hint.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: rgba(0,0,0,0.8);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                z-index: 1000;
+                animation: fadeInUp 0.5s ease;
+            `;
+            hint.innerHTML = `
+                <strong>💡 Demo:</strong><br>
+                Usuario: <code style="color: #48cae4;">admin</code><br>
+                Contraseña: <code style="color: #48cae4;">hydro2025</code>
+            `;
+            document.body.appendChild(hint);
+
+            setTimeout(() => {
+                hint.style.animation = 'fadeOut 0.5s ease';
+                setTimeout(() => hint.remove(), 500);
+            }, 8000);
+        }, 1000);
+    </script>
+</body>
+</html>

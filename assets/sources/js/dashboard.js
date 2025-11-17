@@ -1,15 +1,16 @@
 // =========================================================================
-// ARCHIVO: /assets/js/dashboard.js (Mejorado)
-// FUNCIÓN: Maneja la navegación, gráficos, mapa y la carga de datos de la API.
+// ARCHIVO: /assets/js/dashboard.js (GitHub Pages Compatible)
+// FUNCIÓN: Maneja la navegación, gráficos, mapa y la carga de datos estáticos.
 // =========================================================================
 
-const API_ENDPOINT = 'http://127.0.0.1:5000/api/dashboard';
+// Cambio a datos estáticos JSON para GitHub Pages
+const API_ENDPOINT = '../data/dashboard-data.json';
 let map;
 let mapInitialized = false;
 
-// Variables de almacenamiento global para los datos de la API
+// Variables de almacenamiento global para los datos
 let allDashboardData = null;
-let allCommentsData = []; // Almacenará los comentarios clasificados
+let allCommentsData = []; // Comentarios estáticos + usuario (localStorage)
 
 // ------------------------------------
 // 1. UTILIDADES Y FUNCIONES DE RENDERIZADO
@@ -262,17 +263,27 @@ function setupCommentFilters() {
 // Función principal para cargar y renderizar todos los datos
 async function fetchDataAndRender() {
     try {
+        // 1. Cargar datos base desde JSON estático
         const response = await fetch(API_ENDPOINT);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         allDashboardData = await response.json();
 
-        // 1. Guardar y renderizar Comentarios (primera carga)
-        allCommentsData = allDashboardData.comentarios || [];
-        renderCommentsList(allCommentsData); // Carga inicial de todos los comentarios
+        // 2. Cargar comentarios de localStorage (generados por el usuario)
+        const storage = new StorageManager();
+        const userComments = storage.getComments();
 
-        // 2. Configurar el listener de filtros (ahora reactivos)
+        // 3. Combinar comentarios estáticos + usuario
+        allCommentsData = [...allDashboardData.comentarios, ...userComments];
+
+        // 4. Actualizar estadísticas con datos reales
+        updateStatsWithUserData(storage);
+
+        // 5. Renderizar comentarios
+        renderCommentsList(allCommentsData);
+
+        // 6. Configurar el listener de filtros (ahora reactivos)
         setupCommentFilters();
 
         // 3. Renderizar Estadísticas
@@ -297,8 +308,40 @@ async function fetchDataAndRender() {
 
     } catch (error) {
         console.error('Error al cargar datos del dashboard:', error);
-        // Mostrar un mensaje de error al usuario si es necesario
-        document.getElementById('commentsList').innerHTML = '<div class="comment-item placeholder" style="border-left-color: var(--danger);">Error al conectar con la API de datos. Asegúrate de que el servidor Flask esté corriendo.</div>';
+        // Mostrar un mensaje de error al usuario
+        const commentsList = document.getElementById('commentsList');
+        if (commentsList) {
+            commentsList.innerHTML = `
+                <div class="comment-item placeholder" style="border-left-color: var(--danger);">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p><strong>Error al cargar datos</strong></p>
+                    <p>No se pudo cargar el archivo dashboard-data.json</p>
+                    <p>Verifica que el archivo exista en la carpeta /data/</p>
+                </div>
+            `;
+        }
+    }
+}
+
+// Nueva función para actualizar estadísticas con datos del usuario
+function updateStatsWithUserData(storage) {
+    try {
+        const surveys = storage.getSurveys();
+        const comments = storage.getComments();
+        
+        // Actualizar contador de respuestas totales
+        const baseRespuestas = parseInt(allDashboardData.stats.totalRespuestas.replace(/,/g, ''), 10) || 0;
+        const totalRespuestas = baseRespuestas + surveys.length;
+        
+        const statCards = document.querySelectorAll('.stat-card');
+        if (statCards.length >= 1) {
+            const valueElement = statCards[0].querySelector('.stat-card-value');
+            if (valueElement) {
+                valueElement.textContent = totalRespuestas.toLocaleString('es-CL');
+            }
+        }
+    } catch (error) {
+        console.error('Error actualizando estadísticas:', error);
     }
 }
 

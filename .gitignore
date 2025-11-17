@@ -28,9 +28,6 @@ instance/
 .webassets-cache
 .env
 .flaskenv
-*.env.local
-*.env.production
-*.env.development
 
 # IDE
 .vscode/
@@ -38,73 +35,38 @@ instance/
 *.swp
 *.swo
 *~
-.project
-.classpath
-.settings/
 
 # OS
 .DS_Store
 Thumbs.db
-desktop.ini
-*.lnk
 
 # Logs
 *.log
 logs/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Database
 *.db
 *.sqlite
 *.sqlite3
-*.db-journal
-*.sql
 
-# Secrets & Credentials
+# Secrets
 config/secrets.py
-config/credentials.py
-config/database.php
 *.key
 *.pem
-*.cert
-*.crt
-.secret
-secrets/
-credentials/
-.credentials/
-
-# API Keys & Tokens
-.api_keys
-api_keys.json
-.token
-tokens/
 
 # Temporary
 temp/
 tmp/
 *.tmp
-*.bak
-*.backup
-*.swp
-*.cache
-.cache/
 
 # Node modules (si usas npm)
 node_modules/
-package-lock.json
-yarn.lock
 
-# Backups
-*.old
-*.orig
-*~
-*.corrupted
-*.backup
 
-# Project Specific
 #random
+<<<<<<< Updated upstream
+preguntas.json
+=======
 preguntas.json
 respuestas.json
 usuarios.json
@@ -169,3 +131,12 @@ config/local.py
 config/*.local.*
 settings.local.py
 settings.production.py
+
+# Ignore any other files or directories you deem necessary for your project.
+DEPLOYMENT.md
+GUIA_PRODUCCION.md
+IMPLEMENTACION_RESUMEN.md
+MEJORAS_GITHUB_PAGES.md
+CSS_OPTIMIZATION_REPORT.md
+ADMIN_PANEL_UPDATES.md
+>>>>>>> Stashed changes

@@ -17,11 +17,10 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../assets/sources/css/main.css?v=2">
-    <link rel="stylesheet" href="../assets/sources/css/components.css?v=2">
-    <link rel="stylesheet" href="../assets/sources/css/modern-styles.css?v=2"/>
-    <link rel="stylesheet" href="../assets/sources/css/users.css?v=3"/>
+    <!-- Stylesheets Modulares -->
+    <link rel="stylesheet" href="../assets/sources/css/variables.css">
+    <link rel="stylesheet" href="../assets/sources/css/shared.css">
+    <link rel="stylesheet" href="../assets/sources/css/admin.css">
 </head>
 <body>
     <!-- SVG Waves Background -->
@@ -61,20 +60,21 @@
                 <span></span>
             </button>
             <div class="navbar-menu" id="navbar-menu">
-                <a href="../index.html" class="nav-link">Inicio</a>
-                <a href="nosotros.html" class="nav-link">Nosotros</a>
-                <a href="form.html" class="nav-link">Formulario</a>
-                <a href="dashboard.html" class="nav-link">
-                    <i class="fas fa-chart-line"></i>
-                    Dashboard
-                </a>
                 <a href="map.html" class="nav-link">
                     <i class="fas fa-map-marked-alt"></i>
                     Mapa
                 </a>
                 <a href="users.html" class="nav-link-login active">
-                    <i class="fas fa-users-cog"></i>
+                    <i class="fas fa-users"></i>
                     Usuarios
+                </a>
+                <a href="responses.html" class="nav-link">
+                    <i class="fas fa-reply"></i>
+                    Respuestas
+                </a>
+                <a href="dashboard.html" class="nav-link-login">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
                 </a>
             </div>
         </div>
@@ -252,36 +252,12 @@
 </section>
 
     </main>
-    <footer class="dashboardFooter">
-        <div class="footerContent">
-            <div class="footerSection">
-                <h3 class="footerCompanyName">Hydro-Conecta</h3>
-                <p class="footerCompanyPhrase">Panel Administrativo</p>
-                <p class="footerText">Gestión y monitoreo de encuestas en tiempo real</p>
-            </div>
-            <div class="footerSection">
-                <h4 class="footerTitle">Navegación</h4>
-                <ul class="footerLinks">
-                    <li><a href="dashboard.html">Resultados</a></li>
-                    <li><a href="map.html">Mapa Interactivo</a></li>
-                    <li><a href="users.html">Usuarios</a></li>
-                    <li><a href="../index.html">Volver al Inicio</a></li>
-                </ul>
-            </div>
-            <div class="footerSection">
-                <h4 class="footerTitle">Contacto</h4>
-                <p class="footerText">Email: admin@hydroconecta.com</p>
-                <p class="footerText">Tel: +51 000 000 000</p>
-                <p class="footerText">Soporte 24/7</p>
-            </div>
-        </div>
-        <div class="footerBottom">
-            <p>&copy; 2025 Hydro-Conecta. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <!-- Footer se carga dinámicamente -->
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="../assets/sources/js/auth.js"></script>
     <script src="../assets/sources/js/dashboard.js?v=2"></script>
+    <script src="../assets/sources/js/admin-footer.js"></script>
     
     <script>
         // Navbar Toggle
@@ -465,6 +441,13 @@
             animateValue('pending-users', 0, 2, 800);
             animateValue('total-comments', 0, 24, 1500);
         });
+    </script>
+    
+    <!-- Auth System -->
+    <script src="../assets/sources/js/auth.js"></script>
+    <script>
+        const auth = new AuthManager();
+        auth.initDashboard();
     </script>
 </body>
 </html>
