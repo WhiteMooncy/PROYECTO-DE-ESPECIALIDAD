@@ -1,0 +1,85 @@
+{
+  "project": {
+    "name": "PROYECTO-DE-ESPECIALIDAD",
+    "version": "2.0.0",
+    "description": "Sistema de gestión hidroeléctrica inteligente con IA",
+    "author": "WhiteMooncy",
+    "license": "MIT"
+  },
+  "structure": {
+    "src": {
+      "description": "Código fuente para desarrollo",
+      "subdirectories": {
+        "js": {
+          "modules": "Módulos reutilizables y compartidos",
+          "pages": "Scripts específicos para cada página",
+          "utils": "Utilidades y funciones auxiliares"
+        },
+        "css": {
+          "base": "Estilos base, variables y configuración",
+          "components": "Componentes reutilizables (botones, cards, etc.)",
+          "layout": "Estructuras de layout (header, footer, grid)",
+          "pages": "Estilos específicos de cada página"
+        },
+        "images": {
+          "icons": "Íconos, logos y elementos pequeños",
+          "ui": "Elementos de interfaz (flechas, decoraciones)",
+          "content": "Imágenes de contenido principal"
+        }
+      }
+    },
+    "public": {
+      "description": "Archivos optimizados para producción",
+      "note": "Generados automáticamente por el proceso de build"
+    },
+    "pages": {
+      "description": "Páginas HTML del proyecto"
+    },
+    "data": {
+      "description": "Archivos de datos JSON"
+    },
+    "config": {
+      "description": "Archivos de configuración del proyecto"
+    },
+    "docs": {
+      "description": "Documentación del proyecto"
+    }
+  },
+  "paths": {
+    "development": {
+      "css": "src/css/",
+      "js": "src/js/",
+      "images": "src/images/"
+    },
+    "production": {
+      "css": "public/css/",
+      "js": "public/js/",
+      "images": "public/images/"
+    }
+  },
+  "conventions": {
+    "fileNaming": {
+      "javascript": "kebab-case (lowercase with hyphens)",
+      "css": "kebab-case (lowercase with hyphens)",
+      "images": "descriptive-name.ext"
+    },
+    "codeStyle": {
+      "javascript": "ES6+ with semicolons",
+      "css": "BEM methodology recommended",
+      "indentation": "4 spaces"
+    }
+  },
+  "migration": {
+    "status": "in-progress",
+    "script": "config/migrate-references.ps1",
+    "date": "2025-11-17"
+  },
+  "buildTools": {
+    "planned": {
+      "bundler": "webpack or vite",
+      "cssProcessor": "postcss",
+      "imageOptimizer": "imagemin",
+      "linter": "eslint + stylelint"
+    }
+  }
+}

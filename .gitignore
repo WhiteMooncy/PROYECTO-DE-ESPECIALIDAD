@@ -49,6 +49,29 @@ logs/
 *.sqlite
 *.sqlite3
 
+# Build and Production
+public/css/*.min.css
+public/js/*.min.js
+public/images/optimized/
+*.map
+
+# Node modules (si se usa npm)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Backup files
+*.bak
+*.backup
+
+# Legacy (mantener por compatibilidad)
+# assets/sources/ se mantiene temporalmente
+
 # Secrets
 config/secrets.py
 *.key

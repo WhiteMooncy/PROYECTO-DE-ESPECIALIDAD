@@ -2,6 +2,45 @@
 
 > Plataforma web integral para la gestión de encuestas sociales y análisis de datos comunitarios enfocado en infraestructura hidroeléctrica.
 
+[![Estructura Profesional](https://img.shields.io/badge/Estructura-Profesional-brightgreen)](docs/PROJECT_STRUCTURE.md)
+[![Versión](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/WhiteMooncy/PROYECTO-DE-ESPECIALIDAD)
+[![Licencia](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
+
+---
+
+## 📂 Estructura del Proyecto (v2.0)
+
+El proyecto ha sido reorganizado siguiendo las mejores prácticas de desarrollo web:
+
+```
+PROYECTO-DE-ESPECIALIDAD/
+│
+├── 📂 src/                      # Código fuente (DESARROLLO)
+│   ├── js/
+│   │   ├── modules/            # Módulos reutilizables
+│   │   ├── pages/              # Scripts de páginas
+│   │   └── utils/              # Utilidades
+│   ├── css/
+│   │   ├── base/               # Variables y base
+│   │   ├── components/         # Componentes
+│   │   ├── layout/             # Layouts
+│   │   └── pages/              # Estilos de páginas
+│   └── images/
+│       ├── icons/              # Íconos y logos
+│       ├── ui/                 # Elementos UI
+│       └── content/            # Imágenes de contenido
+│
+├── 📂 public/                   # Archivos de producción
+├── 📂 pages/                    # Páginas HTML
+├── 📂 data/                     # Datos JSON
+├── 📂 config/                   # Configuraciones
+└── 📂 docs/                     # Documentación
+
+```
+
+> 📖 **Documentación completa**: [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)  
+> 🚀 **Guía rápida**: [docs/QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)
+
 ---
 
 ## 🎯 Objetivo del Proyecto

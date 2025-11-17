@@ -1,0 +1,97 @@
+/* =========================================
+   HYDRO-CONECTA - VARIABLES & RESET
+   Sistema de diseño centralizado
+   ========================================= */
+
+:root {
+    /* Colores principales */
+    --color-primary: #0077b6;
+    --color-secondary: #00b4d8;
+    --color-accent: #90e0ef;
+    --color-dark: #03045e;
+    --color-light: #caf0f8;
+    --color-white: #ffffff;
+    
+    /* Colores de texto */
+    --color-text: #1e293b;
+    --color-text-light: #64748b;
+    
+    /* Colores de estado */
+    --success: #27ae60;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+    --info: #3498db;
+    
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(0, 119, 182, 0.95), rgba(0, 180, 216, 0.85));
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+    
+    /* Border radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    
+    /* Transiciones */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Tipografía */
+    --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+}
+
+/* ==================== RESET CSS ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: #f8fafc;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-dark);
+    line-height: 1.2;
+}
+
+p, a, button, input, textarea, select {
+    font-family: var(--font-family);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}

@@ -12,11 +12,11 @@
     <title>Nosotros | Hydro-Conecta</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/sources/img/icon/icon.webp">
+    <link rel="icon" type="image/x-icon" href="../src/images/content/icon/icon.webp">
     
     <!-- Stylesheets Modulares -->
-    <link rel="stylesheet" href="../assets/sources/css/variables.css">
-    <link rel="stylesheet" href="../assets/sources/css/shared.css">
+    <link rel="stylesheet" href="../src/css/base/variables.css">
+    <link rel="stylesheet" href="../src/css/layout/shared.css">
     <link rel="stylesheet" href="../assets/sources/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
@@ -348,7 +348,7 @@
                 </p>
             </div>
             <div class="about-image">
-                <img src="../assets/sources/img/represa.webp" alt="Vista aérea de la Represa Valle Azul" loading="lazy">
+                <img src="../src/images/content/represa.webp" alt="Vista aérea de la Represa Valle Azul" loading="lazy">
             </div>
         </div>
     </section>
@@ -366,7 +366,7 @@
         <div class="team-grid">
             <div class="team-card" data-aos="fade-up">
                 <div class="team-card-image">
-                    <img src="../assets/sources/img/example.jpg" alt="María López - Directora de Operaciones">
+                    <img src="../src/images/content/example.jpg" alt="María López - Directora de Operaciones">
                     <div class="team-card-overlay">
                         <div class="team-card-name">María López</div>
                         <div class="team-card-role">Directora de Operaciones</div>
@@ -376,7 +376,7 @@
             
             <div class="team-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="team-card-image">
-                    <img src="../assets/sources/img/example.jpg" alt="Carlos Reyes - Jefe de Mantenimiento">
+                    <img src="../src/images/content/example.jpg" alt="Carlos Reyes - Jefe de Mantenimiento">
                     <div class="team-card-overlay">
                         <div class="team-card-name">Carlos Reyes</div>
                         <div class="team-card-role">Jefe de Mantenimiento</div>
@@ -386,7 +386,7 @@
             
             <div class="team-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="team-card-image">
-                    <img src="../assets/sources/img/example.jpg" alt="Ana Martínez - Ingeniera Ambiental">
+                    <img src="../src/images/content/example.jpg" alt="Ana Martínez - Ingeniera Ambiental">
                     <div class="team-card-overlay">
                         <div class="team-card-name">Ana Martínez</div>
                         <div class="team-card-role">Ingeniera Ambiental</div>
@@ -396,7 +396,7 @@
             
             <div class="team-card" data-aos="fade-up">
                 <div class="team-card-image">
-                    <img src="../assets/sources/img/example.jpg" alt="Luis Fernández - Operador de Planta">
+                    <img src="../src/images/content/example.jpg" alt="Luis Fernández - Operador de Planta">
                     <div class="team-card-overlay">
                         <div class="team-card-name">Luis Fernández</div>
                         <div class="team-card-role">Operador de Planta</div>
@@ -406,7 +406,7 @@
             
             <div class="team-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="team-card-image">
-                    <img src="../assets/sources/img/example.jpg" alt="Sofía Gómez - Relaciones Comunitarias">
+                    <img src="../src/images/content/example.jpg" alt="Sofía Gómez - Relaciones Comunitarias">
                     <div class="team-card-overlay">
                         <div class="team-card-name">Sofía Gómez</div>
                         <div class="team-card-role">Relaciones Comunitarias</div>
@@ -527,36 +527,6 @@
     
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        // AOS Animation
-        AOS.init({ 
-            once: true,
-            duration: 800,
-            offset: 100
-        });
-        
-        // Navbar Toggle
-        const navbarToggler = document.getElementById('navbar-toggler');
-        const navbarMenu = document.getElementById('navbar-menu');
-        
-        if(navbarToggler){
-            navbarToggler.addEventListener('click', () => {
-                navbarMenu.classList.toggle('active');
-                navbarToggler.classList.toggle('active');
-            });
-        }
-        
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar-modern');
-            if(navbar){
-                if(window.scrollY > 50){
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            }
-        });
-    </script>
+    <script src="../src/js/pages/nosotros-page.js"></script>
 </body>
 </html>

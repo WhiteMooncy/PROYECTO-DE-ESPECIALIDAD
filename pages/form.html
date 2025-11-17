@@ -12,12 +12,12 @@
     <title>Formulario de Consulta | Hydro-Conecta</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/sources/img/icon/icon.webp">
+    <link rel="icon" type="image/x-icon" href="../src/images/content/icon/icon.webp">
     
     <!-- Stylesheets Modulares -->
-    <link rel="stylesheet" href="../assets/sources/css/variables.css">
-    <link rel="stylesheet" href="../assets/sources/css/shared.css">
-    <link rel="stylesheet" href="../assets/sources/css/form.css">
+    <link rel="stylesheet" href="../src/css/base/variables.css">
+    <link rel="stylesheet" href="../src/css/layout/shared.css">
+    <link rel="stylesheet" href="../src/css/pages/form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
     <!-- Font Awesome -->
@@ -180,41 +180,11 @@
     
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script type="module" src="../assets/sources/js/main.js?v=2"></script>
-    <script src="../assets/sources/js/ai-classifier.js"></script>
-    <script src="../assets/sources/js/storage-manager.js"></script>
-    <script src="../assets/sources/js/validators.js"></script>
-    <script src="../assets/sources/js/form.js"></script>
-    <script>
-        // AOS Animation
-        AOS.init({ 
-            once: true,
-            duration: 800,
-            offset: 100
-        });
-        
-        // Navbar Toggle
-        const navbarToggler = document.getElementById('navbar-toggler');
-        const navbarMenu = document.getElementById('navbar-menu');
-        
-        if(navbarToggler){
-            navbarToggler.addEventListener('click', () => {
-                navbarMenu.classList.toggle('active');
-                navbarToggler.classList.toggle('active');
-            });
-        }
-        
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar-modern');
-            if(navbar){
-                if(window.scrollY > 50){
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            }
-        });
-    </script>
+    <script type="module" src="../src/js/pages/main.js?v=2"></script>
+    <script src="../src/js/modules/ai-classifier.js"></script>
+    <script src="../src/js/modules/storage-manager.js"></script>
+    <script src="../src/js/utils/validators.js"></script>
+    <script src="../src/js/pages/form.js"></script>
+    <script src="../src/js/pages/form-page.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <meta name="description" content="Gestión y visualización de usuarios del sistema de encuestas">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/sources/img/icon/icon.webp">
+    <link rel="icon" type="image/x-icon" href="../src/images/content/icon/icon.webp">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheets Modulares -->
-    <link rel="stylesheet" href="../assets/sources/css/variables.css">
-    <link rel="stylesheet" href="../assets/sources/css/shared.css">
-    <link rel="stylesheet" href="../assets/sources/css/admin.css">
+    <link rel="stylesheet" href="../src/css/base/variables.css">
+    <link rel="stylesheet" href="../src/css/layout/shared.css">
+    <link rel="stylesheet" href="../src/css/pages/admin.css">
 </head>
 <body>
     <!-- SVG Waves Background -->
@@ -255,11 +255,12 @@
     <!-- Footer se carga dinámicamente -->
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script src="../assets/sources/js/auth.js"></script>
-    <script src="../assets/sources/js/dashboard.js?v=2"></script>
-    <script src="../assets/sources/js/admin-footer.js"></script>
+    <script src="../src/js/modules/auth.js"></script>
+    <script src="../src/js/pages/dashboard.js?v=2"></script>
+    <script src="../src/js/utils/admin-footer.js"></script>
+    <script src="../src/js/pages/users.js"></script>
     
-    <script>
+    <script style="display:none;">
         // Navbar Toggle
         const navbarToggler = document.getElementById('navbar-toggler');
         const navbarMenu = document.getElementById('navbar-menu');
@@ -441,13 +442,6 @@
             animateValue('pending-users', 0, 2, 800);
             animateValue('total-comments', 0, 24, 1500);
         });
-    </script>
-    
-    <!-- Auth System -->
-    <script src="../assets/sources/js/auth.js"></script>
-    <script>
-        const auth = new AuthManager();
-        auth.initDashboard();
     </script>
 </body>
 </html>

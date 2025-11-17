@@ -19,13 +19,13 @@
     <title>Hydro-Conecta | Gestión Hidroeléctrica Inteligente</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/sources/img/icon/icon.webp">
+    <link rel="icon" type="image/x-icon" href="src/images/content/icon/icon.webp">
     
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="assets/sources/css/modern-styles.css?v=2" as="style">
+    <link rel="preload" href="src/css/layout/modern-styles.css?v=2" as="style">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/sources/css/modern-styles.css?v=2">
+    <link rel="stylesheet" href="src/css/layout/modern-styles.css?v=2">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -229,7 +229,7 @@
                         <ul class="splide__list">
                             <li class="splide__slide">
                                 <div class="project-card">
-                                    <img src="assets/sources/img/indexCameraSecBack.jpg" alt="Represa Valle Azul" class="project-image" loading="lazy">
+                                    <img src="src/images/content/indexCameraSecBack.jpg" alt="Represa Valle Azul" class="project-image" loading="lazy">
                                     <div class="project-overlay">
                                         <div class="project-info">
                                             <i class="fas fa-water"></i>
@@ -241,7 +241,7 @@
                             </li>
                             <li class="splide__slide">
                                 <div class="project-card">
-                                    <img src="assets/sources/img/indexDronSecBack.jpg" alt="Vista Aérea Complejo" class="project-image" loading="lazy">
+                                    <img src="src/images/content/indexDronSecBack.jpg" alt="Vista Aérea Complejo" class="project-image" loading="lazy">
                                     <div class="project-overlay">
                                         <div class="project-info">
                                             <i class="fas fa-mountain"></i>
@@ -327,50 +327,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        // AOS Animation
-        AOS.init({ 
-            once: true,
-            duration: 800,
-            offset: 100
-        });
-        
-        // Splide Carousel
-        if(document.querySelector('#projectsCarousel')){
-            new Splide('#projectsCarousel', {
-                type: 'loop',
-                perPage: 2,
-                gap: '2rem',
-                autoplay: true,
-                pauseOnHover: true,
-                breakpoints: {
-                    768: { perPage: 1 }
-                }
-            }).mount();
-        }
-        
-        // Navbar Toggle
-        const navbarToggler = document.getElementById('navbar-toggler');
-        const navbarMenu = document.getElementById('navbar-menu');
-        
-        if(navbarToggler){
-            navbarToggler.addEventListener('click', () => {
-                navbarMenu.classList.toggle('active');
-                navbarToggler.classList.toggle('active');
-            });
-        }
-        
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar-modern');
-            if(navbar){
-                if(window.scrollY > 50){
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            }
-        });
-    </script>
+    <script src="src/js/pages/index-page.js"></script>
 </body>
 </html>
