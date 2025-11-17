@@ -163,7 +163,7 @@ PROYECTO-DE-ESPECIALIDAD/
 Proyecto de Especialidad 2025
 **Versión del Proyecto**: 2.0.0  
 **Última actualización**: 17 de Noviembre, 2025  
-**Estado**: ✅ Producción
+**Estado**: ✅ MVP
 
 ---
 
