@@ -3,11 +3,7 @@ name: CI/CD y Notificación a Discord
 # Ejecutar en cualquier push, PR y manualmente
 on:
   push:
-    branches:
-      - main 
   pull_request:
-    branches:
-      - main 
   workflow_dispatch:
 
 jobs:
