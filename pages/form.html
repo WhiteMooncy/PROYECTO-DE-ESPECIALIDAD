@@ -14,13 +14,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../src/images/content/icon/icon.webp">
     
-    <!-- Stylesheets Modulares -->
-    <link rel="stylesheet" href="../src/css/base/variables.css">
-    <link rel="stylesheet" href="../src/css/layout/shared.css">
-    <link rel="stylesheet" href="../src/css/pages/form.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../src/css/layout/modern-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Fonts -->
@@ -81,33 +77,661 @@
     <main class="form-page" role="main">
         <div class="form-container" data-aos="fade-up">
             <div class="form-header">
-                <h1 id="title">
-                    <i class="fas fa-clipboard-list"></i>
-                    Encuesta de Opinión
-                </h1>
-                <p class="lead">Ayúdanos a mejorar nuestros servicios respondiendo esta breve encuesta</p>
+                <div class="form-progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Datos Personales</div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Domicilio</div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Núcleo Familiar</div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Necesidades</div>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step" data-step="5">
+                        <div class="step-number">5</div>
+                        <div class="step-label">Confirmación</div>
+                    </div>
+                </div>
             </div>
             
             <div class="form-body">
-                <section id="quiz">
-                    <div id="questionWrap">
-                        <!-- Aquí se renderiza la pregunta -->
+                <form id="procedural-form">
+                    <!-- Paso 1: Datos del Socio Principal -->
+                    <div class="form-step active" id="step-1">
+                        <h2>
+                            <i class="fas fa-user"></i>
+                            Datos del Socio Principal
+                        </h2>
+                        <p class="step-description">Información personal del solicitante</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fecha-registro">
+                                    <i class="fas fa-calendar"></i>
+                                    Fecha de Registro *
+                                </label>
+                                <input type="date" id="fecha-registro" name="fecha-registro" required>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="nombre">
+                                    <i class="fas fa-user"></i>
+                                    Nombre completo *
+                                </label>
+                                <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez García">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="rut">
+                                    <i class="fas fa-id-card"></i>
+                                    RUT *
+                                </label>
+                                <input type="text" id="rut" name="rut" required placeholder="12345678-9">
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fecha-nacimiento">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    Fecha de nacimiento *
+                                </label>
+                                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="edad">
+                                    <i class="fas fa-hashtag"></i>
+                                    Edad *
+                                </label>
+                                <input type="number" id="edad" name="edad" required min="18" max="120" placeholder="25">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="estado-civil">
+                                    <i class="fas fa-ring"></i>
+                                    Estado civil *
+                                </label>
+                                <select id="estado-civil" name="estado-civil" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Soltero/a">Soltero/a</option>
+                                    <option value="Casado/a">Casado/a</option>
+                                    <option value="Conviviente">Conviviente</option>
+                                    <option value="Divorciado/a">Divorciado/a</option>
+                                    <option value="Viudo/a">Viudo/a</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profesion">
+                                    <i class="fas fa-briefcase"></i>
+                                    Profesión u Oficio *
+                                </label>
+                                <input type="text" id="profesion" name="profesion" required placeholder="Ej: Agricultor">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefono">
+                                    <i class="fas fa-phone"></i>
+                                    Teléfono de contacto *
+                                </label>
+                                <input type="tel" id="telefono" name="telefono" required placeholder="+56 9 1234 5678">
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    Correo electrónico *
+                                </label>
+                                <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="situacion-laboral">
+                                    <i class="fas fa-user-tie"></i>
+                                    Situación laboral *
+                                </label>
+                                <select id="situacion-laboral" name="situacion-laboral" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Empleado">Empleado</option>
+                                    <option value="Independiente">Independiente</option>
+                                    <option value="Desempleado">Desempleado</option>
+                                    <option value="Jubilado">Jubilado</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="nivel-educativo">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    Nivel educativo *
+                                </label>
+                                <select id="nivel-educativo" name="nivel-educativo" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Sin estudios">Sin estudios</option>
+                                    <option value="Básica incompleta">Básica incompleta</option>
+                                    <option value="Básica completa">Básica completa</option>
+                                    <option value="Media incompleta">Media incompleta</option>
+                                    <option value="Media completa">Media completa</option>
+                                    <option value="Técnica">Técnica</option>
+                                    <option value="Universitaria incompleta">Universitaria incompleta</option>
+                                    <option value="Universitaria completa">Universitaria completa</option>
+                                    <option value="Postgrado">Postgrado</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tiene-discapacidad">
+                                    <i class="fas fa-wheelchair"></i>
+                                    ¿Tiene discapacidad? *
+                                </label>
+                                <select id="tiene-discapacidad" name="tiene-discapacidad" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="No">No</option>
+                                    <option value="Sí">Sí</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group" id="tipo-discapacidad-group" style="display: none;">
+                                <label for="tipo-discapacidad">
+                                    <i class="fas fa-info-circle"></i>
+                                    Tipo de discapacidad
+                                </label>
+                                <input type="text" id="tipo-discapacidad" name="tipo-discapacidad" placeholder="Especifique el tipo">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tiene-subsidio">
+                                    <i class="fas fa-hand-holding-usd"></i>
+                                    ¿Es beneficiario de algún subsidio o pensión? *
+                                </label>
+                                <select id="tiene-subsidio" name="tiene-subsidio" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="No">No</option>
+                                    <option value="Sí">Sí</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group" id="tipo-subsidio-group" style="display: none;">
+                                <label for="tipo-subsidio">
+                                    <i class="fas fa-money-check-alt"></i>
+                                    Tipo de subsidio/pensión
+                                </label>
+                                <input type="text" id="tipo-subsidio" name="tipo-subsidio" placeholder="Especifique el tipo">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="controls" id="actions">
-                        <button id="prevBtn" type="button">
+                    
+                    <!-- Paso 2: Datos del Domicilio -->
+                    <div class="form-step" id="step-2">
+                        <h2>
+                            <i class="fas fa-home"></i>
+                            Datos del Domicilio
+                        </h2>
+                        <p class="step-description">Información sobre tu vivienda y acceso a servicios</p>
+                        
+                        <div class="form-group">
+                            <label for="direccion">
+                                <i class="fas fa-map-marked-alt"></i>
+                                Dirección *
+                            </label>
+                            <input type="text" id="direccion" name="direccion" required placeholder="Calle, número, villa">
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipo-vivienda">
+                                    <i class="fas fa-building"></i>
+                                    Tipo de vivienda *
+                                </label>
+                                <select id="tipo-vivienda" name="tipo-vivienda" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Departamento">Departamento</option>
+                                    <option value="Mediagua">Mediagua</option>
+                                    <option value="Pieza">Pieza</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="condicion-vivienda">
+                                    <i class="fas fa-key"></i>
+                                    Condición de la vivienda *
+                                </label>
+                                <select id="condicion-vivienda" name="condicion-vivienda" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Propia">Propia</option>
+                                    <option value="Arrendada">Arrendada</option>
+                                    <option value="Cedida">Cedida</option>
+                                    <option value="Toma">Toma</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="material-construccion">
+                                    <i class="fas fa-hammer"></i>
+                                    Material de construcción *
+                                </label>
+                                <select id="material-construccion" name="material-construccion" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Madera">Madera</option>
+                                    <option value="Adobe">Adobe</option>
+                                    <option value="Cemento">Cemento</option>
+                                    <option value="Mixto">Mixto</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="eliminacion-aguas">
+                                    <i class="fas fa-tint"></i>
+                                    Eliminación de aguas servidas *
+                                </label>
+                                <select id="eliminacion-aguas" name="eliminacion-aguas" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Red pública">Red pública</option>
+                                    <option value="Fosa séptica">Fosa séptica</option>
+                                    <option value="Pozo negro">Pozo negro</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="acceso-internet">
+                                    <i class="fas fa-wifi"></i>
+                                    ¿Tiene acceso a internet? *
+                                </label>
+                                <select id="acceso-internet" name="acceso-internet" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Sí">Sí</option>
+                                    <option value="No">No</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="medio-acceso">
+                                    <i class="fas fa-road"></i>
+                                    Medio de acceso al domicilio *
+                                </label>
+                                <select id="medio-acceso" name="medio-acceso" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="Caminos pavimentados">Caminos pavimentados</option>
+                                    <option value="Caminos de tierra">Caminos de tierra</option>
+                                    <option value="Ripio">Ripio</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paso 3: Núcleo Familiar -->
+                    <div class="form-step" id="step-3">
+                        <h2>
+                            <i class="fas fa-users"></i>
+                            Núcleo Familiar
+                        </h2>
+                        <p class="step-description">Información sobre los integrantes de tu hogar</p>
+                        
+                        <div id="familia-container">
+                            <div class="familia-item" data-index="0">
+                                <div class="familia-header">
+                                    <h4><i class="fas fa-user-plus"></i> Familiar #1</h4>
+                                    <button type="button" class="btn-remove-familiar" data-index="0">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="fas fa-user"></i>
+                                            Nombre completo
+                                        </label>
+                                        <input type="text" name="familiar-nombre-0" placeholder="Nombre del familiar">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="fas fa-id-card"></i>
+                                            RUT
+                                        </label>
+                                        <input type="text" name="familiar-rut-0" placeholder="12345678-9">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="fas fa-heart"></i>
+                                            Parentesco
+                                        </label>
+                                        <select name="familiar-parentesco-0">
+                                            <option value="">Selecciona</option>
+                                            <option value="Cónyuge">Cónyuge</option>
+                                            <option value="Hijo/a">Hijo/a</option>
+                                            <option value="Padre/Madre">Padre/Madre</option>
+                                            <option value="Hermano/a">Hermano/a</option>
+                                            <option value="Abuelo/a">Abuelo/a</option>
+                                            <option value="Otro">Otro</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="fas fa-hashtag"></i>
+                                            Edad
+                                        </label>
+                                        <input type="number" name="familiar-edad-0" min="0" max="120" placeholder="25">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="fas fa-briefcase"></i>
+                                            Ocupación
+                                        </label>
+                                        <input type="text" name="familiar-ocupacion-0" placeholder="Estudiante">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="fas fa-graduation-cap"></i>
+                                            Nivel educativo
+                                        </label>
+                                        <select name="familiar-educacion-0">
+                                            <option value="">Selecciona</option>
+                                            <option value="Sin estudios">Sin estudios</option>
+                                            <option value="Básica">Básica</option>
+                                            <option value="Media">Media</option>
+                                            <option value="Técnica">Técnica</option>
+                                            <option value="Universitaria">Universitaria</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="fas fa-wheelchair"></i>
+                                            ¿Discapacidad?
+                                        </label>
+                                        <select name="familiar-discapacidad-0">
+                                            <option value="">Selecciona</option>
+                                            <option value="No">No</option>
+                                            <option value="Sí">Sí</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>
+                                            <i class="fas fa-money-check-alt"></i>
+                                            ¿Subsidio/Pensión?
+                                        </label>
+                                        <select name="familiar-subsidio-0">
+                                            <option value="">Selecciona</option>
+                                            <option value="No">No</option>
+                                            <option value="Sí">Sí</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="btn-add-familiar" class="btn-add">
+                            <i class="fas fa-plus-circle"></i>
+                            Agregar otro familiar
+                        </button>
+                    </div>
+                    
+                    <!-- Paso 4: Necesidades y Problemáticas -->
+                    <div class="form-step" id="step-4">
+                        <h2>
+                            <i class="fas fa-hand-holding-heart"></i>
+                            Necesidades y Problemáticas del Hogar
+                        </h2>
+                        <p class="step-description">Comparte las necesidades y situación actual de tu hogar</p>
+                        
+                        <div class="form-group">
+                            <label for="asistencia-medica">
+                                <i class="fas fa-stethoscope"></i>
+                                ¿Algún integrante requiere asistencia médica permanente? *
+                            </label>
+                            <select id="asistencia-medica" name="asistencia-medica" required>
+                                <option value="">Selecciona</option>
+                                <option value="No">No</option>
+                                <option value="Sí">Sí</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-group" id="asistencia-medica-detalles-group" style="display: none;">
+                            <label for="asistencia-medica-detalles">
+                                <i class="fas fa-info-circle"></i>
+                                Detalles de la asistencia médica
+                            </label>
+                            <textarea id="asistencia-medica-detalles" name="asistencia-medica-detalles" rows="3" 
+                                placeholder="Especifique los detalles..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="movilidad-reducida">
+                                <i class="fas fa-wheelchair"></i>
+                                ¿Algún integrante tiene movilidad reducida? *
+                            </label>
+                            <select id="movilidad-reducida" name="movilidad-reducida" required>
+                                <option value="">Selecciona</option>
+                                <option value="No">No</option>
+                                <option value="Sí">Sí</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-group" id="movilidad-reducida-detalles-group" style="display: none;">
+                            <label for="movilidad-reducida-detalles">
+                                <i class="fas fa-info-circle"></i>
+                                Detalles de movilidad reducida
+                            </label>
+                            <textarea id="movilidad-reducida-detalles" name="movilidad-reducida-detalles" rows="3" 
+                                placeholder="Especifique los detalles..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="problemas-servicios">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                ¿Problemas con servicios básicos (agua, luz, internet)? *
+                            </label>
+                            <select id="problemas-servicios" name="problemas-servicios" required>
+                                <option value="">Selecciona</option>
+                                <option value="No">No</option>
+                                <option value="Sí">Sí</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-group" id="problemas-servicios-detalles-group" style="display: none;">
+                            <label for="problemas-servicios-detalles">
+                                <i class="fas fa-info-circle"></i>
+                                Detalles de los problemas
+                            </label>
+                            <textarea id="problemas-servicios-detalles" name="problemas-servicios-detalles" rows="3" 
+                                placeholder="Especifique los detalles..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergencias">
+                                <i class="fas fa-fire"></i>
+                                ¿El hogar ha sido afectado por emergencias? *
+                            </label>
+                            <select id="emergencias" name="emergencias" required>
+                                <option value="">Selecciona</option>
+                                <option value="No">No</option>
+                                <option value="Sí">Sí</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-group" id="emergencias-detalles-group" style="display: none;">
+                            <label for="emergencias-detalles">
+                                <i class="fas fa-info-circle"></i>
+                                Detalles de la emergencia
+                            </label>
+                            <textarea id="emergencias-detalles" name="emergencias-detalles" rows="3" 
+                                placeholder="Inundaciones, incendios, terremotos, etc..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ayuda-social">
+                                <i class="fas fa-hands-helping"></i>
+                                ¿Necesita ayuda social o asistencia? *
+                            </label>
+                            <select id="ayuda-social" name="ayuda-social" required>
+                                <option value="">Selecciona</option>
+                                <option value="No">No</option>
+                                <option value="Sí">Sí</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        
+                        <div class="form-group" id="ayuda-social-detalles-group" style="display: none;">
+                            <label for="ayuda-social-detalles">
+                                <i class="fas fa-info-circle"></i>
+                                Detalles de la ayuda necesaria
+                            </label>
+                            <textarea id="ayuda-social-detalles" name="ayuda-social-detalles" rows="3" 
+                                placeholder="Especifique qué tipo de ayuda necesita..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="otros-comentarios">
+                                <i class="fas fa-comment-alt"></i>
+                                Otros comentarios sobre la situación del hogar
+                            </label>
+                            <textarea id="otros-comentarios" name="otros-comentarios" rows="4" 
+                                placeholder="Cualquier información adicional que considere importante..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="encuestador">
+                                <i class="fas fa-user-check"></i>
+                                Encuesta realizada por *
+                            </label>
+                            <input type="text" id="encuestador" name="encuestador" required placeholder="Nombre del encuestador">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Paso 5: Confirmación -->
+                    <div class="form-step" id="step-5">
+                        <h2>
+                            <i class="fas fa-check-circle"></i>
+                            Confirma tu Información
+                        </h2>
+                        <p class="step-description">Revisa que todo esté correcto antes de enviar</p>
+                        
+                        <div class="confirmation-summary">
+                            <div class="summary-section">
+                                <h3><i class="fas fa-user"></i> Datos Personales</h3>
+                                <div class="summary-grid" id="confirm-datos-personales"></div>
+                            </div>
+                            
+                            <div class="summary-section">
+                                <h3><i class="fas fa-home"></i> Datos del Domicilio</h3>
+                                <div class="summary-grid" id="confirm-domicilio"></div>
+                            </div>
+                            
+                            <div class="summary-section">
+                                <h3><i class="fas fa-users"></i> Núcleo Familiar</h3>
+                                <div class="summary-grid" id="confirm-familia"></div>
+                            </div>
+                            
+                            <div class="summary-section">
+                                <h3><i class="fas fa-hand-holding-heart"></i> Necesidades y Problemáticas</h3>
+                                <div class="summary-grid" id="confirm-necesidades"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="acepto-terminos" required>
+                                <label for="acepto-terminos">
+                                    Acepto que la información proporcionada es verídica y autorizo su uso para fines sociales de la junta de vecinos *
+                                </label>
+                            </div>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Controles de Navegación -->
+                    <div class="form-navigation">
+                        <button type="button" id="prevBtn" class="btn-secondary">
                             <i class="fas fa-arrow-left"></i>
                             Anterior
                         </button>
-                        <button id="nextBtn" type="button">
+                        <button type="button" id="devBtn" class="btn-dev" title="Modo Desarrollo - Autocompletar">
+                            <i class="fas fa-code"></i>
+                            DEV
+                        </button>
+                        <button type="button" id="nextBtn" class="btn-primary">
                             Siguiente
                             <i class="fas fa-arrow-right"></i>
                         </button>
+                        <button type="submit" id="submitBtn" class="btn-primary" style="display: none;">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Formulario
+                        </button>
                     </div>
-                    <div class="progress" aria-hidden="true">
-                        <i id="progressBar"></i>
-                    </div>
-                    <div id="result" class="hidden" aria-live="polite"></div>
-                </section>
+                </form>
+                
+                <!-- Resultado del Envío -->
+                <div id="result" class="hidden" aria-live="polite"></div>
             </div>
         </div>
     </main>
@@ -180,11 +804,6 @@
     
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script type="module" src="../src/js/pages/main.js?v=2"></script>
-    <script src="../src/js/modules/ai-classifier.js"></script>
-    <script src="../src/js/modules/storage-manager.js"></script>
-    <script src="../src/js/utils/validators.js"></script>
-    <script src="../src/js/pages/form.js"></script>
     <script src="../src/js/pages/form-page.js"></script>
 </body>
 </html>

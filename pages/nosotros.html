@@ -14,242 +14,16 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../src/images/content/icon/icon.webp">
     
-    <!-- Stylesheets Modulares -->
-    <link rel="stylesheet" href="../src/css/base/variables.css">
-    <link rel="stylesheet" href="../src/css/layout/shared.css">
-    <link rel="stylesheet" href="../assets/sources/css/home.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../src/css/layout/modern-styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Hero About Section */
-        .about-hero {
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-        }
-        
-        .about-hero-content {
-            max-width: 1200px;
-            text-align: center;
-            z-index: 1;
-        }
-        
-        .about-hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--color-dark);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
-        }
-        
-        .about-hero p {
-            font-size: 1.3rem;
-            color: var(--color-dark);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-        
-        /* Stats Section */
-        .stats-section {
-            padding: 4rem 2rem;
-            background: white;
-        }
-        
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .stat-box {
-            text-align: center;
-            padding: 2rem;
-            border-radius: var(--radius-lg);
-            background: linear-gradient(135deg, #0077b6, #00b4d8);
-            color: white;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-        }
-        
-        .stat-box:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .stat-box .value {
-            font-size: 3rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-box .label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        /* About Content Section */
-        .about-content-section {
-            padding: 6rem 2rem;
-            background: transparent;
-        }
-        
-        .about-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .about-text h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--color-dark);
-            margin-bottom: 1.5rem;
-        }
-        
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--color-text);
-            margin-bottom: 1.5rem;
-        }
-        
-        .about-image {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            height: 500px;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Team Section */
-        .team-section {
-            padding: 6rem 2rem;
-            background: white;
-        }
-        
-        .team-grid {
-            max-width: 1400px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .team-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-        }
-        
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .team-card-image {
-            width: 100%;
-            height: 320px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .team-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .team-card:hover .team-card-image img {
-            transform: scale(1.1);
-        }
-        
-        .team-card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem;
-            background: linear-gradient(to top, rgba(0, 119, 182, 0.95), transparent);
-            color: white;
-        }
-        
-        .team-card-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        
-        .team-card-role {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .about-hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .about-hero p {
-                font-size: 1.1rem;
-            }
-            
-            .stat-box .value {
-                font-size: 2.5rem;
-            }
-            
-            .about-text h2 {
-                font-size: 2rem;
-            }
-            
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body data-theme="represa">
     <!-- SVG Waves Background -->
@@ -340,7 +114,7 @@
                     garantizando agua y energía para la región mientras protegemos el entorno natural 
                     y fortalecemos a las comunidades locales.
                 </p>
-                <h2 style="margin-top: 2rem;">¿A Quiénes Ayudamos?</h2>
+                <h2 class="about-text-subtitle">¿A Quiénes Ayudamos?</h2>
                 <p>
                     Proveemos agua para consumo humano, riego agrícola e industria, además de suministrar 
                     energía hidroeléctrica local. Trabajamos con comunidades aledañas para fortalecer 
@@ -363,98 +137,71 @@
             </p>
         </div>
         
-        <div class="team-grid">
-            <div class="team-card" data-aos="fade-up">
-                <div class="team-card-image">
-                    <img src="../src/images/content/example.jpg" alt="María López - Directora de Operaciones">
-                    <div class="team-card-overlay">
-                        <div class="team-card-name">María López</div>
-                        <div class="team-card-role">Directora de Operaciones</div>
-                    </div>
+        <div class="team-carousel-container">
+            <div class="splide" id="teamCarousel">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <div class="team-card">
+                                <div class="team-card-image">
+                                    <img src="../src/images/content/example.jpg" alt="María López - Directora de Operaciones" loading="lazy">
+                                    <div class="team-card-overlay">
+                                        <div class="team-card-name">María López</div>
+                                        <div class="team-card-role">Directora de Operaciones</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="splide__slide">
+                            <div class="team-card">
+                                <div class="team-card-image">
+                                    <img src="../src/images/content/example.jpg" alt="Carlos Reyes - Jefe de Mantenimiento" loading="lazy">
+                                    <div class="team-card-overlay">
+                                        <div class="team-card-name">Carlos Reyes</div>
+                                        <div class="team-card-role">Jefe de Mantenimiento</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="splide__slide">
+                            <div class="team-card">
+                                <div class="team-card-image">
+                                    <img src="../src/images/content/example.jpg" alt="Ana Martínez - Ingeniera Ambiental" loading="lazy">
+                                    <div class="team-card-overlay">
+                                        <div class="team-card-name">Ana Martínez</div>
+                                        <div class="team-card-role">Ingeniera Ambiental</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="splide__slide">
+                            <div class="team-card">
+                                <div class="team-card-image">
+                                    <img src="../src/images/content/example.jpg" alt="Luis Fernández - Operador de Planta" loading="lazy">
+                                    <div class="team-card-overlay">
+                                        <div class="team-card-name">Luis Fernández</div>
+                                        <div class="team-card-role">Operador de Planta</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li class="splide__slide">
+                            <div class="team-card">
+                                <div class="team-card-image">
+                                    <img src="../src/images/content/example.jpg" alt="Sofía Gómez - Relaciones Comunitarias" loading="lazy">
+                                    <div class="team-card-overlay">
+                                        <div class="team-card-name">Sofía Gómez</div>
+                                        <div class="team-card-role">Relaciones Comunitarias</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            
-            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="team-card-image">
-                    <img src="../src/images/content/example.jpg" alt="Carlos Reyes - Jefe de Mantenimiento">
-                    <div class="team-card-overlay">
-                        <div class="team-card-name">Carlos Reyes</div>
-                        <div class="team-card-role">Jefe de Mantenimiento</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="team-card-image">
-                    <img src="../src/images/content/example.jpg" alt="Ana Martínez - Ingeniera Ambiental">
-                    <div class="team-card-overlay">
-                        <div class="team-card-name">Ana Martínez</div>
-                        <div class="team-card-role">Ingeniera Ambiental</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="team-card" data-aos="fade-up">
-                <div class="team-card-image">
-                    <img src="../src/images/content/example.jpg" alt="Luis Fernández - Operador de Planta">
-                    <div class="team-card-overlay">
-                        <div class="team-card-name">Luis Fernández</div>
-                        <div class="team-card-role">Operador de Planta</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="team-card-image">
-                    <img src="../src/images/content/example.jpg" alt="Sofía Gómez - Relaciones Comunitarias">
-                    <div class="team-card-overlay">
-                        <div class="team-card-name">Sofía Gómez</div>
-                        <div class="team-card-role">Relaciones Comunitarias</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section class="institutional-values" data-aos="fade-up">
-        <div class="section-header">
-            <span class="section-tag">Nuestros Valores</span>
-            <h2 class="section-title">Comprometidos con la Excelencia</h2>
-        </div>
-        
-        <div class="values-grid">
-            <div class="value-card">
-                <div class="card-icon mission-icon">
-                    <i class="fas fa-bullseye"></i>
-                </div>
-                <h3 class="card-title">Misión</h3>
-                <p class="card-description">
-                    Gestionar la represa con estándares de seguridad y sostenibilidad, garantizando agua y energía 
-                    para la región mientras protegemos el entorno natural y fortalecemos a las comunidades locales.
-                </p>
-            </div>
-            
-            <div class="value-card">
-                <div class="card-icon vision-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <h3 class="card-title">Visión</h3>
-                <p class="card-description">
-                    Ser reconocidos como un referente regional en gestión hídrica y generación responsable de energía, 
-                    innovando en tecnología y prácticas ambientales para las próximas décadas.
-                </p>
-            </div>
-            
-            <div class="value-card">
-                <div class="card-icon sustainability-icon">
-                    <i class="fas fa-leaf"></i>
-                </div>
-                <h3 class="card-title">Sostenibilidad</h3>
-                <p class="card-description">
-                    Nos comprometemos con prácticas sostenibles que protegen el medio ambiente, integrando 
-                    el equilibrio entre desarrollo energético y la conservación de nuestros recursos naturales.
-                </p>
             </div>
         </div>
     </section>
@@ -526,6 +273,7 @@
     </footer>
     
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="../src/js/pages/nosotros-page.js"></script>
 </body>
