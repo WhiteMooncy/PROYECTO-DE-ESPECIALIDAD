@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     
     <!-- Stylesheets Modulares -->
-    <link rel="stylesheet" href="../assets/sources/css/main.css?v=2">
-    <link rel="stylesheet" href="../assets/sources/css/components.css?v=2">
-    <link rel="stylesheet" href="../assets/sources/css/dashboard.css?v=2">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/shared.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
         <!-- SVG Waves Background -->
@@ -63,9 +63,6 @@
                 <span></span>
             </button>
             <div class="navbar-menu" id="navbar-menu">
-                <a href="../index.html" class="nav-link">Inicio</a>
-                <a href="nosotros.html" class="nav-link">Nosotros</a>
-                <a href="form.html" class="nav-link">Formulario</a>
                 <a href="map.html" class="nav-link">
                     <i class="fas fa-map-marked-alt"></i>
                     Mapa
@@ -73,6 +70,10 @@
                 <a href="users.html" class="nav-link">
                     <i class="fas fa-users"></i>
                     Usuarios
+                </a>
+                <a href="responses.html" class="nav-link">
+                    <i class="fas fa-reply"></i>
+                    Respuestas
                 </a>
                 <a href="dashboard.html" class="nav-link-login active">
                     <i class="fas fa-chart-line"></i>
@@ -183,7 +184,46 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div id="barChart"></div>
+                    <!-- Barras de progreso en lugar de gráfico -->
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Evaluación del Proyecto</span>
+                            <strong>74%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 74%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Proceso de Consulta</span>
+                            <strong>68%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 68%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Transparencia Informativa</span>
+                            <strong>81%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 81%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Gestión de Compensaciones</span>
+                            <strong>65%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -200,117 +240,86 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <div id="categoryChart"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Comments Section -->
-        <section class="comments-section" data-aos="fade-up" role="region" aria-label="Comentarios filtrados por IA">
-            <div class="comments-header">
-                <h2>Comentarios, Solicitudes y Reclamos (Filtrados por IA)</h2>
-                <p>Utiliza los filtros de Categoría y Sentimiento para gestionar los comentarios.</p>
-            </div>
-
-            <div class="filter-controls">
-                <div class="filter-group">
-                    <label for="categoryFilter">Categoría (IA):</label>
-                    <select id="categoryFilter" class="dashboard-filter">
-                        <option value="all">Todas las Categorías</option>
-                        <option value="reclamo">Reclamo</option>
-                        <option value="solicitud">Solicitud</option>
-                        <option value="duda">Duda</option>
-                        <option value="general">General</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label for="sentimentFilter">Sentimiento (IA):</label>
-                    <select id="sentimentFilter" class="dashboard-filter">
-                        <option value="all">Todo el Sentimiento</option>
-                        <option value="positivo">Positivo</option>
-                        <option value="negativo">Negativo</option>
-                        <option value="neutral">Neutral</option>
-                    </select>
-                </div>
-
-                <button id="applyFilterBtn" class="filter-btn">
-                    <i class="fas fa-filter"></i>
-                    Aplicar Filtros
-                </button>
-            </div>
-
-            <div class="comments-list" id="commentsList">
-                <div class="comment-card placeholder">
-                    <div class="loading-spinner">
-                        <i class="fas fa-spinner fa-spin"></i>
-                        <p>Cargando comentarios...</p>
+                    <!-- Barras de progreso categorías -->
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Impacto Ambiental</span>
+                            <strong>68%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 68%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Impacto Social</span>
+                            <strong>72%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 72%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Compensaciones</span>
+                            <strong>65%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Transparencia</span>
+                            <strong>81%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 81%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-label">
+                            <span>Empleo Local</span>
+                            <strong>88%</strong>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+
     </main>
 
-    <!-- Admin Footer -->
-    <footer class="admin-footer">
-        <div class="admin-footer-container">
-            <div class="footer-left">
-                <div class="footer-brand">
-                    <i class="fas fa-water"></i>
-                    <span>Hydro-Conecta Admin</span>
-                </div>
-                <p class="footer-version">Versión 1.0.0 | Build 2025.11.10</p>
-            </div>
-            
-            <div class="footer-center">
-                <div class="footer-stats">
-                    <div class="footer-stat-item">
-                        <i class="fas fa-server"></i>
-                        <span>Estado: <strong class="status-online">Operativo</strong></span>
-                    </div>
-                    <div class="footer-stat-item">
-                        <i class="fas fa-database"></i>
-                        <span>Última actualización: <strong id="lastUpdate">Ahora</strong></span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-right">
-                <div class="footer-links">
-                    <a href="#" class="footer-link">
-                        <i class="fas fa-question-circle"></i>
-                        Ayuda
-                    </a>
-                    <a href="#" class="footer-link">
-                        <i class="fas fa-bug"></i>
-                        Reportar Error
-                    </a>
-                    <a href="#" class="footer-link">
-                        <i class="fas fa-book"></i>
-                        Documentación
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Hydro-Conecta. Panel Administrativo - Todos los derechos reservados.</p>
-            <div class="footer-bottom-links">
-                <a href="#">Términos de Uso</a>
-                <span>•</span>
-                <a href="#">Privacidad</a>
-                <span>•</span>
-                <a href="#">Seguridad</a>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer se carga dinámicamente -->
 
-    <!-- Scripts -->
+    <!-- AOS CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- AOS JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Leaflet JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+    <!-- Scripts de la aplicación -->
+    <script src="../assets/sources/js/auth.js"></script>
+    <script src="../assets/sources/js/ai-classifier.js"></script>
+    <script src="../assets/sources/js/storage-manager.js"></script>
     <script src="../assets/sources/js/dashboard.js"></script>
+    <script src="../assets/sources/js/admin-footer.js"></script>
+    
     <script>
+        // Inicializar sistema de autenticación
+        const auth = new AuthManager();
+        auth.initDashboard();
+
         // Initialize AOS
         AOS.init({
             duration: 800,
@@ -328,6 +337,18 @@
                 navbarToggler.classList.toggle('active');
             });
         }
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar-modern');
+            if(navbar){
+                if(window.scrollY > 50){
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+        });
         
         // Update footer timestamp
         function updateFooterTime() {
