@@ -1,5 +1,8 @@
 // form-page.js - Formulario Censo Social
 
+// Importar sistema de toast (se carga desde HTML)
+// const toast = window.toast;
+
 // AOS Animation
 AOS.init({ 
     once: true,
@@ -278,32 +281,69 @@ function showStep(stepNumber) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Validar paso actual
+// Validar paso actual con validación mejorada y feedback visual
 function validateStep(stepNumber) {
     const currentStepElement = document.getElementById(`step-${stepNumber}`);
     const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
     let isValid = true;
+    const errors = [];
     
     inputs.forEach(input => {
+        const value = input.value.trim();
+        const fieldName = input.getAttribute('data-label') || input.name || input.id;
         const errorElement = input.parentElement.querySelector('.error-message');
         
-        if (!input.value.trim()) {
+        // Limpiar estado previo
+        input.classList.remove('error', 'valid', 'invalid');
+        if (errorElement) errorElement.textContent = '';
+        
+        // Validar campo requerido vacío
+        if (!value) {
             isValid = false;
-            input.classList.add('error');
+            input.classList.add('error', 'invalid');
             if (errorElement) {
                 errorElement.textContent = 'Este campo es obligatorio';
             }
-        } else if (input.type === 'email' && !validateEmail(input.value)) {
+            errors.push(`${fieldName} es obligatorio`);
+            return;
+        }
+        
+        // Validaciones específicas por tipo
+        let fieldValid = true;
+        let errorMessage = '';
+        
+        if (input.id === 'rut' && window.FormValidators) {
+            if (!FormValidators.validateRUT(value)) {
+                fieldValid = false;
+                errorMessage = 'RUT inválido. Formato: 12.345.678-9';
+            }
+        } else if (input.type === 'email' || input.id === 'email') {
+            if (!validateEmail(value)) {
+                fieldValid = false;
+                errorMessage = 'Email inválido';
+            }
+        } else if (input.id === 'telefono' && window.FormValidators) {
+            if (!FormValidators.validatePhone(value)) {
+                fieldValid = false;
+                errorMessage = 'Teléfono inválido. Formato: +56 9 1234 5678';
+            }
+        } else if (input.type === 'number') {
+            const num = parseInt(value);
+            if (isNaN(num) || num < 0 || num > 120) {
+                fieldValid = false;
+                errorMessage = 'Valor inválido';
+            }
+        }
+        
+        if (!fieldValid) {
             isValid = false;
-            input.classList.add('error');
+            input.classList.add('error', 'invalid');
             if (errorElement) {
-                errorElement.textContent = 'Email inválido';
+                errorElement.textContent = errorMessage;
             }
+            errors.push(errorMessage);
         } else {
-            input.classList.remove('error');
-            if (errorElement) {
-                errorElement.textContent = '';
-            }
+            input.classList.add('valid');
         }
     });
     
@@ -312,8 +352,21 @@ function validateStep(stepNumber) {
         const checkbox = document.getElementById('acepto-terminos');
         if (!checkbox.checked) {
             isValid = false;
-            alert('Debes aceptar los términos y condiciones');
+            errors.push('Debes aceptar los términos y condiciones');
+            if (window.toast) {
+                window.toast.error('Debes aceptar los términos y condiciones', 3000);
+            } else {
+                alert('Debes aceptar los términos y condiciones');
+            }
         }
+    }
+    
+    // Mostrar errores con toast si está disponible
+    if (!isValid && errors.length > 0 && window.toast) {
+        const uniqueErrors = [...new Set(errors)];
+        const errorList = uniqueErrors.slice(0, 2).join(', ');
+        const moreErrors = uniqueErrors.length > 2 ? ` y ${uniqueErrors.length - 2} más` : '';
+        window.toast.error(`Por favor corrige: ${errorList}${moreErrors}`, 5000);
     }
     
     return isValid;
@@ -492,15 +545,23 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     if (!document.getElementById('acepto-terminos').checked) {
-        alert('Debes aceptar los términos y condiciones');
+        if (window.toast) {
+            window.toast.error('Debes aceptar los términos y condiciones', 3000);
+        } else {
+            alert('Debes aceptar los términos y condiciones');
+        }
         return;
     }
     
     saveStepData(currentStep);
     
-    // Simular envío
+    // Simular envío con feedback visual
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    
+    if (window.toast) {
+        window.toast.info('Enviando formulario...', 2000);
+    }
     
     // Simular delay
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -518,6 +579,10 @@ form.addEventListener('submit', async (e) => {
     localStorage.setItem('censoSubmissions', JSON.stringify(submissions));
     
     // Mostrar éxito
+    if (window.toast) {
+        window.toast.success('¡Formulario enviado exitosamente!', 5000);
+    }
+    
     const resultDiv = document.getElementById('result');
     resultDiv.className = 'result-success';
     resultDiv.innerHTML = `

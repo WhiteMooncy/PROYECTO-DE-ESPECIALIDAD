@@ -2,18 +2,25 @@
 # ARCHIVO: app.py
 # FUNCIÓN: API REST con Flask para servir datos y simular la IA.
 #          Contiene la lógica de clasificación de comentarios (NLP).
+# VERSIÓN: 2.0 - Con validación y manejo de errores mejorado
 # =========================================================================
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS 
 import random
+from datetime import datetime
 
 # ------------------------------------
 # 1. CONFIGURACIÓN E INICIALIZACIÓN
 # ------------------------------------
 app = Flask(__name__)
-# Permitir peticiones desde el frontend (puerto 8000 o cualquier origen)
-CORS(app) 
+
+# CORS configurado para desarrollo (restringir en producción)
+CORS(app, origins=["http://localhost:8000", "http://127.0.0.1:8000", "http://localhost:5500"])
+
+# Configuración
+app.config['JSON_AS_ASCII'] = False  # Soporte para caracteres especiales
+app.config['JSON_SORT_KEYS'] = False 
 
 # ------------------------------------
 # 2. SIMULACIÓN DE LA IA (Clasificador de Comentarios)
@@ -112,47 +119,92 @@ DUMMY_API_RESPONSE_BASE = {
 
 
 # ------------------------------------
-# 4. ENDPOINT DE LA API
+# 4. FUNCIONES DE VALIDACIÓN
+# ------------------------------------
+
+def validate_dashboard_request():
+    """Valida los parámetros de la petición al dashboard"""
+    # Por ahora no hay parámetros, pero se puede extender
+    return True
+
+def sanitize_comment(text):
+    """Sanitiza texto de comentarios"""
+    if not text or not isinstance(text, str):
+        return ""
+    # Limitar longitud
+    return text[:1000].strip()
+
+# ------------------------------------
+# 5. ENDPOINT DE LA API
 # ------------------------------------
 
 @app.route('/api/dashboard', methods=['GET'])
 def get_dashboard_data():
     """Sirve todos los datos del dashboard y clasifica los comentarios."""
     
-    # 1. Clasificar todos los comentarios usando la IA (simulada)
-    classified_comments = [] 
-    for comment in DUMMY_COMMENTS:
-        category, sentiment = classify_comment(comment['textoOriginal'])
+    try:
+        # Validar petición
+        if not validate_dashboard_request():
+            return jsonify({"error": "Petición inválida"}), 400
         
-        # Estructura final para el Frontend
-        classified_comments.append({
-            "idComentario": comment['idComentario'],
-            "textoOriginal": comment['textoOriginal'],
-            "respondido": comment['respondido'],
-            "filtro": category,
-            "sentimiento": sentiment
-        })
+        # 1. Clasificar todos los comentarios usando la IA (simulada)
+        classified_comments = [] 
+        for comment in DUMMY_COMMENTS:
+            try:
+                category, sentiment = classify_comment(comment['textoOriginal'])
+                
+                # Estructura final para el Frontend
+                classified_comments.append({
+                    "idComentario": comment['idComentario'],
+                    "textoOriginal": sanitize_comment(comment['textoOriginal']),
+                    "respondido": comment['respondido'],
+                    "filtro": category,
+                    "sentimiento": sentiment
+                })
+            except Exception as e:
+                print(f"Error clasificando comentario {comment.get('idComentario')}: {e}")
+                # Agregar con valores por defecto en caso de error
+                classified_comments.append({
+                    "idComentario": comment['idComentario'],
+                    "textoOriginal": sanitize_comment(comment['textoOriginal']),
+                    "respondido": comment['respondido'],
+                    "filtro": "General",
+                    "sentimiento": "Neutral"
+                })
 
-    # 2. Construir la respuesta final
-    response_data = {
-        "stats": DUMMY_API_RESPONSE_BASE["stats"],
-        "comentarios": classified_comments,
-        "questions": DUMMY_API_RESPONSE_BASE["questions"], 
-        "categories": DUMMY_API_RESPONSE_BASE["categories"],
-        "users": DUMMY_API_RESPONSE_BASE["users"],
-        "locations": DUMMY_API_RESPONSE_BASE["locations"]
-    }
-    
-    # Simula un pequeño retraso de red
-    import time; time.sleep(0.5) 
-    
-    return jsonify(response_data)
+        # 2. Construir la respuesta final
+        response_data = {
+            "stats": DUMMY_API_RESPONSE_BASE["stats"],
+            "comentarios": classified_comments,
+            "questions": DUMMY_API_RESPONSE_BASE["questions"], 
+            "categories": DUMMY_API_RESPONSE_BASE["categories"],
+            "users": DUMMY_API_RESPONSE_BASE["users"],
+            "locations": DUMMY_API_RESPONSE_BASE["locations"],
+            "timestamp": datetime.now().isoformat(),
+            "source": "flask-api"
+        }
+        
+        return jsonify(response_data)
+        
+    except Exception as e:
+        print(f"❌ Error en /api/dashboard: {e}")
+        return jsonify({
+            "error": "Error interno del servidor",
+            "message": str(e)
+        }), 500
 
 
 # ------------------------------------
-# 5. EJECUCIÓN DEL SERVIDOR
+# 6. EJECUCIÓN DEL SERVIDOR
 # ------------------------------------
 
 if __name__ == '__main__':
+    print("=" * 60)
+    print("🚀 HYDRO-CONECTA - Backend Flask API")
+    print("=" * 60)
+    print("📍 Servidor: http://127.0.0.1:5000")
+    print("🔗 Endpoint: http://127.0.0.1:5000/api/dashboard")
+    print("🤖 Clasificador IA: ACTIVO")
+    print("=" * 60)
     # Ejecuta el servidor en http://127.0.0.1:5000
     app.run(debug=True, port=5000)
